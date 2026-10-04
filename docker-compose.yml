@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # Vector Database (Qdrant)
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: philosophy_qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    restart: unless-stopped
+
+  # Backend FastAPI + LangGraph Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: philosophy_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - DEFAULT_LLM_PROVIDER=${DEFAULT_LLM_PROVIDER:-gemini}
+      - CHROMA_PERSIST_DIR=/app/chroma_db
+    volumes:
+      - backend_chroma:/app/chroma_db
+    depends_on:
+      - qdrant
+    restart: unless-stopped
+
+  # Frontend React + Vite + Nginx Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: philosophy_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  qdrant_storage:
+  backend_chroma:

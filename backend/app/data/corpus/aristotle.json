@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ar_ne_01",
+    "thinker_id": "aristotle",
+    "thinker_name": "Aristotle",
+    "tradition": "Classical Greek Virtue Ethics & Teleology",
+    "work_title": "Nicomachean Ethics",
+    "chapter": "Book I, Chapter 1 & 2: The Good for Man",
+    "text": "Every art and every inquiry, and similarly every action and pursuit, is thought to aim at some good; and for this reason the good has rightly been declared to be that at which all things aim. If, then, there is some end of the things we do, which we desire for its own sake (everything else being desired for the sake of this), clearly this must be the good and the chief good. Will not the knowledge of it, then, have a great influence on life? Shall we not, like archers who have a mark to aim at, be more likely to hit upon what is right?"
+  },
+  {
+    "id": "ar_ne_02",
+    "thinker_id": "aristotle",
+    "thinker_name": "Aristotle",
+    "tradition": "Classical Greek Virtue Ethics & Teleology",
+    "work_title": "Nicomachean Ethics",
+    "chapter": "Book I, Chapter 7: Eudaimonia and the Function Argument",
+    "text": "Presumably, however, to say that happiness (eudaimonia) is the chief good seems a platitude, and a clearer account of what it is is still desired. This might perhaps be given, if we could first ascertain the function of man. For just as for a flute-player, a sculptor, or an artist, and, in general, for all things that have a function or activity, the good and the 'well' is thought to reside in the function, so would it seem to be for man. The human function is an activity of the soul which follows or implies reason. Human good turns out to be activity of soul exhibiting excellence (arete)."
+  },
+  {
+    "id": "ar_ne_03",
+    "thinker_id": "aristotle",
+    "thinker_name": "Aristotle",
+    "tradition": "Classical Greek Virtue Ethics & Teleology",
+    "work_title": "Nicomachean Ethics",
+    "chapter": "Book II, Chapter 1: Moral Virtue Acquired by Habit",
+    "text": "Moral virtue comes about as a result of habit (ethos), whence also its name ethike is one that is formed by a slight variation from the word ethos (habit). From this it is also plain that none of the moral virtues arises in us by nature; for nothing that exists by nature can form a habit contrary to its nature. Again, of all the things that come to us by nature we first acquire the potentiality and later exhibit the activity. But the virtues we get by first exercising them, as also happens in the case of the arts as well. For the things we have to learn before we can do them, we learn by doing them: we become just by doing just acts, temperate by doing temperate acts, brave by doing brave acts."
+  },
+  {
+    "id": "ar_ne_04",
+    "thinker_id": "aristotle",
+    "thinker_name": "Aristotle",
+    "tradition": "Classical Greek Virtue Ethics & Teleology",
+    "work_title": "Nicomachean Ethics",
+    "chapter": "Book II, Chapter 6: The Doctrine of the Mean",
+    "text": "Virtue, then, is a state of character concerned with choice, lying in a mean (mesotes), i.e. the mean relative to us, this being determined by a rational principle, and by that principle by which the man of practical wisdom (phronimos) would determine it. Now it is a mean between two vices, that which depends on excess and that which depends on defect. For instance, in fear and confidence, courage is the mean; the excess is rashness, while the deficiency is cowardice. In giving and taking money, the mean is liberality, while excess is prodigality and deficiency is stinginess."
+  },
+  {
+    "id": "ar_ne_05",
+    "thinker_id": "aristotle",
+    "thinker_name": "Aristotle",
+    "tradition": "Classical Greek Virtue Ethics & Teleology",
+    "work_title": "Nicomachean Ethics",
+    "chapter": "Book VI, Chapter 5: Practical Wisdom (Phronesis)",
+    "text": "Regarding practical wisdom (phronesis), we may get at the truth by considering who the persons are whom we call practical. Now it is thought to be the mark of a man of practical wisdom to be able to deliberate well about what is good and expedient for himself, not in some particular respect (e.g. about what sorts of thing conduce to health or to strength), but about what sorts of thing conduce to the good life in general. Practical wisdom is a true and reasoned state of capacity to act with regard to the things that are good or bad for man."
+  },
+  {
+    "id": "ar_pol_01",
+    "thinker_id": "aristotle",
+    "thinker_name": "Aristotle",
+    "tradition": "Classical Greek Virtue Ethics & Teleology",
+    "work_title": "Politics",
+    "chapter": "Book I, Chapter 2: The Political Animal",
+    "text": "Man is by nature a political animal (zoon politikon). And he who by nature and not by mere accident is without a state is either a bad man or above humanity; he may be compared to the 'tribeless, lawless, heartless one' whom Homer denounces. Nature, as we say, makes nothing in vain, and man is the only animal whom she has endowed with the gift of speech (logos), intended to set forth the expedient and inexpedient, and therefore likewise the just and the unjust."
+  },
+  {
+    "id": "ar_ne_06",
+    "thinker_id": "aristotle",
+    "thinker_name": "Aristotle",
+    "tradition": "Classical Greek Virtue Ethics & Teleology",
+    "work_title": "Nicomachean Ethics",
+    "chapter": "Book VIII, Chapter 1 & 2: Friendship (Philia)",
+    "text": "Friendship (philia) is a virtue or implies virtue, and is besides most necessary with a view to living. For without friends no one would choose to live, though he had all other goods. In poverty and in other misfortunes men think friends are the only refuge. Perfect friendship is the friendship of men who are good, and alike in virtue; for these wish well alike to each other qua good, and they are good in themselves."
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "eval_01",
+    "question": "What is the meaning and purpose of suffering in human life?",
+    "expected_thinkers": ["friedrich_nietzsche", "marcus_aurelius", "lao_tzu"],
+    "key_grounding_terms": ["amor fati", "citadel", "pain", "strength", "nature", "yielding"]
+  },
+  {
+    "id": "eval_02",
+    "question": "How should one resolve the conflict between personal desire and universal moral duty?",
+    "expected_thinkers": ["immanuel_kant", "aristotle", "marcus_aurelius"],
+    "key_grounding_terms": ["categorical imperative", "good will", "mean", "phronesis", "duty", "virtue"]
+  },
+  {
+    "id": "eval_03",
+    "question": "Is happiness achieved through active striving or effortless yielding (Wu Wei)?",
+    "expected_thinkers": ["lao_tzu", "aristotle", "friedrich_nietzsche"],
+    "key_grounding_terms": ["wu wei", "eudaimonia", "habit", "water", "power", "flourishing"]
+  },
+  {
+    "id": "eval_04",
+    "question": "What constitutes a virtuous life in relation to society and friendship?",
+    "expected_thinkers": ["aristotle", "marcus_aurelius", "immanuel_kant"],
+    "key_grounding_terms": ["friendship", "philia", "political animal", "cooperation", "humanity as an end"]
+  },
+  {
+    "id": "eval_05",
+    "question": "Can external events or other people truly harm the inner self?",
+    "expected_thinkers": ["marcus_aurelius", "immanuel_kant", "lao_tzu"],
+    "key_grounding_terms": ["judgment", "citadel", "harm", "autonomy", "emptiness", "dao"]
+  },
+  {
+    "id": "eval_06",
+    "question": "What does Aurelius say about facing death?",
+    "expected_thinkers": ["marcus_aurelius"],
+    "key_grounding_terms": ["death", "depart", "nature", "mortal", "elements", "mystery", "present moment"],
+    "failure_type_check": "retrieval_mismatch_check",
+    "note": "Evaluates whether Book II Section 11 / Book XII Section 23 death passage is retrieved vs general harm passages"
+  },
+  {
+    "id": "eval_07",
+    "question": "What do Marcus Aurelius, Nietzsche, Kant, and Laozi teach about facing death and mortality?",
+    "expected_thinkers": ["marcus_aurelius", "friedrich_nietzsche", "immanuel_kant", "lao_tzu"],
+    "key_grounding_terms": ["dissolution", "amor fati", "free death", "duty", "dao", "yielding", "nature"],
+    "failure_type_check": "voice_distinctiveness_check",
+    "note": "Evaluates whether all four philosophers produce distinct, non-templated opening and closing formulations adhering to their unique traditions"
+  },
+  {
+    "id": "eval_08",
+    "question": "What do Marcus Aurelius, Aristotle, Kant, Nietzsche, and Laozi teach regarding the morality of taking human life and ethical duty?",
+    "expected_thinkers": ["marcus_aurelius", "aristotle", "immanuel_kant", "friedrich_nietzsche", "lao_tzu"],
+    "key_grounding_terms": ["duty", "virtue", "imperative", "eudaimonia", "power", "nature", "dao"],
+    "failure_type_check": "section_diversity_and_coherence_check",
+    "note": "Evaluates whether all 4 dialectical sections (Overview, Convergence, Clashes, Takeaway) produce distinct, coherent, non-repetitive text across all 5 thinkers"
+  }
+]

@@ -1,0 +1,26 @@
+# Environment files
+.env
+.env.local
+*.env
+!.env.example
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Vector DB data
+chroma_db/
+
+# Node
+node_modules/
+dist/
+package-lock.json
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

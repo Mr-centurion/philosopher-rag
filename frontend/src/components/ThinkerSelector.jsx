@@ -1,21 +1,29 @@
 import React from 'react';
 import { Users, Check } from 'lucide-react';
 
+const THINKER_EMBLEMS = {
+  marcus_aurelius: '🏛️',
+  friedrich_nietzsche: '⚡',
+  immanuel_kant: '⚖️',
+  aristotle: '📜',
+  lao_tzu: '☯️',
+};
+
 export default function ThinkerSelector({ thinkers, selectedThinkers, onToggleThinker, onSelectAll }) {
   const isAllSelected = selectedThinkers.length === 0 || selectedThinkers.length === thinkers.length;
 
   return (
-    <div className="w-full flex flex-col gap-2 py-2">
-      <div className="flex items-center justify-between text-xs text-slate-400 px-1">
+    <div className="w-full flex flex-col gap-2.5 py-1">
+      <div className="flex items-center justify-between text-xs text-[#73624A] px-1 font-serif">
         <span className="flex items-center gap-1.5 font-medium">
-          <Users className="w-3.5 h-3.5 text-amber-400" />
-          <span>Select Philosophical Perspectives to Query:</span>
+          <Users className="w-3.5 h-3.5 text-[#B8995C]" />
+          <span className="tracking-wide">Select Philosophical Traditions to Interrogate:</span>
         </span>
         <button
           onClick={onSelectAll}
-          className="text-amber-400/90 hover:text-amber-300 font-mono text-[11px] underline underline-offset-2 transition-colors"
+          className="text-[#8B2E2E] hover:text-[#561A1A] font-serif text-[11.5px] font-semibold underline underline-offset-2 transition-colors"
         >
-          {isAllSelected ? 'Custom Selection' : 'Compare All (5)'}
+          {isAllSelected ? 'Custom Selection' : 'Compare All (5 Traditions)'}
         </button>
       </div>
 
@@ -24,39 +32,36 @@ export default function ThinkerSelector({ thinkers, selectedThinkers, onToggleTh
         {/* All/Auto Chip */}
         <button
           onClick={onSelectAll}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-serif transition-all border ${
             isAllSelected
-              ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 shadow-sm shadow-amber-500/10'
-              : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+              ? 'bg-[#FAF7F0] border-2 border-[#B8995C] text-[#2B2419] font-bold shadow-parchment-sm'
+              : 'bg-[#F4EFE6]/80 border border-[#B8995C]/40 text-[#73624A] hover:border-[#B8995C] hover:text-[#2B2419]'
           }`}
         >
-          {isAllSelected && <Check className="w-3 h-3 text-amber-400" />}
-          <span>All Traditions (Comparative)</span>
+          {isAllSelected && <Check className="w-3 h-3 text-[#8B2E2E]" />}
+          <span className="tracking-wide">All Traditions (Comparative Synthesis)</span>
         </button>
 
-        {/* Per-thinker Chips */}
+        {/* Per-thinker Chips with Ornate Emblems */}
         {thinkers.map((thinker) => {
           const isSelected = selectedThinkers.includes(thinker.id);
+          const emblem = THINKER_EMBLEMS[thinker.id] || '🏛️';
           return (
             <button
               key={thinker.id}
               onClick={() => onToggleThinker(thinker.id)}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-serif transition-all border ${
                 isSelected
-                  ? 'bg-slate-800/90 border-slate-600 text-white shadow-md'
-                  : 'bg-slate-900/50 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-300'
+                  ? 'bg-[#FAF7F0] border-2 border-[#B8995C] text-[#2B2419] font-bold shadow-parchment-sm'
+                  : 'bg-[#F4EFE6]/80 border border-[#B8995C]/40 text-[#73624A] hover:border-[#B8995C] hover:text-[#2B2419]'
               }`}
-              style={{
-                borderColor: isSelected ? thinker.color : undefined,
-                boxShadow: isSelected ? `0 0 12px ${thinker.color}25` : undefined,
-              }}
             >
-              <span
-                className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: thinker.color }}
-              />
-              <span>{thinker.name}</span>
-              <span className="text-[10px] text-slate-400 font-mono opacity-80 hidden sm:inline">
+              {/* Ornate Circular Emblem Seal */}
+              <span className="w-5 h-5 rounded-full bg-[#FAF7F0] border border-[#B8995C]/60 flex items-center justify-center text-[11px] shadow-inner-gold shrink-0">
+                {emblem}
+              </span>
+              <span className="tracking-wide">{thinker.name}</span>
+              <span className="text-[10px] text-[#8C7D6B] font-serif italic hidden sm:inline">
                 ({thinker.tradition.split(' ')[0]})
               </span>
             </button>

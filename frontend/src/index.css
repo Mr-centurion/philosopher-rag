@@ -4,72 +4,144 @@
 
 @layer base {
   body {
-    @apply bg-[#0d0e15] text-[#e2e8f0] font-sans antialiased;
+    background-color: #F4EFE6;
+    color: #2B2419;
+    font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(234, 179, 8, 0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.03) 0px, transparent 50%);
+      radial-gradient(ellipse at 15% 10%, rgba(255, 255, 255, 0.7) 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 90%, rgba(184, 153, 92, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 50%, rgba(139, 46, 46, 0.03) 0%, transparent 80%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     background-attachment: fixed;
   }
 
-  h1, h2, h3, .font-philosophy {
-    font-family: 'Cinzel', serif;
+  h1, h2, h3, h4, .font-philosophy {
+    font-family: 'Playfair Display', 'Cinzel', serif;
   }
 }
 
-/* Glassmorphism Styles */
-.glass-panel {
-  background: rgba(19, 21, 32, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Classical Parchment & Linework Styles */
+.parchment-panel {
+  background: #FAF7F0;
+  border: 1px solid #B8995C;
+  box-shadow: 0 4px 16px rgba(43, 36, 25, 0.06), 0 1px 3px rgba(184, 153, 92, 0.15);
 }
 
-.glass-card {
-  background: rgba(26, 29, 45, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+.parchment-card {
+  background: #FAF6EE;
+  border: 1px solid rgba(184, 153, 92, 0.35);
+  box-shadow: 0 2px 6px rgba(43, 36, 25, 0.04);
 }
 
-.glass-card-hover {
+.parchment-card-hover {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card-hover:hover {
-  background: rgba(33, 37, 58, 0.8);
-  border-color: rgba(255, 255, 255, 0.15);
+.parchment-card-hover:hover {
+  background: #FFFFFF;
+  border-color: #B8995C;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(43, 36, 25, 0.09), 0 2px 6px rgba(184, 153, 92, 0.25);
 }
 
-/* Custom Scrollbar */
+/* Decorative Classical Framing */
+.ornate-border {
+  border: 1px solid #B8995C;
+  position: relative;
+}
+
+.ornate-double-border {
+  border: 1px solid #B8995C;
+  outline: 1px solid rgba(184, 153, 92, 0.35);
+  outline-offset: -4px;
+}
+
+/* Classical Button: Dark Brown Solid with Gold Linework */
+.btn-ink {
+  background-color: #2B2419;
+  color: #FAF6EC;
+  border: 1px solid #B8995C;
+  transition: all 0.2s ease;
+}
+
+.btn-ink:hover {
+  background-color: #3F3526;
+  border-color: #DEC695;
+  box-shadow: 0 4px 14px rgba(43, 36, 25, 0.18), 0 0 10px rgba(184, 153, 92, 0.3);
+}
+
+/* Eyebrow Label Text: Maroon Small Caps */
+.eyebrow-maroon {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8B2E2E;
+  font-weight: 700;
+}
+
+/* Editorial Serif Text Styles */
+.font-editorial-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-classical-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Custom Scrollbar - Vintage Bronze */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 17, 26, 0.5);
+  background: rgba(223, 211, 191, 0.4);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: #B8995C;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: #8B2E2E;
 }
 
-/* Dialectical Gradient Text */
-.gradient-text {
-  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #f43f5e 100%);
+/* Editorial Gradient Gold/Maroon Text */
+.gradient-maroon {
+  background: linear-gradient(135deg, #8B2E2E 0%, #561A1A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-gold {
-  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  background: linear-gradient(135deg, #96783A 0%, #B8995C 50%, #7B622E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Subtle aged paper noise overlay utility */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Dark mode fallback if toggled */
+.dark body {
+  background-color: #13110E;
+  color: #E8DFCFAF;
+  background-image: 
+    radial-gradient(ellipse at 15% 10%, rgba(184, 153, 92, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 90%, rgba(139, 46, 46, 0.05) 0%, transparent 60%);
+}
+
+.dark .parchment-panel {
+  background: #1C1914;
+  border-color: rgba(184, 153, 92, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark .parchment-card {
+  background: #231F19;
+  border-color: rgba(184, 153, 92, 0.25);
 }

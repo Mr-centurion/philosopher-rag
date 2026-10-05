@@ -19,8 +19,18 @@ export default function App() {
   const [isEvalOpen, setIsEvalOpen] = useState(false);
   const [sessionId, setSessionId] = useState(() => `session_${Date.now()}`);
   const [error, setError] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const messagesEndRef = useRef(null);
+
+  // Sync dark class on document element
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   // Initialize Thinkers & Health
   useEffect(() => {
@@ -116,35 +126,41 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between text-slate-100">
+    <div className="min-h-screen flex flex-col justify-between text-[#2B2419]">
       {/* Top Header */}
       <Header
         isOnline={isOnline}
         onOpenEval={() => setIsEvalOpen(true)}
         onToggleSidebar={() => setIsSidebarOpen(true)}
         onNewChat={handleNewChat}
+        isDarkMode={isDarkMode}
+        onToggleTheme={() => setIsDarkMode(!isDarkMode)}
       />
 
       {/* Main Container */}
-      <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 flex flex-col justify-between">
+      <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 flex flex-col justify-between">
         {/* Messages or Welcome Hero */}
         {messages.length === 0 ? (
           <div className="my-auto py-8 space-y-8 text-center max-w-2xl mx-auto">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Multi-Thinker Dialectical Engine</span>
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF7F0] border border-[#B8995C]/50 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#8B2E2E]" />
+                <span className="eyebrow-maroon text-[10.5px]">Comparative Philosophical Dialectic</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold font-philosophy tracking-tight text-white">
-                Interrogate the Great Minds
+              
+              {/* Large Editorial Headline */}
+              <h2 className="text-3xl sm:text-5xl font-bold font-editorial-heading tracking-tight text-[#2B2419] leading-tight">
+                Study the past. <br className="hidden sm:inline" />
+                <span className="italic font-serif text-[#8B2E2E]">Interrogate the great minds.</span>
               </h2>
-              <p className="text-sm text-slate-400 leading-relaxed font-sans">
-                Pose foundational ethical, existential, and metaphysical questions. Our LangGraph pipeline simultaneously consults the primary source works of Marcus Aurelius, Nietzsche, Kant, Aristotle, and Laozi.
+
+              <p className="text-sm sm:text-base text-[#564936] leading-relaxed font-serif italic max-w-xl mx-auto">
+                Pose foundational inquiries into ethics, virtue, suffering, and human purpose. Our LangGraph council consults primary texts from Marcus Aurelius, Nietzsche, Kant, Aristotle, and Laozi.
               </p>
             </div>
 
-            {/* Thinker Chips */}
-            <div className="glass-panel p-4 rounded-2xl border border-white/10 text-left">
+            {/* Thinker Chips Selector Panel */}
+            <div className="parchment-panel p-4 rounded-xl border border-[#B8995C]/60 text-left shadow-parchment-sm">
               <ThinkerSelector
                 thinkers={thinkers}
                 selectedThinkers={selectedThinkers}
@@ -164,7 +180,7 @@ export default function App() {
         ) : (
           <div className="space-y-6 pb-20">
             {/* Thinker Selector Bar while chatting */}
-            <div className="glass-panel p-3.5 rounded-xl border border-white/10">
+            <div className="parchment-panel p-3.5 rounded-xl border border-[#B8995C]/50 shadow-parchment-sm">
               <ThinkerSelector
                 thinkers={thinkers}
                 selectedThinkers={selectedThinkers}
@@ -181,30 +197,30 @@ export default function App() {
             {/* Skeleton Loader during generation */}
             {loading && (
               <div className="flex items-start gap-3.5 my-6 animate-pulse">
-                <div className="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center text-slate-600 font-bold">
+                <div className="w-9 h-9 rounded-full bg-[#FAF7F0] border-2 border-[#B8995C] flex items-center justify-center text-base shadow-inner-gold shrink-0">
                   🏛️
                 </div>
-                <div className="flex-1 glass-panel rounded-2xl p-6 border border-white/10 space-y-4">
+                <div className="flex-1 parchment-panel rounded-xl p-6 border border-[#B8995C]/50 shadow-parchment-sm space-y-4">
                   <div className="flex items-center gap-2">
-                    <RefreshCw className="w-4 h-4 text-amber-400 animate-spin" />
-                    <span className="text-xs font-mono text-amber-300">
-                      LangGraph synthesizing parallel thinker retrievals & verifying citations...
+                    <RefreshCw className="w-4 h-4 text-[#8B2E2E] animate-spin" />
+                    <span className="text-xs font-serif italic text-[#8B2E2E] font-medium">
+                      LangGraph council synthesizing parallel primary texts & verifying citations...
                     </span>
                   </div>
-                  <div className="h-4 bg-slate-800 rounded w-3/4"></div>
-                  <div className="h-4 bg-slate-800 rounded w-5/6"></div>
-                  <div className="h-4 bg-slate-800 rounded w-2/3"></div>
+                  <div className="h-4 bg-[#EFE8DD] rounded w-3/4"></div>
+                  <div className="h-4 bg-[#EFE8DD] rounded w-5/6"></div>
+                  <div className="h-4 bg-[#EFE8DD] rounded w-2/3"></div>
                   <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="h-24 bg-slate-900/60 rounded-xl border border-slate-800"></div>
-                    <div className="h-24 bg-slate-900/60 rounded-xl border border-slate-800"></div>
+                    <div className="h-24 bg-[#F4EFE6] rounded-xl border border-[#B8995C]/30"></div>
+                    <div className="h-24 bg-[#F4EFE6] rounded-xl border border-[#B8995C]/30"></div>
                   </div>
                 </div>
               </div>
             )}
 
             {error && (
-              <div className="flex items-center gap-2.5 p-4 rounded-xl bg-rose-950/50 border border-rose-500/40 text-rose-300 text-xs">
-                <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+              <div className="flex items-center gap-2.5 p-4 rounded-xl bg-[#FDF4F4] border border-[#8B2E2E]/60 text-[#8B2E2E] text-xs font-serif font-semibold">
+                <AlertCircle className="w-4 h-4 shrink-0 text-[#8B2E2E]" />
                 <span>{error}</span>
               </div>
             )}
@@ -213,25 +229,27 @@ export default function App() {
           </div>
         )}
 
-        {/* Input Bar */}
-        <div className="sticky bottom-4 z-20 w-full glass-panel rounded-2xl border border-white/15 p-2 shadow-2xl mt-4">
+        {/* Input Bar - Classic Writing Desk / Console with Gold Border & Ink Button */}
+        <div className="sticky bottom-4 z-20 w-full parchment-panel rounded-xl border-2 border-[#B8995C] p-2 shadow-parchment-md mt-4 bg-[#FAF7F0]">
           <div className="relative flex items-center">
             <textarea
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask a philosophical inquiry (e.g. 'What is the nature of suffering and free will?')..."
+              placeholder="Inquire of the traditions (e.g. 'What is the nature of suffering and free will?')..."
               rows={1}
-              className="w-full bg-transparent px-4 py-3 text-sm sm:text-base text-white placeholder:text-slate-500 focus:outline-none resize-none font-sans"
+              className="w-full bg-transparent px-4 py-3 text-sm sm:text-base text-[#2B2419] placeholder:text-[#8C7D6B] placeholder:italic focus:outline-none resize-none font-serif leading-relaxed"
             />
+            {/* Solid Dark Brown Button with Gold Linework Accent matching user reference */}
             <button
               onClick={() => handleSend()}
               disabled={loading || !inputQuery.trim()}
-              className={`p-3 rounded-xl transition-all shrink-0 flex items-center justify-center ${
+              className={`p-3 rounded-lg transition-all shrink-0 flex items-center justify-center border font-serif ${
                 inputQuery.trim() && !loading
-                  ? 'bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-400 hover:to-rose-400 text-white shadow-lg shadow-amber-500/20'
-                  : 'bg-slate-800 text-slate-600 cursor-not-allowed'
+                  ? 'btn-ink shadow-sm'
+                  : 'bg-[#EFE8DD] text-[#AD997B] border-[#DACDB8] cursor-not-allowed'
               }`}
+              title="Submit Inquiry"
             >
               <Send className="w-4 h-4" />
             </button>

@@ -100,7 +100,13 @@ TOPIC_SYNONYMS: Dict[str, List[str]] = {
         "human life"
     ],
     "anger": [
-        "anger", "wrath", "rage", "resentment", "ressentiment", "hatred", "bitterness"
+        "anger", "wrath", "rage", "resentment", "ressentiment", "hatred", "bitterness", "irritation", "fury"
+    ],
+    "thinking": [
+        "thinking", "thought", "thoughts", "reason", "rational", "rationality", "clarity",
+        "clearly", "mind", "intellect", "judgment", "governing mind", "ruling center",
+        "hegemonikon", "practical wisdom", "phronesis", "understanding", "logos",
+        "objective judgment", "clear", "discernment", "deliberation"
     ],
     "god": [
         "god", "divine", "logos", "heavens", "cosmos", "providence", "nature", "dao", "tao"
@@ -123,7 +129,9 @@ THINKER_TRADITION_VOCABULARY: Dict[str, Dict[str, List[str]]] = {
         "death": ["depart from life", "death", "mortal cycle", "natural completion", "actor dismissed from the stage", "elements", "resolving into the same elements", "mystery of nature", "present moment", "facing death", "depart", "dissolution", "mortal"],
         "harm": ["choose not to be harmed", "governing mind", "citadel", "assent to being wounded", "loss of wealth", "insults of others"],
         "duty": ["job as a human being", "what nature demands", "objective judgment", "unselfish action", "willing acceptance", "impediment advances action"],
-        "morality": ["good and evil", "wrongdoer", "share of the divine", "nature demands", "objective judgment", "unselfish action", "human life"]
+        "morality": ["good and evil", "wrongdoer", "share of the divine", "nature demands", "objective judgment", "unselfish action", "human life"],
+        "anger": ["nor can i feel angry", "nature related to my own", "made for cooperation", "anger is unmanly", "passion", "ruling center", "governing mind", "no reason to torment yourself"],
+        "thinking": ["governing mind", "ruling center", "objective judgment", "wipe out impressions", "think clearly", "reason", "logos", "serene mind", "ruling reason"]
     },
     "friedrich_nietzsche": {
         "insult": ["ressentiment", "slave morality", "master morality", "noble type of man", "what is harmful to me is harmful in itself", "value-creating", "contempt", "school of war", "what does not kill me makes me stronger", "overcoming"],
@@ -137,7 +145,9 @@ THINKER_TRADITION_VOCABULARY: Dict[str, Dict[str, List[str]]] = {
         "friendship": ["noble type of man", "determining values", "value-creating", "lion", "sacred yes"],
         "morality": ["master morality", "slave morality", "ressentiment", "value-creating", "will to power", "noble", "good and evil"],
         "action": ["discharge its strength", "will to power", "lion", "child", "sacred yes", "conquers his own world", "striving"],
-        "happiness": ["school of war", "why in life", "man does not strive after happiness", "will to power", "discharge strength"]
+        "happiness": ["school of war", "why in life", "man does not strive after happiness", "will to power", "discharge strength"],
+        "anger": ["ressentiment", "contempt", "will to power", "school of war", "overcoming", "passions", "sublimation"],
+        "thinking": ["free spirit", "intellectual integrity", "great reason of the body", "sublimation", "perspective", "values"]
     },
     "immanuel_kant": {
         "insult": ["humanity as an end", "never merely as a means", "rational beings are called persons", "ends in themselves", "ought not to be used merely as a means", "good will", "courage and resolution", "sapere aude"],
@@ -149,7 +159,9 @@ THINKER_TRADITION_VOCABULARY: Dict[str, Dict[str, List[str]]] = {
         "morality": ["good will", "categorical imperative", "universal law", "moral law within", "humanity as an end", "autonomy", "kingdom of ends"],
         "suffering": ["autonomy", "good will", "moral law within", "courage", "perseverance", "heteronomy"],
         "death": ["duty", "imperative", "categorical imperative", "moral law", "good will", "kingdom of ends", "highest good", "rational beings", "starry heavens"],
-        "harm": ["good will", "autonomy", "heteronomy", "moral law", "courage", "resolution"]
+        "harm": ["good will", "autonomy", "heteronomy", "moral law", "courage", "resolution"],
+        "anger": ["passion", "moral law", "duty", "practical reason", "categorical imperative", "autonomy"],
+        "thinking": ["pure reason", "practical reason", "sapere aude", "enlightenment", "think for oneself", "understanding", "judgment", "maxims"]
     },
     "aristotle": {
         "insult": ["doctrine of the mean", "courage is the mean between fear and confidence", "just acts", "political animal", "phronesis", "practical wisdom"],
@@ -161,7 +173,9 @@ THINKER_TRADITION_VOCABULARY: Dict[str, Dict[str, List[str]]] = {
         "happiness": ["eudaimonia", "chief good", "function of man", "activity of soul", "excellence", "arete", "flourishing", "habit"],
         "action": ["activity of soul", "function of man", "habit", "exercise the activity", "doing just acts", "eudaimonia"],
         "suffering": ["misfortunes", "friends are the only refuge", "courage", "mean between fear and confidence", "endure"],
-        "morality": ["virtue", "arete", "doctrine of the mean", "phronesis", "aim at some good", "chief good", "just acts", "political animal"]
+        "morality": ["virtue", "arete", "doctrine of the mean", "phronesis", "aim at some good", "chief good", "just acts", "political animal"],
+        "anger": ["doctrine of the mean", "good temper", "mean with respect to anger", "proper degree", "courage", "passion", "justifiable indignation"],
+        "thinking": ["phronesis", "practical wisdom", "deliberation", "intellectual virtue", "rational soul", "logos", "right reason"]
     },
     "lao_tzu": {
         "insult": ["softness overcomes hardness", "water", "yielding", "does not contend", "no one in the world can contend with him", "bend and remain straight", "worn out and remain renewed", "supreme good like water", "stays in places others despise"],
@@ -176,7 +190,9 @@ THINKER_TRADITION_VOCABULARY: Dict[str, Dict[str, List[str]]] = {
         "action": ["wu wei", "non-action", "action of non-action", "less and less is done", "natural course", "without interference", "water"],
         "happiness": ["wu wei", "supreme good like water", "stillness", "without desire", "simplicity", "tranquility", "water"],
         "harm": ["softness overcomes hardness", "water", "cannot contend", "yield and remain whole", "emptiness"],
-        "morality": ["supreme good like water", "benevolent", "trustworthy", "dao", "wu wei", "goodness as good", "not self-righteous"]
+        "morality": ["supreme good like water", "benevolent", "trustworthy", "dao", "wu wei", "goodness as good", "not self-righteous"],
+        "anger": ["does not contend", "softness overcomes hardness", "water", "without anger", "stillness", "harmony", "peace"],
+        "thinking": ["stillness", "emptiness", "clarity", "simplicity", "without desire", "know oneself", "enlightenment", "natural course"]
     }
 }
 
@@ -184,11 +200,11 @@ STOPWORDS = {
     "what", "does", "say", "about", "how", "why", "who", "when", "where", "is", "are",
     "the", "a", "an", "and", "or", "in", "on", "to", "for", "with", "by", "from",
     "aurelius", "nietzsche", "kant", "aristotle", "laozi", "lao", "tzu", "marcus",
-    "friedrich", "immanuel", "think", "explain", "view", "teach", "tell", "me",
+    "friedrich", "immanuel", "think", "explain", "view", "views", "teach", "tell", "me",
     "taking", "regarding", "between", "human", "life", "relation", "constitutes",
     "conflict", "personal", "universal", "achieved", "through", "active", "effortless",
     "facing", "would", "they", "being", "should", "one", "their", "respond", "react",
-    "advice", "coping", "deal"
+    "advice", "coping", "deal", "getting", "gets", "got"
 }
 
 class TopicMatcher:

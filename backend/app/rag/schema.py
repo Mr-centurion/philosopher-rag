@@ -83,6 +83,7 @@ class QueryResponse(BaseModel):
     faithfulness_score: float = 1.0
     latency_ms: Optional[float] = None
     selected_thinkers: List[str] = Field(default_factory=list)
+    is_safe: bool = True
     
     # Granular sentence-level groundedness & self-correction
     sentence_groundedness: List[SentenceGroundedness] = Field(default_factory=list)

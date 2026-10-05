@@ -79,6 +79,7 @@ async def run_query_workflow(question: str, requested_thinkers: Optional[List[st
         faithfulness_score=final_state.get("faithfulness_score", 1.0),
         latency_ms=final_state.get("latency_ms", 0.0),
         selected_thinkers=final_state.get("selected_thinkers", []),
+        is_safe=final_state.get("is_safe", True),
         sentence_groundedness=sentence_groundedness,
         regeneration_logs=final_state.get("regeneration_logs", []),
         total_sentences=total_sentences,

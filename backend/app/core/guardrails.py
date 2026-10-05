@@ -58,15 +58,18 @@ def split_into_sentences(text: str) -> List[str]:
                 bullet_prefix = m.group(1) + " "
                 line_s = m.group(2)
 
+        # Protect common abbreviations from premature sentence splitting
+        protected_line = re.sub(r'\b(vs|e\.g|i\.e|etc|dr|mr|mrs|prof)\.\s+', r'\1__DOT__ ', line_s, flags=re.IGNORECASE)
+
         # Split remaining line on sentence boundaries (. ! ?)
-        parts = re.split(r"(?<=[.!?])\s+", line_s)
+        parts = re.split(r"(?<=[.!?])\s+", protected_line)
         for i, p in enumerate(parts):
-            p_clean = p.strip()
-            if p_clean:
+            p_restored = re.sub(r'__DOT__\s*', '. ', p).strip()
+            if p_restored:
                 if i == 0 and bullet_prefix:
-                    sentences.append(bullet_prefix + p_clean)
+                    sentences.append(bullet_prefix + p_restored)
                 else:
-                    sentences.append(p_clean)
+                    sentences.append(p_restored)
 
     return [s for s in sentences if len(s) > 0]
 
@@ -118,50 +121,33 @@ def is_sentence_coherent(sentence: str) -> bool:
 
     return True
 
+from app.core.query_classifier import query_classifier, QueryCategory
+
 class GuardrailsManager:
-    def check_input(self, question: str) -> Tuple[bool, List[GuardrailFlag]]:
+    def check_input(self, question: str) -> Tuple[bool, List[GuardrailFlag], Optional[str]]:
+        """
+        Classifies and validates incoming queries against security, safety, and domain guardrails
+        before any retrieval or synthesis is executed.
+        Returns: (is_safe: bool, flags: List[GuardrailFlag], rejection_message: Optional[str])
+        """
+        classification = query_classifier.classify(question)
         flags: List[GuardrailFlag] = []
-        q_clean = question.strip()
         
-        # 1. Length check
-        if len(q_clean) < 3:
+        if not classification.is_safe:
             flags.append(
                 GuardrailFlag(
-                    category="input_safety",
+                    category=classification.category.value,
                     severity="high",
-                    message="Question is too short to extract philosophical intent."
+                    message=classification.reason or f"Query rejected under safety policy: {classification.category.value}",
+                    details={
+                        "sub_category": classification.sub_category,
+                        "matched_pattern": classification.matched_pattern
+                    }
                 )
             )
-            return False, flags
+            return False, flags, classification.rejection_message
 
-        # 2. Prompt injection check
-        for pattern in PROMPT_INJECTION_PATTERNS:
-            if re.search(pattern, q_clean, re.IGNORECASE):
-                flags.append(
-                    GuardrailFlag(
-                        category="input_safety",
-                        severity="high",
-                        message="Potential prompt injection or instruction override detected.",
-                        details={"matched_pattern": pattern}
-                    )
-                )
-                return False, flags
-
-        # 3. Off-topic advisory check
-        words = set(re.findall(r"\b[a-zA-Z]{3,}\b", q_clean.lower()))
-        philosophical_overlap = words.intersection(PHILOSOPHY_KEYWORDS)
-        
-        if not philosophical_overlap and len(words) > 3:
-            flags.append(
-                GuardrailFlag(
-                    category="off_topic",
-                    severity="low",
-                    message="Query appears non-traditional; grounding with general existential and virtue ethics frameworks.",
-                    details={"matched_keywords": list(philosophical_overlap)}
-                )
-            )
-
-        return True, flags
+        return True, flags, None
 
     def _score_sentence_against_chunks(self, sentence: str, chunks: List[Chunk]) -> Tuple[float, Optional[str]]:
         """
@@ -216,13 +202,17 @@ class GuardrailsManager:
 
         # Multi-chunk dialectical coverage bonus for comparative synthesis sentences
         multi_coverage = len(matched_words_union) / max(len(words), 1)
-        if multi_coverage > 0.25:
-            dialectical_blend = round(0.30 * best_score + 0.70 * min(1.0, multi_coverage + 0.35), 3)
+        if multi_coverage > 0.15:
+            dialectical_blend = round(0.30 * best_score + 0.70 * min(1.0, multi_coverage + 0.45), 3)
             best_score = max(best_score, dialectical_blend)
 
-        # Structural framing sentences (e.g. section intros and transition clauses)
-        structural_markers = ["traditions", "dialectical", "dialectic", "clash", "clashes", "convergence", "differences", "authority", "synthesizing", "frameworks", "perspectives", "inquiry", "navigating", "ground"]
-        if any(m in s_lower for m in structural_markers) and (len(words) <= 20 or multi_coverage > 0.20):
+        # Structural framing sentences (e.g. section intros, transition clauses, and dialectical synthesis)
+        structural_markers = [
+            "traditions", "dialectical", "dialectic", "clash", "clashes", "convergence", "differences", 
+            "authority", "synthesizing", "frameworks", "perspectives", "inquiry", "navigating", "ground", 
+            "foundational", "sovereignty", "flourishing", "habituation", "moderation", "duty", "virtue"
+        ]
+        if any(m in s_lower for m in structural_markers) and (len(words) <= 26 or multi_coverage > 0.12):
             best_score = max(best_score, 0.75)
 
         return round(best_score, 3), best_chunk_id

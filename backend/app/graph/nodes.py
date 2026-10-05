@@ -1,5 +1,6 @@
 import time
 import json
+import re
 import logging
 from typing import Dict, Any, List
 from app.graph.state import GraphState
@@ -17,19 +18,23 @@ logger = logging.getLogger("philosophy_rag.nodes")
 ALL_THINKER_IDS = list(THINKER_PROFILES.keys())
 RELEVANCE_THRESHOLD = 0.50
 
+# In-memory history for anti-template cross-query regression verification
+COMPOSER_HISTORY: List[Dict[str, str]] = []
+
 def input_guardrail_node(state: GraphState) -> GraphState:
     question = state.get("question", "")
-    is_safe, flags = guardrails_manager.check_input(question)
+    is_safe, flags, rejection_msg = guardrails_manager.check_input(question)
     
     existing_flags = list(state.get("guardrail_flags", []))
     existing_flags.extend(flags)
     
     if not is_safe:
+        rejection_text = rejection_msg or "I cannot fulfill this request because it falls outside of philosophical inquiry or violates safety constraints."
         return {
             **state,
             "is_safe": False,
             "guardrail_flags": existing_flags,
-            "final_synthesis": "I cannot fulfill this request because it falls outside of philosophical inquiry or violates safety constraints.",
+            "final_synthesis": rejection_text,
             "per_thinker_breakdown": [],
             "citations": [],
             "faithfulness_score": 0.0,
@@ -389,6 +394,53 @@ def comparative_synthesis_node(state: GraphState) -> GraphState:
     if is_duplicated or len(raw_sections) < 3:
         logger.warning("[Comparative Node] Detected section duplication or malformed sections. Regenerating via structured synthesis engine...")
         final_synthesis = llm_service._local_philosophical_synthesis(user_prompt)
+
+    # Anti-Template Regression Check 1: Forbidden Boilerplate Pattern Matching
+    forbidden_boilerplate_patterns = [
+        r"While\s+Marcus\s+Aurelius\s+\(Roman\s+Stoicism\)\s+anchors\s+the\s+answer\s+in\s+Governing\s+Mind",
+        r"challenges\s+this\s+by\s+prioritizing\s+Will\s+to\s+Power\s+\(Wille\s+zur\s+Macht\)",
+        r"anchors\s+the\s+answer\s+in\s+Categorical\s+Imperative",
+        r"While\s+[^\n,]+\s+anchors\s+the\s+answer\s+in\s+[^\n,]+,\s+[^\n,]+\s+challenges\s+this\s+by\s+prioritizing",
+    ]
+    is_boilerplate = any(re.search(bp, final_synthesis) for bp in forbidden_boilerplate_patterns)
+    if is_boilerplate:
+        logger.error("[Anti-Template Gate] Dialectical synthesis contains forbidden boilerplate template! Regenerating via dynamic composer...")
+        final_synthesis = llm_service._local_philosophical_synthesis(user_prompt)
+
+    # Anti-Template Regression Check 2: Cross-Query Output Similarity Gate
+    cross_query_collision = False
+    max_cross_sim = 0.0
+    core_topics = state.get("extracted_topics", [])
+    curr_topics_set = set(core_topics)
+
+    for past_entry in COMPOSER_HISTORY:
+        past_q = past_entry.get("question", "")
+        past_synth = past_entry.get("synthesis", "")
+        past_topics = set(past_entry.get("topics", []))
+        is_diff_topic = bool(curr_topics_set and past_topics and curr_topics_set.isdisjoint(past_topics))
+
+        if past_q and is_diff_topic:
+            # Extract section 3 if present or compare full text
+            s3_curr = final_synthesis.split("### 3.")[1].split("### 4.")[0] if "### 3." in final_synthesis and "### 4." in final_synthesis else final_synthesis
+            s3_past = past_synth.split("### 3.")[1].split("### 4.")[0] if "### 3." in past_synth and "### 4." in past_synth else past_synth
+            sim = voice_engine.compute_sentence_similarity(s3_curr.strip(), s3_past.strip())
+            if sim > max_cross_sim:
+                max_cross_sim = sim
+            if sim >= 0.88:
+                cross_query_collision = True
+                logger.warning(
+                    f"[Anti-Template Gate] Cross-query synthesis near-identical collision ({sim:.2f}) "
+                    f"between query '{question[:40]}' and '{past_q[:40]}'. Triggering dynamic regeneration..."
+                )
+                break
+
+    if cross_query_collision:
+        final_synthesis = llm_service._local_philosophical_synthesis(user_prompt)
+
+    # Record in history (maintain last 10 entries)
+    COMPOSER_HISTORY.append({"question": question, "synthesis": final_synthesis, "topics": core_topics})
+    if len(COMPOSER_HISTORY) > 10:
+        COMPOSER_HISTORY.pop(0)
 
     return {
         **state,

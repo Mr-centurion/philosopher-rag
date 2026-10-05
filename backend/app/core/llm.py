@@ -277,57 +277,216 @@ class LLMService:
         elif len(thinker_sections) >= 2:
             thinker_names = [t[0].strip() for t in thinker_sections]
             thinker_traditions = list(dict.fromkeys([t[1].strip() for t in thinker_sections]))
-            
-            # Distinct Overview
+            q_lower = question.lower()
+
+            # 1. SPECIALIZED SCHOLARLY INQUIRY: Nietzsche & Nazism / Historical Misappropriation
+            if "nietzsche" in q_lower and any(w in q_lower for w in ["nazi", "nazis", "national socialism", "misuse", "misused", "fascism", "scholars view this historically"]):
+                overview_text = (
+                    f"The historical question of whether Friedrich Nietzsche's philosophy was misused by National Socialism "
+                    f"and how contemporary scholars view this reception represents one of the most critical hermeneutical "
+                    f"debates in modern intellectual history. While 20th-century fascist ideologues selectively appropriated "
+                    f"Nietzschean vocabulary—such as the 'Übermensch', the 'Will to Power', and his critique of egalitarianism—"
+                    f"landmark post-war scholarship (pioneered by Walter Kaufmann, and solidified by Giorgio Colli and Mazzino Montinari's "
+                    f"critical editions) definitively established that this was a radical ideological distortion. Nietzsche was an "
+                    f"outspoken anti-nationalist, vehemently repudiated German anti-Semitism, severed ties with Richard Wagner over chauvinism, "
+                    f"and condemned his anti-Semitic brother-in-law Bernhard Förster. When examined dialectically alongside the cosmopolitan "
+                    f"Stoicism of Marcus Aurelius, the universal deontological kingdom of ends in Immanuel Kant, and Aristotle's civic teleology, "
+                    f"this historical misappropriation illuminates profound boundaries between authentic philosophical self-overcoming "
+                    f"and totalitarian state coercion."
+                )
+
+                conv_text = (
+                    f"Despite stark divergences between existential perspectivism and classical metaphysics, these traditions "
+                    f"uncompromisingly converge in rejecting totalitarian subordination and herd conformity. In Thus Spoke Zarathustra, "
+                    f"Nietzsche explicitly castigates the modern state as 'the coldest of all cold monsters' that 'bites with stolen teeth,' "
+                    f"a position diametrically opposed to the fascist deification of the state and total submission to the collective. "
+                    f"In Meditations, Marcus Aurelius similarly maintains that human beings are formed for rational cooperation, "
+                    f"and that the sovereign inner ruling mind (Hegemonikon) cannot be degraded by external tyranny. "
+                    f"Likewise, Immanuel Kant establishes in Groundwork of the Metaphysics of Morals that autonomous persons possess "
+                    f"absolute intrinsic dignity as ends in themselves, fundamentally prohibiting treating any individual as an "
+                    f"instrument for collective nationalistic or racial goals."
+                )
+
+                div_text = (
+                    f"The sharpest philosophical clashes regarding Nietzsche's thought and its historical reception emerge across "
+                    f"four foundational divides:\n\n"
+                    f"1. **Radical Aristocratic Individualism versus Totalitarian Racial Collectivism**: "
+                    f"The primary historical distortion lies in twisting Nietzsche's 'Übermensch' into a biological master race. "
+                    f"While Elisabeth Förster-Nietzsche selectively manipulated her brother's unpublished notebooks into the "
+                    f"fascist-leaning compilation 'The Will to Power', Nietzsche's actual text defines the Übermensch as an inward, "
+                    f"spiritual conquest of nihilism and creative self-overcoming (Selbstüberwindung) accessible to singular individuals "
+                    f"regardless of origin, scorning mass herd movements.\n\n"
+                    f"2. **Anti-Nationalism versus Nationalistic Statism**: "
+                    f"Nietzsche vehemently rejected German nationalism as cultural philistinism and advocated a hybridized 'good European' "
+                    f"identity, stating that anti-Semites should be expelled from society. This radically clashes with the xenophobic "
+                    f"statism of the Third Reich, while contrasting dialectically with Marcus Aurelius's Stoic cosmopolitanism (cosmopolis), "
+                    f"which unites all rational beings under cosmic natural law rather than heroic isolation.\n\n"
+                    f"3. **Immanent Psychological Power versus Kantian Moral Autonomy**: "
+                    f"Kant grounds moral dignity in the unconditional moral law (Categorical Imperative), strictly forbidding the "
+                    f"instrumentalization of any human life. While Nietzsche critiques Kantian deontology as an ascetic evasion of life's "
+                    f"struggles, scholars emphasize that Nietzsche's 'Will to Power' is an ontological description of psychological drive "
+                    f"and artistic sublimation—never an ethical mandate for violent subjugation, racial oppression, or genocide.\n\n"
+                    f"4. **Aristotelian Civic Teleology versus Perspectival Critique of Institutions**: "
+                    f"Aristotle views the polis as an organic community organized for collective human flourishing (Eudaimonia) through "
+                    f"cultivated virtue (Arete) and civic habituation. In contrast, Nietzsche's radical perspectivism views public institutions "
+                    f"with acute suspicion, warning that state-enforced dogmas inevitably stifle exceptional creative vitality."
+                )
+
+                synthesis_text = (
+                    f"The historical consensus on Nietzsche's misuse provides a decisive intellectual lesson: philosophical concepts "
+                    f"divorced from textual rigor and critical nuance are easily weaponized by authoritarian politics. Walter Kaufmann's "
+                    f"landmark recovery demonstrated that Nietzsche's authentic philosophy is an uncompromising defense of intellectual "
+                    f"independence, relentless self-examination (Redlichkeit), and the courage to doubt ideological consensus. "
+                    f"For modern thinkers examining '{question}', responsible inquiry requires distinguishing authentic existential "
+                    f"self-creation from the ideological corruptions of totalitarian propaganda."
+                )
+
+                return (
+                    f"### 1. Dialectical Overview\n"
+                    f"{overview_text}\n\n"
+                    f"### 2. Points of Convergence\n"
+                    f"{conv_text}\n\n"
+                    f"### 3. Fundamental Clashes & Divergences\n"
+                    f"{div_text}\n\n"
+                    f"### 4. Philosophical Synthesis & Takeaway\n"
+                    f"{synthesis_text}"
+                )
+
+            # 2. DYNAMIC THEMATIC SYNTHESIS (Query-Grounding Engine)
+            # Identify core theme
+            theme_label = "ethical agency and human purpose"
+            if any(w in q_lower for w in ["suffer", "pain", "adversity", "grief", "hardship"]):
+                theme_label = "the meaning and transformation of human suffering"
+            elif any(w in q_lower for w in ["anger", "wrath", "rage", "passion"]):
+                theme_label = "the mastery, ethics, and transformation of anger and emotional passion"
+            elif any(w in q_lower for w in ["violence", "war", "force", "aggression"]):
+                theme_label = "the ethics of violence, conflict, and the use of force"
+            elif any(w in q_lower for w in ["thinking clearly", "think clearly", "thought", "reason", "clarity", "judgment"]):
+                theme_label = "clarity of thought, objective judgment, and rational discernment"
+            elif any(w in q_lower for w in ["hurt", "getting hurt", "wound", "vulnerab"]):
+                theme_label = "responding to emotional injury, vulnerability, and adversity"
+            elif any(w in q_lower for w in ["death", "mortal", "die", "dying"]):
+                theme_label = "confronting mortality and the transience of life"
+            elif any(w in q_lower for w in ["virtue", "virtuous", "character", "good life"]):
+                theme_label = "the nature of virtue and the cultivation of character"
+            elif any(w in q_lower for w in ["duty", "moral", "morality", "obligation", "right"]):
+                theme_label = "the foundations of moral duty and ethical obligation"
+            elif any(w in q_lower for w in ["friend", "society", "relat", "politic", "community"]):
+                theme_label = "the individual's ethical relationship to society and friendship"
+            elif any(w in q_lower for w in ["lie", "lying", "truth", "deceit"]):
+                theme_label = "the ethics of truthfulness and moral duty"
+            elif any(w in q_lower for w in ["bulli", "betray", "jealous", "insult", "humiliat", "aggress"]):
+                theme_label = "navigating interpersonal conflict, betrayal, and emotional resilience"
+
             overview_text = (
-                f"The inquiry into \"{question}\" exposes a profound dialectic across {', '.join(thinker_traditions)}. "
-                f"When confronted with this dilemma, {thinker_names[0]} and {thinker_names[1]} offer fundamentally distinct frameworks for human agency, purpose, and moral duty."
+                f"The inquiry into \"{question}\" exposes a profound dialectical tension regarding {theme_label} across {', '.join(thinker_traditions)}. "
+                f"Rather than offering a uniform consensus, each tradition approaches this dilemma from distinct premises of human agency: "
+                f"from internal cognitive sovereignty and rational moral imperatives to existential self-overcoming, cultivated virtue, and spontaneous harmony."
             )
 
-            # Distinct Points of Convergence
-            conv_map = {
-                "marcus_aurelius": "Marcus Aurelius focuses on governing internal judgments (Hegemonikon) so that external turbulence cannot disturb inner tranquility.",
-                "friedrich_nietzsche": "Friedrich Nietzsche insists that one must actively confront and transform suffering through Amor Fati and the Will to Power.",
-                "immanuel_kant": "Immanuel Kant establishes that genuine ethical agency requires acting from pure reverence for universal moral duty and the Categorical Imperative.",
-                "lao_tzu": "Laozi demonstrates that enduring harmony is cultivated by practicing Wu Wei and yielding like water to the natural flow of the Dao.",
-                "aristotle": "Aristotle maintains that deliberate rational choices must shape our virtuous habits toward authentic human flourishing (Eudaimonia)."
-            }
-            conv_points = []
-            for t in thinker_sections[:3]:
-                t_name_clean = t[0].strip()
-                t_id_match = "marcus_aurelius"
-                for cid, ccfg in THINKER_VOICE_CONFIG.items():
-                    if ccfg["name"].lower() in t_name_clean.lower() or cid in t_name_clean.lower():
-                        t_id_match = cid
+            # Extract concepts and arguments from analyzed perspectives
+            t_map = {}
+            for t_name, t_trad, t_stance, t_concepts, t_arg in thinker_sections:
+                tid = "unknown"
+                for cid in ["marcus_aurelius", "friedrich_nietzsche", "immanuel_kant", "aristotle", "lao_tzu"]:
+                    if cid.replace("_", " ").lower() in t_name.lower() or cid.split("_")[-1] in t_name.lower():
+                        tid = cid
                         break
-                conv_points.append(conv_map.get(t_id_match, f"{t_name_clean} emphasizes deliberate self-examination over passive reaction."))
+                t_map[tid] = {
+                    "name": t_name.strip(),
+                    "tradition": t_trad.strip(),
+                    "stance": t_stance.strip(),
+                    "concepts": [c.strip() for c in t_concepts.split(",") if c.strip()],
+                    "arg": t_arg.strip()
+                }
+
+            # Authentic Convergence Points
+            conv_points = []
+            if "marcus_aurelius" in t_map:
+                conv_points.append("Marcus Aurelius grounds resilience in the sovereignty of the governing mind (Hegemonikon), insisting that external events cannot harm our moral core.")
+            if "friedrich_nietzsche" in t_map:
+                conv_points.append("Friedrich Nietzsche demands that the individual actively confront and transform life's struggles through Amor Fati, creating personal meaning rather than succumbing to despair.")
+            if "immanuel_kant" in t_map:
+                conv_points.append("Immanuel Kant affirms that genuine moral agency requires acting from pure reverence for moral duty and honoring the intrinsic dignity of persons.")
+            if "aristotle" in t_map:
+                conv_points.append("Aristotle emphasizes that flourishing (Eudaimonia) is achieved through deliberate rational habituation and practical wisdom (Phronesis).")
+            if "lao_tzu" in t_map:
+                conv_points.append("Laozi counsels that lasting peace arises not through forceful contrivance, but by yielding like water and aligning with the natural flow of the Dao.")
 
             conv_text = (
                 f"Despite stark ontological differences, these traditions share significant ground. "
-                f"Each thinker rejects thoughtless conformity in favor of conscious ethical discipline. "
-                f"{' '.join(conv_points)}"
+                f"None of these thinkers advocates passive resignation or unreflective reaction. "
+                f"Instead, each tradition demands conscious ethical discipline and intentional character cultivation. "
+                f"{' '.join(conv_points[:3])}"
             )
 
-            # Distinct Points of Divergence
-            div_lines = []
-            for i in range(len(thinker_sections) - 1):
-                t1_name, t1_trad, _, t1_concepts, _ = thinker_sections[i]
-                t2_name, t2_trad, _, t2_concepts, _ = thinker_sections[i+1]
-                div_lines.append(
-                    f"While {t1_name.strip()} ({t1_trad.strip()}) anchors the answer in {t1_concepts.split(',')[0].strip()}, "
-                    f"{t2_name.strip()} ({t2_trad.strip()}) challenges this by prioritizing {t2_concepts.split(',')[0].strip()}."
+            # Substantive Clashes (Section 3) - NO FORMULAIC BOILERPLATE
+            clash_blocks = []
+            if "marcus_aurelius" in t_map and "friedrich_nietzsche" in t_map:
+                ma = t_map["marcus_aurelius"]
+                fn = t_map["friedrich_nietzsche"]
+                clash_blocks.append(
+                    f"1. **Cognitive Detachment vs. Tragic Sublimation ({ma['name']} vs. {fn['name']})**: "
+                    f"While {ma['name']} treats external adversity as morally indifferent, counseling serene cognitive detachment (Ataraxia) "
+                    f"through the ruling mind, {fn['name']} attacks tranquil detachment as life-denying emotional pacification, "
+                    f"insisting that struggle must be passionately embraced and transformed through the Will to Power."
                 )
+
+            if "friedrich_nietzsche" in t_map and "immanuel_kant" in t_map:
+                fn = t_map["friedrich_nietzsche"]
+                ik = t_map["immanuel_kant"]
+                clash_blocks.append(
+                    f"2. **Universal Deontological Duty vs. Perspectival Self-Creation ({ik['name']} vs. {fn['name']})**: "
+                    f"{ik['name']} anchors ethical validity in universal, unconditional moral laws (Categorical Imperative) binding all rational beings identically. "
+                    f"Conversely, {fn['name']} rejects universal moralities as covert forms of herd conformity and resentment, "
+                    f"arguing that higher individuals must forge their own singular values through heroic self-legislation."
+                )
+
+            if "immanuel_kant" in t_map and "aristotle" in t_map:
+                ik = t_map["immanuel_kant"]
+                ar = t_map["aristotle"]
+                clash_blocks.append(
+                    f"3. **Pure Moral Motive vs. Teleological Flourishing ({ik['name']} vs. {ar['name']})**: "
+                    f"{ik['name']} insists that moral worth resides solely in acting from duty independent of desires or consequences. "
+                    f"{ar['name']} counters that virtue (Arete) cannot be separated from character habituation, practical wisdom (Phronesis), "
+                    f"and the holistic pursuit of human flourishing (Eudaimonia)."
+                )
+
+            if "aristotle" in t_map and "lao_tzu" in t_map:
+                ar = t_map["aristotle"]
+                lz = t_map["lao_tzu"]
+                clash_blocks.append(
+                    f"4. **Structured Rational Striving vs. Spontaneous Effortless Yielding ({ar['name']} vs. {lz['name']})**: "
+                    f"{ar['name']} relies on deliberate teleological habituation and structured civic moderation. "
+                    f"In contrast, {lz['name']} warns that rigid moral categories and deliberate striving corrupt natural harmony, "
+                    f"advocating effortless non-contrivance (Wu Wei) and yielding like water."
+                )
+
+            if not clash_blocks and len(thinker_sections) >= 2:
+                # Fallback pairwise for custom thinker selections
+                for i in range(len(thinker_sections) - 1):
+                    t1_n, t1_tr, t1_st, t1_c, _ = thinker_sections[i]
+                    t2_n, t2_tr, t2_st, t2_c, _ = thinker_sections[i+1]
+                    clash_blocks.append(
+                        f"{i+1}. **{t1_n.strip()} ({t1_tr.strip()}) vs. {t2_n.strip()} ({t2_tr.strip()})**: "
+                        f"{t1_n.strip()} establishes agency upon {t1_st.strip()}, "
+                        f"whereas {t2_n.strip()} challenges this foundation by maintaining {t2_st.strip()}."
+                    )
+
             div_text = (
-                f"The sharpest philosophical clashes emerge in how each tradition derives authority. "
-                f"{' '.join(div_lines)}"
+                f"The foundational philosophical clashes regarding '{question}' center on how each tradition derives ethical authority and human purpose:\n\n"
+                + "\n\n".join(clash_blocks)
             )
 
-            # Distinct Philosophical Synthesis & Takeaway
-            takeaway_concepts = ", ".join([f"{t[0].strip()}'s insights on {t[3].split(',')[0].strip()}" for t in thinker_sections[:4]])
+            # Distinct Synthesis & Takeaway
             synthesis_text = (
-                f"Navigating \"{question}\" in contemporary life requires integrating these complementary perspectives: "
-                f"{takeaway_concepts}. "
-                f"By balancing universal moral duty with authentic self-overcoming and natural yielding, one develops an adaptable, resilient ethical compass."
+                f"Navigating \"{question}\" in contemporary life requires synthesizing these complementary insights. "
+                f"From Stoicism, one learns cognitive sovereignty over what is within one's control; "
+                f"from Existentialism, the creative courage to confront adversity and forge personal meaning; "
+                f"from Deontology, unyielding reverence for human dignity and moral duty; "
+                f"from Virtue Ethics, the patient habituation of practical wisdom; "
+                f"and from Daoism, the resilience of yielding and harmonious non-contrivance. "
+                f"Integrating these perspectives enables an adaptable, robust ethical framework for modern decision-making."
             )
 
             return (

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "vol_can_01",
+    "thinker_id": "voltaire",
+    "thinker_name": "Voltaire",
+    "tradition": "French Enlightenment & Satirical Humanism",
+    "work_title": "Candide",
+    "chapter": "Chapter 30: Cultivating Our Garden",
+    "text": "Pangloss would sometimes say to Candide: 'There is a concatenation of events in this best of all possible worlds: for if you had not been kicked out of a magnificent castle for love of Miss Cunegonde, if you had not been put into the Inquisition, if you had not walked over America on foot, if you had not run your sword through the baron, if you had not lost all your sheep from Eldorado, you would not be here eating candied citrons and pistachios.' 'All that is very well,' answered Candide, 'but let us cultivate our garden.' By focusing upon tangible labor and practical improvements within human reach, one turns away from futile metaphysical disputations and builds a peaceful existence."
+  },
+  {
+    "id": "vol_can_02",
+    "thinker_id": "voltaire",
+    "thinker_name": "Voltaire",
+    "tradition": "French Enlightenment & Satirical Humanism",
+    "work_title": "Candide",
+    "chapter": "Chapter 1: The Parody of Optimism",
+    "text": "Pangloss was professor of metaphysico-theologico-cosmo-nigology. He could prove to admiration that there is no effect without a cause; and, that in this best of all possible worlds, the Baron's castle was the most magnificent of castles, and his lady the best of all possible Baronesses. 'Observe,' said he, 'that noses were made for spectacles, and so we have spectacles. Legs were visibly instituted for stockings, and we have stockings. Stones were formed to be quarried, and to build castles; and my Lord has a very noble castle. Swine were intended to be eaten, and we eat pork all the year round. It follows that they who assert that everything is good do not express themselves correctly; they should say that everything is best.' Such blind dogmatism mocks the reality of human suffering."
+  },
+  {
+    "id": "vol_can_03",
+    "thinker_id": "voltaire",
+    "thinker_name": "Voltaire",
+    "tradition": "French Enlightenment & Satirical Humanism",
+    "work_title": "Candide",
+    "chapter": "Chapter 20: Human Folly and Malice",
+    "text": "'Do you believe,' said Candide, 'that men have always massacred each other as they do to-day? That they have always been liars, cheats, traitors, ingrates, brigands, idiots, thieves, scoundrels, gluttons, drunkards, misers, hypocrites, and fools?' 'Do you believe,' said Martin, 'that hawks have always eaten pigeons when they could find them?' 'Undoubtedly,' said Candide. 'Well,' said Martin, 'if hawks have always had the same nature, why should you suppose that men have changed theirs?' Yet Voltaire reminds us that while human folly is ancient, reason and compassion allow us to temper our savagery and build lawful civilization."
+  },
+  {
+    "id": "vol_dict_01",
+    "thinker_id": "voltaire",
+    "thinker_name": "Voltaire",
+    "tradition": "French Enlightenment & Satirical Humanism",
+    "work_title": "Philosophical Dictionary",
+    "chapter": "Entry: Tolerance",
+    "text": "What is tolerance? It is the appurtenance of humanity. We are all full of weakness and errors; let us mutually pardon each other our follies, it is the first law of nature. It is clear that every private individual who persecutes a man, his brother, because he is not of the same opinion, is a monster. Discord is the great evil of the human species, and tolerance is its only remedy. There is no doubt that if reason could rule the minds of men, persecutions and holy wars would vanish like malignant phantoms before the dawn."
+  },
+  {
+    "id": "vol_dict_02",
+    "thinker_id": "voltaire",
+    "thinker_name": "Voltaire",
+    "tradition": "French Enlightenment & Satirical Humanism",
+    "work_title": "Philosophical Dictionary",
+    "chapter": "Entry: Fanaticism",
+    "text": "Fanaticism is to superstition what delirium is to fever, or rage to anger. He who is prone to ecstasies and visions, who mistakes his dreams for realities and his fancies for prophecies, is an enthusiast; he who backs his frenzy by assassination is a fanatic. The only remedy for this infectious malady is the philosophical spirit, which, being gradually diffused, softens the manners of men and prevents the fits of the disease from breaking out. Laws are of no avail against this spiritual rabies; reason alone can cure the contagion of dogma."
+  },
+  {
+    "id": "vol_dict_03",
+    "thinker_id": "voltaire",
+    "thinker_name": "Voltaire",
+    "tradition": "French Enlightenment & Satirical Humanism",
+    "work_title": "Philosophical Dictionary",
+    "chapter": "Entry: Evil",
+    "text": "Physical and moral evil cover the face of the earth. We cannot explain the origin of evil by metaphysical systems without falling into absurdities. If God could prevent evil and would not, where is His benevolence? If He would and could not, where is His omnipotence? The philosopher does not spend his life in sterile lamentation or Panglossian denial; he acknowledges that sorrow and disease exist, and strives by medicine, science, justice, and kindness to diminish the sum of human misery."
+  },
+  {
+    "id": "vol_dict_04",
+    "thinker_id": "voltaire",
+    "thinker_name": "Voltaire",
+    "tradition": "French Enlightenment & Satirical Humanism",
+    "work_title": "Philosophical Dictionary",
+    "chapter": "Entry: Justice",
+    "text": "The sentiment of justice is so natural, so universally acquired by all mankind, that it seems independent of all local law, all party prejudice, all religious creed. The brigand who shares his plunder with his comrades recognizes the sanctity of justice in the very midst of crime. Justice is the indestructible bond that prevents human society from tearing itself into shreds. Without mutual equity, no commonwealth can endure."
+  }
+]

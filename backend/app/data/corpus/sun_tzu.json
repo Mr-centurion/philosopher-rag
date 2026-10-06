@@ -1,0 +1,65 @@
+[
+  {
+    "id": "sun_art_01",
+    "thinker_id": "sun_tzu",
+    "thinker_name": "Sun Tzu",
+    "tradition": "Classical Chinese Strategic Philosophy",
+    "work_title": "The Art of War",
+    "chapter": "Chapter III: Attack by Stratagem (Victory Without Conflict)",
+    "text": "To fight and conquer in all your battles is not supreme excellence; supreme excellence consists in breaking the enemy's resistance without fighting. Thus the highest form of generalship is to balk the enemy's plans; the next best is to prevent the junction of his forces; the next in order is to attack his army in the field; and the worst policy of all is to besiege walled cities. The skillful leader subdues the enemy's troops without any fighting; he captures their cities without laying siege to them; he overthrows their kingdom without lengthy operations in the field."
+  },
+  {
+    "id": "sun_art_02",
+    "thinker_id": "sun_tzu",
+    "thinker_name": "Sun Tzu",
+    "tradition": "Classical Chinese Strategic Philosophy",
+    "work_title": "The Art of War",
+    "chapter": "Chapter III: Knowing the Enemy and Knowing Oneself",
+    "text": "If you know the enemy and know yourself, you need not fear the result of a hundred battles. If you know yourself but not the enemy, for every victory gained you will also suffer a defeat. If you know neither the enemy nor yourself, you will succumb in every battle. He will win who knows when to fight and when not to fight. He will win who knows how to handle both superior and inferior forces. He will win whose army is animated by the same spirit throughout all its ranks."
+  },
+  {
+    "id": "sun_art_03",
+    "thinker_id": "sun_tzu",
+    "thinker_name": "Sun Tzu",
+    "tradition": "Classical Chinese Strategic Philosophy",
+    "work_title": "The Art of War",
+    "chapter": "Chapter I: Laying Plans and the Moral Law (Dao)",
+    "text": "The art of war is of vital importance to the State. It is a matter of life and death, a road either to safety or to ruin. Hence it is a subject of inquiry which can on no account be neglected. The Moral Law (Dao) causes the people to be in complete accord with their ruler, so that they will follow him regardless of their lives, undismayed by any danger. All warfare is based on deception. Hence, when able to attack, we must seem unable; when using our forces, we must seem inactive; when we are near, we must make the enemy believe we are far away."
+  },
+  {
+    "id": "sun_art_04",
+    "thinker_id": "sun_tzu",
+    "thinker_name": "Sun Tzu",
+    "tradition": "Classical Chinese Strategic Philosophy",
+    "work_title": "The Art of War",
+    "chapter": "Chapter VI: Weak Points and Strong (The Water Metaphor)",
+    "text": "Military tactics are like unto water; for water in its natural course runs away from high places and hastens downwards. So in war, the way is to avoid what is strong and to strike at what is weak. Water shapes its course according to the nature of the ground over which it flows; the soldier works out his victory in relation to the foe whom he is facing. Therefore, just as water retains no constant shape, so in warfare there are no constant conditions. He who can modify his tactics in relation to his opponent and thereby succeed in winning, may be called a heaven-born captain."
+  },
+  {
+    "id": "sun_art_05",
+    "thinker_id": "sun_tzu",
+    "thinker_name": "Sun Tzu",
+    "tradition": "Classical Chinese Strategic Philosophy",
+    "work_title": "The Art of War",
+    "chapter": "Chapter IV: Tactical Dispositions and Invincibility",
+    "text": "The good fighters of old first put themselves beyond the possibility of defeat, and then waited for an opportunity of defeating the enemy. To secure ourselves against defeat lies in our own hands, but the opportunity of defeating the enemy is provided by the enemy himself. Thus the good fighter is able to secure himself against defeat, but cannot make certain of defeating the enemy. Hence the saying: One may know how to conquer without being able to do it. Invincibility lies in the defence; the possibility of victory in the attack."
+  },
+  {
+    "id": "sun_art_06",
+    "thinker_id": "sun_tzu",
+    "thinker_name": "Sun Tzu",
+    "tradition": "Classical Chinese Strategic Philosophy",
+    "work_title": "The Art of War",
+    "chapter": "Chapter VII: Maneuvering and Adaptability",
+    "text": "Let your rapidity be that of the wind, your compactness that of the forest. In raiding and plundering be like fire, in immovability like a mountain. Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt. Ponder and deliberate before you make a move. He will conquer who has learnt the artifice of deviation. Such is the art of maneuvering."
+  },
+  {
+    "id": "sun_art_07",
+    "thinker_id": "sun_tzu",
+    "thinker_name": "Sun Tzu",
+    "tradition": "Classical Chinese Strategic Philosophy",
+    "work_title": "The Art of War",
+    "chapter": "Chapter XII: Prudence, Restraint, and Anger",
+    "text": "No ruler should put troops into the field merely to gratify his own anger; no general should fight a battle simply out of pique. If it is to your advantage, make a forward move; if not, stay where you are. Anger may in time change to gladness; vexation may be succeeded by content. But a kingdom that has once been destroyed can never come again into being; nor can the dead ever be brought back to life. Hence the enlightened ruler is heedful, and the good general full of caution."
+  }
+]

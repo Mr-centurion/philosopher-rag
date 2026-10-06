@@ -1,0 +1,65 @@
+[
+  {
+    "id": "pla_rep_01",
+    "thinker_id": "plato",
+    "thinker_name": "Plato",
+    "tradition": "Classical Greek Idealism & Dialectic",
+    "work_title": "The Republic",
+    "chapter": "Book VII: The Allegory of the Cave",
+    "text": "Behold! human beings living in an underground den, which has a mouth open towards the light and reaching all along the den; here they have been from their childhood, and have their legs and necks chained so that they cannot move, and can only see before them, being prevented by the chains from turning round their heads. Above and behind them a fire is blazing at a distance, and between the fire and the prisoners there is a raised way. Like ourselves, they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave. To them, the truth would be literally nothing but the shadows of the images. But when one is released and compelled suddenly to stand up and turn his neck round and walk and look towards the light, he will suffer sharp pains; yet in time he will gaze upon the Sun itself and contemplate the Good."
+  },
+  {
+    "id": "pla_rep_02",
+    "thinker_id": "plato",
+    "thinker_name": "Plato",
+    "tradition": "Classical Greek Idealism & Dialectic",
+    "work_title": "The Republic",
+    "chapter": "Book V: The Philosopher-King",
+    "text": "Until philosophers are kings, or the kings and princes of this world have the spirit and power of philosophy, and political greatness and wisdom meet in one, and those commoner natures who pursue either to the exclusion of the other are compelled to stand aside, cities will never have rest from their evils,—no, nor the human race, as I believe,—and then only will this our State have a possibility of life and behold the light of day. The true lover of wisdom desires all wisdom, not just a part; he seeks the unchanging essence of beauty and justice itself, ascending beyond mere opinion to authentic knowledge."
+  },
+  {
+    "id": "pla_rep_03",
+    "thinker_id": "plato",
+    "thinker_name": "Plato",
+    "tradition": "Classical Greek Idealism & Dialectic",
+    "work_title": "The Republic",
+    "chapter": "Book IV: The Tripartite Soul and Justice",
+    "text": "Justice in the individual is analogous to justice in the state. The soul contains three distinct elements: the rational faculty, which loves wisdom and ought to rule; the spirited element, which loves honor and acts as the ally of reason; and the appetitive element, which craves bodily pleasures, food, drink, and wealth. Justice is attained when each part of the soul fulfils its own proper function without meddling in the business of the others. When reason commands, with spirit as its valiant guardian, and the appetites are kept in temperance, the soul enjoys inner harmony, peace, and true moral health."
+  },
+  {
+    "id": "pla_rep_04",
+    "thinker_id": "plato",
+    "thinker_name": "Plato",
+    "tradition": "Classical Greek Idealism & Dialectic",
+    "work_title": "The Republic",
+    "chapter": "Book II: The Ring of Gyges and Justice",
+    "text": "Suppose now that there were two such magic rings as Gyges had, which made the wearer invisible, and the just man put on one and the unjust the other. No man can be imagined to be of such an iron nature that he would stand fast in justice. No man would keep his hands off what was not his own when he could safely take what he liked out of the market, or go into houses and lie with any one at his pleasure, or kill or release from prison whom he would. For all men believe in their hearts that injustice is far more profitable to the individual than justice. Yet Socrates demonstrates that the unjust man, enslaved by tyrannical desires, is of all men the most wretched, while the truly just man possesses inner nobility and freedom."
+  },
+  {
+    "id": "pla_apol_01",
+    "thinker_id": "plato",
+    "thinker_name": "Plato",
+    "tradition": "Classical Greek Idealism & Dialectic",
+    "work_title": "Apology",
+    "chapter": "Section 29d-30b: Obedience to Truth and Soul",
+    "text": "Men of Athens, I honor and love you; but I shall obey God rather than you, and while I have life and strength I shall never cease from the practice and teaching of philosophy, exhorting anyone whom I meet: 'Are you not ashamed of caring so much for the making of money and for reputation and honor, will you not care for wisdom and truth and the greatest improvement of your soul?' For I do nothing but go about persuading you all, old and young alike, not to take thought for your persons or your property, but first and chiefly to care about the greatest improvement of the soul. I tell you that virtue is not given by money, but from virtue comes money and every other good of man, public as well as private."
+  },
+  {
+    "id": "pla_apol_02",
+    "thinker_id": "plato",
+    "thinker_name": "Plato",
+    "tradition": "Classical Greek Idealism & Dialectic",
+    "work_title": "Apology",
+    "chapter": "Section 38a: The Unexamined Life",
+    "text": "If I tell you that to hold no daily discourse about virtue and the good is disobedience to God, you will not believe that I am serious; and if I say again that the greatest good of man is daily to converse about virtue, and all that concerning which you hear me examining myself and others, and that the unexamined life is not worth living for a human being, you will believe me even less. Yet such is the truth, gentlemen. Philosophy is the rigorous interrogation of presumption, stripping away false claims of knowledge so that the soul may awaken to genuine insight."
+  },
+  {
+    "id": "pla_apol_03",
+    "thinker_id": "plato",
+    "thinker_name": "Plato",
+    "tradition": "Classical Greek Idealism & Dialectic",
+    "work_title": "Apology",
+    "chapter": "Section 40c-41d: Facing Death and the Good Man",
+    "text": "Let us reflect in another way, and we shall see that there is great reason to hope that death is a good; for one of two things must be: either death is a state of nothingness and utter unconsciousness, or there is a migration of the soul from this world to another. Now if death is like a sleep undisturbed even by dreams, what an unspeakable gain death must be! But if death is the journey to another place, where all the dead abide, what good can be greater than this? Wherefore, O judges, be of good cheer about death, and know of a certainty that no evil can happen to a good man, either in life or after death, and that his fortunes are not neglected by the gods."
+  }
+]

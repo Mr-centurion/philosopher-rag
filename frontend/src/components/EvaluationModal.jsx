@@ -59,7 +59,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all shrink-0 ${
               loading
                 ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30'
+                : 'btn-burgundy shadow-lg'
             }`}
           >
             {loading ? (
@@ -88,7 +88,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
             {/* Top Level Metric Score Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
               <div className="p-3 rounded-xl bg-slate-900/80 border border-emerald-500/30">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">Faithfulness</div>
+                <div className="text-[10.5px] font-mono text-slate-400">Faithfulness</div>
                 <div className="text-lg font-bold text-emerald-400 mt-1">
                   {(results.mean_faithfulness * 100).toFixed(1)}%
                 </div>
@@ -96,7 +96,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-purple-500/30">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">Voice Distinct</div>
+                <div className="text-[10.5px] font-mono text-slate-400">Voice Distinct</div>
                 <div className="text-lg font-bold text-purple-400 mt-1">
                   {(results.mean_voice_distinctiveness_score * 100).toFixed(1)}%
                 </div>
@@ -104,7 +104,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-amber-500/30">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">Context Recall</div>
+                <div className="text-[10.5px] font-mono text-slate-400">Context Recall</div>
                 <div className="text-lg font-bold text-amber-400 mt-1">
                   {(results.mean_context_recall * 100).toFixed(1)}%
                 </div>
@@ -112,7 +112,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-rose-500/30">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">Retrieval Mismatch</div>
+                <div className="text-[10.5px] font-mono text-slate-400">Retrieval Mismatch</div>
                 <div className="text-lg font-bold text-rose-400 mt-1">
                   {results.retrieval_mismatch_rate_pct}%
                 </div>
@@ -120,7 +120,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-indigo-500/30">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">Comp. Balance</div>
+                <div className="text-[10.5px] font-mono text-slate-400">Comp. Balance</div>
                 <div className="text-lg font-bold text-indigo-400 mt-1">
                   {(results.mean_comparative_balance * 100).toFixed(1)}%
                 </div>
@@ -128,7 +128,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
               </div>
 
               <div className="p-3 rounded-xl bg-slate-900/80 border border-sky-500/30">
-                <div className="text-[10px] font-mono text-slate-400 uppercase">Mean Latency</div>
+                <div className="text-[10.5px] font-mono text-slate-400">Mean Latency</div>
                 <div className="text-lg font-bold text-sky-400 mt-1">
                   {results.mean_latency_ms.toFixed(0)} ms
                 </div>
@@ -174,7 +174,7 @@ export default function EvaluationModal({ isOpen, onClose }) {
 
             {/* Test Case Breakdown Table */}
             <div className="space-y-2">
-              <div className="text-xs font-mono text-slate-400 uppercase font-semibold">
+              <div className="text-xs font-mono text-slate-400 font-semibold">
                 Benchmark Query Results
               </div>
               <div className="border border-white/10 rounded-xl overflow-hidden bg-slate-950/40 text-xs">

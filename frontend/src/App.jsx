@@ -143,9 +143,9 @@ export default function App() {
         {messages.length === 0 ? (
           <div className="my-auto py-8 space-y-8 text-center max-w-2xl mx-auto">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF7F0] border border-[#B8995C]/50 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDF4F4] border border-[#8B2E2E]/40 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#8B2E2E]" />
-                <span className="eyebrow-maroon text-[10.5px]">Comparative Philosophical Dialectic</span>
+                <span className="text-[11.5px] font-philosophy font-semibold text-[#8B2E2E]">Comparative Philosophical Dialectic</span>
               </div>
               
               {/* Large Editorial Headline */}
@@ -160,7 +160,7 @@ export default function App() {
             </div>
 
             {/* Thinker Chips Selector Panel */}
-            <div className="parchment-panel p-4 rounded-xl border border-[#B8995C]/60 text-left shadow-parchment-sm">
+            <div className="parchment-panel p-4 rounded-xl border border-[#B8995C]/50 border-l-4 border-l-[#8B2E2E] text-left shadow-parchment-sm">
               <ThinkerSelector
                 thinkers={thinkers}
                 selectedThinkers={selectedThinkers}
@@ -180,7 +180,7 @@ export default function App() {
         ) : (
           <div className="space-y-6 pb-20">
             {/* Thinker Selector Bar while chatting */}
-            <div className="parchment-panel p-3.5 rounded-xl border border-[#B8995C]/50 shadow-parchment-sm">
+            <div className="parchment-panel p-3.5 rounded-xl border border-[#B8995C]/50 border-l-4 border-l-[#8B2E2E] shadow-parchment-sm">
               <ThinkerSelector
                 thinkers={thinkers}
                 selectedThinkers={selectedThinkers}
@@ -191,7 +191,11 @@ export default function App() {
 
             {/* Message Thread */}
             {messages.map((msg) => (
-              <ChatMessage key={msg.id} message={msg} />
+              <ChatMessage 
+                key={msg.id} 
+                message={msg} 
+                onSelectQuery={(q) => handleSend(q)}
+              />
             ))}
 
             {/* Skeleton Loader during generation */}
@@ -240,13 +244,13 @@ export default function App() {
               rows={1}
               className="w-full bg-transparent px-4 py-3 text-sm sm:text-base text-[#2B2419] placeholder:text-[#8C7D6B] placeholder:italic focus:outline-none resize-none font-serif leading-relaxed"
             />
-            {/* Solid Dark Brown Button with Gold Linework Accent matching user reference */}
+            {/* Rich Burgundy Send Button with Gold Linework Accent */}
             <button
               onClick={() => handleSend()}
               disabled={loading || !inputQuery.trim()}
               className={`p-3 rounded-lg transition-all shrink-0 flex items-center justify-center border font-serif ${
                 inputQuery.trim() && !loading
-                  ? 'btn-ink shadow-sm'
+                  ? 'btn-burgundy shadow-sm'
                   : 'bg-[#EFE8DD] text-[#AD997B] border-[#DACDB8] cursor-not-allowed'
               }`}
               title="Submit Inquiry"

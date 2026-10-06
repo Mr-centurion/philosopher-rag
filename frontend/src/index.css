@@ -2,21 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ABSOLUTE GLOBAL RESET: FORCE STRICT NATURAL CASE ON ALL TEXT ELEMENTS */
+*, *::before, *::after {
+  text-transform: none !important;
+  font-variant: normal !important;
+  font-variant-caps: normal !important;
+}
+
+.eyebrow-maroon, .badge-caps {
+  text-transform: none !important;
+  font-variant: normal !important;
+  font-variant-caps: normal !important;
+  letter-spacing: 0.03em !important;
+}
+
 @layer base {
   body {
     background-color: #F4EFE6;
     color: #2B2419;
-    font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+    font-family: 'EB Garamond', Georgia, serif;
+    text-transform: none !important;
+    font-variant: normal !important;
     background-image: 
       radial-gradient(ellipse at 15% 10%, rgba(255, 255, 255, 0.7) 0%, transparent 60%),
       radial-gradient(ellipse at 85% 90%, rgba(184, 153, 92, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 50% 50%, rgba(139, 46, 46, 0.03) 0%, transparent 80%),
+      radial-gradient(ellipse at 50% 50%, rgba(139, 46, 46, 0.05) 0%, transparent 80%),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     background-attachment: fixed;
   }
 
+  /* Headings: Elegant serif without forced uppercase */
   h1, h2, h3, h4, .font-philosophy {
-    font-family: 'Playfair Display', 'Cinzel', serif;
+    font-family: 'Playfair Display', Georgia, serif;
+    text-transform: none !important;
+    font-variant: normal !important;
+  }
+
+  /* Paragraphs and body text: strict sentence case */
+  p, span, div, input, textarea, button, .body-sentence, .font-body {
+    font-family: 'EB Garamond', Georgia, serif;
+    text-transform: none !important;
+    font-variant: normal !important;
   }
 }
 
@@ -39,9 +65,9 @@
 
 .parchment-card-hover:hover {
   background: #FFFFFF;
-  border-color: #B8995C;
+  border-color: #8B2E2E;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(43, 36, 25, 0.09), 0 2px 6px rgba(184, 153, 92, 0.25);
+  box-shadow: 0 8px 24px rgba(139, 46, 46, 0.12), 0 2px 6px rgba(184, 153, 92, 0.25);
 }
 
 /* Decorative Classical Framing */
@@ -70,14 +96,90 @@
   box-shadow: 0 4px 14px rgba(43, 36, 25, 0.18), 0 0 10px rgba(184, 153, 92, 0.3);
 }
 
-/* Eyebrow Label Text: Maroon Small Caps */
+/* Rich Burgundy Primary Button */
+.btn-burgundy {
+  background-color: #8B2E2E;
+  color: #FAF6EC;
+  border: 1px solid #6E2222;
+  transition: all 0.2s ease;
+}
+
+.btn-burgundy:hover {
+  background-color: #6E2222;
+  border-color: #DEC695;
+  box-shadow: 0 4px 14px rgba(139, 46, 46, 0.35), 0 0 10px rgba(184, 153, 92, 0.3);
+}
+
+/* Eyebrow Label Text: Natural Case Burgundy Serif */
 .eyebrow-maroon {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 11.5px;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
   color: #8B2E2E;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+/* Solid Burgundy Badge Pill */
+.badge-burgundy {
+  background-color: #8B2E2E;
+  color: #FAF6EC;
+  border: 1px solid #6E2222;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px rgba(139, 46, 46, 0.2);
+}
+
+/* Burgundy Accent Utilities */
+.burgundy-left-bar {
+  border-left: 4px solid #8B2E2E !important;
+}
+
+.burgundy-chip-selected {
+  background-color: #FDF4F4 !important;
+  border: 2px solid #8B2E2E !important;
+  color: #561A1A !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(139, 46, 46, 0.12) !important;
+}
+
+/* Burgundy Decorative Line & Markers */
+.section-accent-rule {
+  border-top: 1px solid rgba(139, 46, 46, 0.3);
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+}
+
+.section-marker-maroon {
+  color: #8B2E2E !important;
+  font-weight: 800;
+}
+
+/* Burgundy Citation Underline Treatment */
+.citation-span-grounded {
+  border-bottom: 2px solid #8B2E2E !important;
+  transition: all 0.2s ease;
+}
+
+.citation-span-grounded:hover {
+  border-bottom-color: #561A1A !important;
+  background-color: rgba(139, 46, 46, 0.08);
+}
+
+.citation-span-regenerated {
+  background-color: #FAF2F2;
+  border-bottom: 2px solid #8B2E2E;
+  color: #561A1A;
+}
+
+.citation-span-flagged {
+  background-color: #FDF4F4;
+  border-bottom: 2px solid #8B2E2E;
+  color: #8B2E2E;
+  font-weight: 500;
 }
 
 /* Editorial Serif Text Styles */

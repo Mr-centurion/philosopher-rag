@@ -10,7 +10,7 @@ export default function CitationViewer({ citations, sentenceGroundedness, regene
   const headlineScore = Math.round((faithfulnessScore || 0.95) * 100);
 
   return (
-    <div className="mt-4 rounded-xl border border-[#B8995C]/40 bg-[#FAF7F0] overflow-hidden shadow-parchment-sm transition-all font-serif">
+    <div className="mt-4 rounded-xl border border-[#B8995C]/40 border-l-4 border-l-[#8B2E2E] bg-[#FAF7F0] overflow-hidden shadow-parchment-sm transition-all font-serif">
       {/* Header / Toggle Button */}
       <div 
         className="px-4 py-3 flex items-center justify-between text-xs text-[#2B2419] hover:bg-[#F4EFE6] transition-colors cursor-pointer border-b border-[#B8995C]/20"
@@ -18,7 +18,7 @@ export default function CitationViewer({ citations, sentenceGroundedness, regene
       >
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 font-bold text-[#8B2E2E]">
-            <BookOpen className="w-3.5 h-3.5 text-[#B8995C]" />
+            <BookOpen className="w-3.5 h-3.5 text-[#8B2E2E]" />
             <span>Grounded Primary Sources ({citations ? citations.length : 0})</span>
           </div>
           
@@ -37,7 +37,7 @@ export default function CitationViewer({ citations, sentenceGroundedness, regene
 
         <div className="flex items-center gap-1.5 text-[#73624A] text-xs font-serif italic">
           <span>{isExpanded ? 'Collapse' : 'Inspect Source Passages & Breakdown'}</span>
-          {isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-[#B8995C]" /> : <ChevronDown className="w-3.5 h-3.5 text-[#B8995C]" />}
+          {isExpanded ? <ChevronUp className="w-3.5 h-3.5 text-[#8B2E2E]" /> : <ChevronDown className="w-3.5 h-3.5 text-[#8B2E2E]" />}
         </div>
       </div>
 
@@ -50,11 +50,11 @@ export default function CitationViewer({ citations, sentenceGroundedness, regene
               onClick={() => setActiveSubTab('citations')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-serif transition-all ${
                 activeSubTab === 'citations'
-                  ? 'bg-[#FAF7F0] text-[#8B2E2E] font-bold border border-[#B8995C]/60 shadow-sm'
+                  ? 'bg-[#FDF4F4] text-[#561A1A] font-bold border-2 border-[#8B2E2E] shadow-sm'
                   : 'text-[#73624A] hover:text-[#2B2419]'
               }`}
             >
-              <BookOpen className="w-3.5 h-3.5 text-[#B8995C]" />
+              <BookOpen className="w-3.5 h-3.5 text-[#8B2E2E]" />
               <span>Source Chunks ({citations ? citations.length : 0})</span>
             </button>
 
@@ -62,11 +62,11 @@ export default function CitationViewer({ citations, sentenceGroundedness, regene
               onClick={() => setActiveSubTab('breakdown')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-serif transition-all ${
                 activeSubTab === 'breakdown'
-                  ? 'bg-[#FAF7F0] text-[#8B2E2E] font-bold border border-[#B8995C]/60 shadow-sm'
+                  ? 'bg-[#FDF4F4] text-[#561A1A] font-bold border-2 border-[#8B2E2E] shadow-sm'
                   : 'text-[#73624A] hover:text-[#2B2419]'
               }`}
             >
-              <Layers className="w-3.5 h-3.5 text-[#B8995C]" />
+              <Layers className="w-3.5 h-3.5 text-[#8B2E2E]" />
               <span>Sentence-Level Score Breakdown ({sentences.length})</span>
             </button>
           </div>

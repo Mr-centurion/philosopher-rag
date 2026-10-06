@@ -7,6 +7,15 @@ const THINKER_EMBLEMS = {
   immanuel_kant: '⚖️',
   aristotle: '📜',
   lao_tzu: '☯️',
+  seneca: '🏺',
+  epictetus: '⛓️',
+  plato: '🏛️',
+  voltaire: '🕯️',
+  leo_tolstoy: '🌾',
+  franz_kafka: '🪲',
+  bhagavad_gita: '🏹',
+  chanakya: '👑',
+  sun_tzu: '⚔️',
 };
 
 export default function ThinkerSidebar({ isOpen, onClose, thinkers }) {
@@ -14,12 +23,12 @@ export default function ThinkerSidebar({ isOpen, onClose, thinkers }) {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-xs transition-opacity">
-      <div className="w-full max-w-md h-full bg-[#FAF7F0] border-l-2 border-[#B8995C] p-6 flex flex-col justify-between overflow-y-auto shadow-2xl font-serif">
+      <div className="w-full max-w-md h-full bg-[#FAF7F0] border-l-4 border-l-[#8B2E2E] p-6 flex flex-col justify-between overflow-y-auto shadow-2xl font-serif">
         <div className="space-y-6">
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-[#B8995C]/30">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#FAF7F0] border border-[#B8995C] flex items-center justify-center text-sm shadow-inner-gold">
+              <div className="w-8 h-8 rounded-full bg-[#FAF7F0] border-2 border-[#8B2E2E] flex items-center justify-center text-sm shadow-sm">
                 🏛️
               </div>
               <div>
@@ -44,7 +53,7 @@ export default function ThinkerSidebar({ isOpen, onClose, thinkers }) {
               return (
                 <div
                   key={thinker.id}
-                  className="parchment-card rounded-xl p-4 border border-[#B8995C]/50 hover:border-[#B8995C] transition-all space-y-3 shadow-parchment-sm"
+                  className="parchment-card rounded-xl p-4 border border-[#B8995C]/50 hover:border-[#8B2E2E] transition-all space-y-3 shadow-parchment-sm"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2.5">
@@ -63,8 +72,8 @@ export default function ThinkerSidebar({ isOpen, onClose, thinkers }) {
                   </div>
 
                   {/* Quote */}
-                  <div className="text-xs text-[#3D3425] italic bg-[#F4EFE6] p-3 rounded-lg border-l-2 border-[#B8995C] flex gap-2">
-                    <Quote className="w-3.5 h-3.5 text-[#B8995C] shrink-0 mt-0.5" />
+                  <div className="text-xs text-[#3D3425] italic bg-[#FDF6F4] p-3 rounded-lg border-l-2 border-[#8B2E2E] flex gap-2">
+                    <Quote className="w-3.5 h-3.5 text-[#8B2E2E] shrink-0 mt-0.5" />
                     <span>"{thinker.sample_quote}"</span>
                   </div>
 

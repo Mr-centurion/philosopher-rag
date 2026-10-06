@@ -11,9 +11,18 @@ const THINKER_THEMES = {
   immanuel_kant: { color: '#324E7B', emblem: '⚖️', name: 'Immanuel Kant', tradition: 'German Deontology' },
   aristotle: { color: '#366854', emblem: '📜', name: 'Aristotle', tradition: 'Classical Virtue Ethics' },
   lao_tzu: { color: '#583D72', emblem: '☯️', name: 'Laozi', tradition: 'Ancient Daoism' },
+  seneca: { color: '#A04000', emblem: '🏺', name: 'Seneca', tradition: 'Roman Stoicism' },
+  epictetus: { color: '#B45309', emblem: '⛓️', name: 'Epictetus', tradition: 'Stoic Ethics' },
+  plato: { color: '#1E40AF', emblem: '🏛️', name: 'Plato', tradition: 'Classical Greek Idealism' },
+  voltaire: { color: '#BE123C', emblem: '🕯️', name: 'Voltaire', tradition: 'French Enlightenment' },
+  leo_tolstoy: { color: '#166534', emblem: '🌾', name: 'Leo Tolstoy', tradition: 'Russian Moral Realism' },
+  franz_kafka: { color: '#475569', emblem: '🪲', name: 'Franz Kafka', tradition: 'Existential Absurdism' },
+  bhagavad_gita: { color: '#C2410C', emblem: '🏹', name: 'Bhagavad Gita', tradition: 'Indian Vedanta & Yoga' },
+  chanakya: { color: '#854D0E', emblem: '👑', name: 'Chanakya', tradition: 'Indian Realpolitik' },
+  sun_tzu: { color: '#047857', emblem: '⚔️', name: 'Sun Tzu', tradition: 'Strategic Philosophy' },
 };
 
-export default function ChatMessage({ message }) {
+export default function ChatMessage({ message, onSelectQuery }) {
   const isUser = message.role === 'user';
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'tabs'
   const [activeTab, setActiveTab] = useState(0);
@@ -22,13 +31,13 @@ export default function ChatMessage({ message }) {
   if (isUser) {
     return (
       <div className="flex items-start justify-end gap-3 my-5">
-        <div className="max-w-2xl bg-[#FAF7F0] border-2 border-[#B8995C]/60 rounded-2xl rounded-tr-sm px-5 py-4 shadow-parchment-md">
-          <div className="eyebrow-maroon text-[10px] mb-1.5 flex items-center gap-1.5">
+        <div className="max-w-2xl bg-[#FAF7F0] border-2 border-[#B8995C]/60 border-r-4 border-r-[#8B2E2E] rounded-2xl rounded-tr-sm px-5 py-4 shadow-parchment-md">
+          <div className="text-[11px] font-philosophy font-semibold text-[#8B2E2E] mb-1.5 flex items-center gap-1.5">
             <span>Inquirer's Proposition</span>
           </div>
-          <p className="text-sm sm:text-base text-[#2B2419] leading-relaxed font-serif">{message.content}</p>
+          <p className="text-sm sm:text-base text-[#2B2419] leading-relaxed font-body normal-case">{message.content}</p>
         </div>
-        <div className="w-8 h-8 rounded-full bg-[#FAF7F0] border-2 border-[#B8995C] flex items-center justify-center shrink-0 text-[#2B2419] shadow-inner-gold">
+        <div className="w-8 h-8 rounded-full bg-[#FAF7F0] border-2 border-[#8B2E2E] flex items-center justify-center shrink-0 text-[#2B2419] shadow-sm">
           <User className="w-4 h-4 text-[#8B2E2E]" />
         </div>
       </div>
@@ -47,12 +56,14 @@ export default function ChatMessage({ message }) {
   const flaggedCount = data.flagged_sentences_count || sentenceGroundedness.filter(s => !s.grounded).length;
   const isWeakMatch = data.is_weak_match;
   const weakWarning = data.weak_match_warning;
+  const isInvalidPremise = data.is_invalid_premise;
+  const invalidDetails = data.invalid_premise_details || {};
 
   // Strict hard gate: if query is rejected by guardrail, show ONLY rejection message
   const isRejected = 
     data.is_safe === false || 
     flags.some(f => f.category === 'off_topic' || f.category === 'harmful' || f.category === 'harmful_content_request' || f.category === 'jailbreak' || f.severity === 'high') ||
-    (breakdowns.length === 0 && citations.length === 0 && (!data.faithfulness_score || data.faithfulness_score === 0.0));
+    (!isInvalidPremise && breakdowns.length === 0 && citations.length === 0 && (!data.faithfulness_score || data.faithfulness_score === 0.0));
 
   if (isRejected) {
     return (
@@ -61,12 +72,70 @@ export default function ChatMessage({ message }) {
           🛡️
         </div>
         <div className="flex-1 max-w-full rounded-xl p-5 border-2 border-[#8B2E2E] bg-[#FDF4F4] shadow-parchment-md space-y-2.5">
-          <div className="flex items-center gap-2 text-[#8B2E2E] eyebrow-maroon text-xs">
+          <div className="flex items-center gap-2 text-[#8B2E2E] text-xs font-philosophy font-semibold">
             <AlertTriangle className="w-4 h-4 text-[#8B2E2E]" />
             <span>Scope & Safety Guardrail Refusal</span>
           </div>
-          <div className="text-[#2B2419] text-sm leading-relaxed font-serif">
+          <div className="text-[#2B2419] text-sm leading-relaxed font-body normal-case">
             {message.content || data.answer}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Dedicated Historical & Conceptual Boundary Card for Invalid Premises
+  if (isInvalidPremise) {
+    const rawAnswer = data.answer || message.content || '';
+    const paragraphs = rawAnswer.split('\n\n');
+
+    return (
+      <div className="flex items-start gap-3.5 my-6">
+        <div className="w-9 h-9 rounded-full bg-[#FAF7F0] border-2 border-[#8B2E2E] flex items-center justify-center shrink-0 shadow-inner-gold text-lg">
+          📜
+        </div>
+        <div className="flex-1 max-w-full parchment-panel rounded-xl p-5 sm:p-6 border-2 border-[#8B2E2E]/60 shadow-parchment-md space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#8B2E2E]/25 pb-3">
+            <div className="flex items-center gap-2">
+              <Compass className="w-4 h-4 text-[#8B2E2E]" />
+              <span className="text-xs font-semibold text-[#8B2E2E] font-philosophy">Historical & Conceptual Boundary</span>
+            </div>
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-serif bg-[#FAF6EE] text-[#8B2E2E] border border-[#8B2E2E]/40 font-semibold">
+              Thematic Match Only — Modern Premise
+            </span>
+          </div>
+
+          <div className="space-y-3 text-[#2B2419] text-[13.5px] sm:text-sm leading-relaxed font-body normal-case">
+            {paragraphs.map((p, idx) => {
+              if (p.startsWith('#')) {
+                return (
+                  <h4 key={idx} className="font-philosophy text-[#8B2E2E] text-sm font-bold pt-2 flex items-center gap-1.5 tracking-wide">
+                    <span className="text-[#8B2E2E] font-bold">§</span>
+                    <span>{p.replace(/^#+\s*/, '')}</span>
+                  </h4>
+                );
+              }
+              if (p.startsWith('- "') || p.startsWith('-')) {
+                const queryText = p.replace(/^[-*]\s*["']?/, '').replace(/["']?$/, '').trim();
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => onSelectQuery && onSelectQuery(queryText)}
+                    className="p-3 rounded-lg bg-[#FAF6EE] border border-[#B8995C]/40 hover:border-[#8B2E2E] hover:bg-[#FDF6F4] cursor-pointer transition-all flex items-start gap-2.5 group shadow-sm"
+                  >
+                    <ChevronRight className="w-4 h-4 text-[#8B2E2E] group-hover:translate-x-0.5 transition-transform shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-[13px] font-serif text-[#2B2419] group-hover:text-[#561A1A] font-medium leading-snug">
+                      "{queryText}"
+                    </span>
+                  </div>
+                );
+              }
+              return (
+                <p key={idx} className="text-[#2B2419] leading-relaxed font-body normal-case">
+                  {p}
+                </p>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -84,12 +153,12 @@ export default function ChatMessage({ message }) {
 
   return (
     <div className="flex items-start gap-3.5 my-6">
-      {/* Bot Icon - Ornate Classical Seal */}
-      <div className="w-9 h-9 rounded-full bg-[#FAF7F0] border-2 border-[#B8995C] flex items-center justify-center shrink-0 shadow-inner-gold text-lg">
+      {/* Bot Icon - Ornate Classical Seal with Burgundy Rim */}
+      <div className="w-9 h-9 rounded-full bg-[#FAF7F0] border-2 border-[#8B2E2E] flex items-center justify-center shrink-0 shadow-sm text-lg">
         🏛️
       </div>
 
-      <div className="flex-1 max-w-full parchment-panel rounded-xl p-5 sm:p-6 shadow-parchment-md space-y-5">
+      <div className="flex-1 max-w-full parchment-panel rounded-xl p-5 sm:p-6 shadow-parchment-md space-y-5 border-l-4 border-l-[#8B2E2E]">
         {/* Top Meta Bar: Guardrail Status & Latency */}
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#B8995C]/30 pb-3">
           <div className="flex items-center gap-2">
@@ -145,7 +214,7 @@ export default function ChatMessage({ message }) {
           <div className="p-3.5 rounded-xl bg-amber-950/30 border border-amber-500/40 flex items-start gap-3 text-amber-200 text-xs shadow-lg">
             <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <div className="font-bold text-amber-300 font-mono text-[11.5px] uppercase tracking-wider">
+              <div className="font-bold text-amber-300 font-serif text-[12px]">
                 Closest Related Passages Found — Thematic Match Only
               </div>
               <p className="text-amber-100/90 leading-relaxed text-[11px]">
@@ -161,7 +230,7 @@ export default function ChatMessage({ message }) {
             <div className="flex items-center gap-2">
               <Scale className="w-4 h-4 text-[#8B2E2E]" />
               <h3 className="font-philosophy text-base font-bold text-[#8B2E2E] tracking-wide">
-                Dialectical Comparative Synthesis
+                Source-Grounded Answer &amp; Evidence
               </h3>
             </div>
             
@@ -172,17 +241,29 @@ export default function ChatMessage({ message }) {
             )}
           </div>
           
-          <div className="max-w-none text-[#2B2419] text-sm leading-relaxed space-y-3 bg-[#FAF7F0] p-5 rounded-xl border border-[#B8995C]/40 shadow-parchment-sm relative font-serif">
+          <div className="max-w-none text-[#2B2419] text-[13.5px] sm:text-sm leading-relaxed space-y-3 bg-[#FAF7F0] p-5 rounded-xl border border-[#B8995C]/40 border-l-4 border-l-[#8B2E2E] shadow-parchment-sm relative font-body normal-case">
             {sentenceGroundedness.length > 0 ? (
               <div className="space-y-3 leading-relaxed">
                 {sentenceGroundedness.map((s, idx) => {
-                  const isHeading = s.text.startsWith('#');
+                  const isHeading = s.text.startsWith('#') || s.text === 'Answer:' || s.text === 'Evidence:' || s.text === 'Answer' || s.text === 'Evidence';
                   if (isHeading) {
                     return (
-                      <h4 key={idx} className="font-philosophy text-[#8B2E2E] text-sm font-bold pt-3 pb-1 border-b border-[#B8995C]/25 flex items-center gap-2 tracking-wide">
-                        <span className="text-[#B8995C] text-xs">§</span>
-                        <span>{s.text.replace(/^#+\s*/, '')}</span>
-                      </h4>
+                      <div key={idx} className="section-accent-rule first:mt-0 first:pt-0 first:border-t-0 my-2">
+                        <h4 className="font-philosophy text-[#8B2E2E] text-sm font-bold pb-1 flex items-center gap-2 tracking-wide normal-case">
+                          <span className="text-[#8B2E2E] font-bold text-xs select-none">§</span>
+                          <span>{s.text.replace(/^#+\s*/, '')}</span>
+                        </h4>
+                      </div>
+                    );
+                  }
+
+                  const isBullet = s.text.startsWith('- ') || s.text.startsWith('* ');
+                  if (isBullet) {
+                    return (
+                      <div key={idx} className="pl-3 py-1 flex items-start gap-2 text-[#4A3E31] text-[13px] font-serif">
+                        <span className="text-[#8B2E2E] font-bold select-none">•</span>
+                        <span>{s.text.replace(/^[\-\*]\s*/, '')}</span>
+                      </div>
                     );
                   }
 
@@ -199,12 +280,12 @@ export default function ChatMessage({ message }) {
                       onClick={() => setActiveSentenceTooltip(activeSentenceTooltip === idx ? null : idx)}
                     >
                       <span
-                        className={`inline transition-all rounded px-1 py-0.5 cursor-pointer ${
+                        className={`inline transition-all rounded px-1 py-0.5 cursor-pointer font-body normal-case ${
                           isFlagged
-                            ? 'sentence-flagged bg-[#FDF4F4] border-b-2 border-[#8B2E2E] text-[#8B2E2E] font-medium hover:bg-[#FBE8E8]'
+                            ? 'citation-span-flagged sentence-flagged hover:bg-[#FBE8E8]'
                             : isRegenerated
-                            ? 'bg-[#EAF3EE] border-b-2 border-[#366854] text-[#1E3E32] hover:bg-[#DCEEE3]'
-                            : 'hover:bg-[#B8995C]/15'
+                            ? 'citation-span-regenerated hover:bg-[#FBE8E8]'
+                            : 'citation-span-grounded'
                         }`}
                       >
                         {s.text}{' '}
@@ -351,19 +432,19 @@ export default function ChatMessage({ message }) {
                         </div>
 
                         {/* Core Stance Callout */}
-                        <div className="p-3 rounded-lg text-xs font-serif italic leading-snug bg-[#F4EFE6] border-l-2 border-[#B8995C] text-[#2B2419]">
+                        <div className="p-3 rounded-lg text-xs font-serif italic leading-snug bg-[#FDF6F4] border-l-3 border-[#8B2E2E] text-[#2B2419]">
                           "{b.core_stance}"
                         </div>
 
                         {/* Classical Decorative Divider between summary quote and full explanation */}
-                        <div className="flex items-center justify-center my-2 text-[#B8995C]/60 text-[10px] select-none">
-                          <span className="w-12 h-px bg-[#B8995C]/30"></span>
-                          <span className="mx-2">❖</span>
-                          <span className="w-12 h-px bg-[#B8995C]/30"></span>
+                        <div className="flex items-center justify-center my-2 text-[#8B2E2E]/60 text-[10px] select-none">
+                          <span className="w-12 h-px bg-[#8B2E2E]/25"></span>
+                          <span className="mx-2 text-[#8B2E2E]">❖</span>
+                          <span className="w-12 h-px bg-[#8B2E2E]/25"></span>
                         </div>
 
                         {/* Detailed Argument */}
-                        <div className="text-xs text-[#3D3425] leading-relaxed font-serif whitespace-pre-line">
+                        <div className="text-xs text-[#3D3425] leading-relaxed font-body normal-case whitespace-pre-line">
                           {b.detailed_argument}
                         </div>
                       </div>
@@ -399,8 +480,8 @@ export default function ChatMessage({ message }) {
                         onClick={() => setActiveTab(idx)}
                         className={`px-3 py-1.5 rounded-full text-xs font-serif transition-all flex items-center gap-1.5 ${
                           isActive
-                            ? 'bg-[#FAF7F0] text-[#2B2419] font-bold shadow-sm border-2 border-[#B8995C]'
-                            : 'bg-[#F4EFE6]/70 text-[#73624A] border border-[#B8995C]/30 hover:border-[#B8995C] hover:text-[#2B2419]'
+                            ? 'bg-[#FDF4F4] text-[#561A1A] font-bold shadow-sm border-2 border-[#8B2E2E]'
+                            : 'bg-[#F4EFE6]/70 text-[#73624A] border border-[#B8995C]/30 hover:border-[#8B2E2E]/60 hover:text-[#8B2E2E]'
                         }`}
                       >
                         <span className="text-[11px]">{theme.emblem}</span>
@@ -416,7 +497,7 @@ export default function ChatMessage({ message }) {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between border-b border-[#B8995C]/20 pb-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-[#FAF7F0] border border-[#B8995C] flex items-center justify-center text-sm shadow-inner-gold shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-[#FAF7F0] border-2 border-[#8B2E2E] flex items-center justify-center text-sm shadow-sm shrink-0">
                           {THINKER_THEMES[breakdowns[activeTab].thinker_id]?.emblem || '🏛️'}
                         </div>
                         <div>
@@ -430,18 +511,18 @@ export default function ChatMessage({ message }) {
                       </div>
                     </div>
 
-                    <div className="p-3.5 rounded-lg bg-[#F4EFE6] border-l-2 border-[#B8995C] text-[#2B2419] text-xs font-serif italic leading-relaxed font-medium">
+                    <div className="p-3.5 rounded-lg bg-[#FDF6F4] border-l-3 border-[#8B2E2E] text-[#2B2419] text-xs font-serif italic leading-relaxed font-medium">
                       "{breakdowns[activeTab].core_stance}"
                     </div>
 
                     {/* Classical Decorative Divider between summary quote and full explanation */}
-                    <div className="flex items-center justify-center my-2 text-[#B8995C]/60 text-[10px] select-none">
-                      <span className="w-16 h-px bg-[#B8995C]/30"></span>
-                      <span className="mx-2">❖</span>
-                      <span className="w-16 h-px bg-[#B8995C]/30"></span>
+                    <div className="flex items-center justify-center my-2 text-[#8B2E2E]/60 text-[10px] select-none">
+                      <span className="w-16 h-px bg-[#8B2E2E]/25"></span>
+                      <span className="mx-2 text-[#8B2E2E]">❖</span>
+                      <span className="w-16 h-px bg-[#8B2E2E]/25"></span>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-[#3D3425] leading-relaxed font-serif whitespace-pre-line">
+                    <p className="text-xs sm:text-sm text-[#3D3425] leading-relaxed font-body normal-case whitespace-pre-line">
                       {breakdowns[activeTab].detailed_argument}
                     </p>
 

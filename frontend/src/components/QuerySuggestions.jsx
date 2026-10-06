@@ -27,8 +27,8 @@ const SUGGESTIONS = [
 export default function QuerySuggestions({ onSelectQuery }) {
   return (
     <div className="w-full space-y-2.5 py-4">
-      <div className="flex items-center gap-1.5 eyebrow-maroon">
-        <Compass className="w-3.5 h-3.5 text-[#B8995C]" />
+      <div className="flex items-center gap-1.5 text-xs font-semibold text-[#8B2E2E] font-philosophy tracking-wide">
+        <Compass className="w-4 h-4 text-[#8B2E2E]" />
         <span>Dialectical Dilemma Prompts</span>
       </div>
 
@@ -37,19 +37,19 @@ export default function QuerySuggestions({ onSelectQuery }) {
           <button
             key={idx}
             onClick={() => onSelectQuery(item.query, item.thinkers)}
-            className="text-left p-3.5 rounded-lg parchment-card parchment-card-hover flex flex-col justify-between group transition-all"
+            className="text-left p-3.5 rounded-lg parchment-card parchment-card-hover border-l-4 border-l-[#8B2E2E] flex flex-col justify-between group transition-all"
           >
             <div>
               <div className="flex items-center justify-between text-xs font-bold text-[#8B2E2E] group-hover:text-[#561A1A] font-philosophy tracking-wide">
                 <span>{item.title}</span>
-                <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#B8995C]" />
+                <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#8B2E2E]" />
               </div>
               <p className="text-[12px] text-[#564936] mt-1.5 leading-relaxed font-serif italic line-clamp-2">
                 "{item.query}"
               </p>
             </div>
-            <div className="mt-2.5 pt-2 border-t border-[#B8995C]/20 text-[10px] uppercase font-serif tracking-widest text-[#8C7D6B]">
-              {item.thinkers.length} Traditions Compared
+            <div className="mt-2.5 pt-2 border-t border-[#B8995C]/20 text-[11px] font-serif italic text-[#8B2E2E]/85">
+              {item.thinkers.length} traditions compared
             </div>
           </button>
         ))}

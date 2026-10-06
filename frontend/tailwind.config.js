@@ -53,9 +53,9 @@ export default {
         daoist: '#583D72',
       },
       fontFamily: {
-        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
-        display: ['"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
-        body: ['"EB Garamond"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+        serif: ['"EB Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        body: ['"EB Garamond"', 'Georgia', 'serif'],
         sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"Fira Code"', 'monospace']
       },

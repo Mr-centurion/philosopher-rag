@@ -88,5 +88,7 @@ async def run_query_workflow(question: str, requested_thinkers: Optional[List[st
         is_weak_match=final_state.get("is_weak_match", False),
         weak_match_warning=final_state.get("weak_match_warning"),
         query_topic=final_state.get("query_topic"),
-        topic_alignment_score=final_state.get("topic_alignment_score", 1.0)
+        topic_alignment_score=final_state.get("topic_alignment_score", 1.0),
+        is_invalid_premise=final_state.get("is_invalid_premise", False),
+        invalid_premise_details=final_state.get("invalid_premise_details")
     )

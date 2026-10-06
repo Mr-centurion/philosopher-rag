@@ -41,6 +41,10 @@ class GraphState(TypedDict, total=False):
     template_collision: bool
     voice_distinctiveness_score: float
 
+    # Invalid Premise / Non-philosophical modern entity detection
+    is_invalid_premise: bool
+    invalid_premise_details: Optional[Dict[str, Any]]
+
     # Evaluation / Metrics
     faithfulness_score: float
     start_time: float

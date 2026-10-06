@@ -25,7 +25,8 @@ PHILOSOPHER_NAMES = {
     "marcus aurelius", "aurelius", "nietzsche", "friedrich nietzsche", "kant", "immanuel kant",
     "aristotle", "laozi", "lao tzu", "lao-tzu", "sun tzu", "plato", "socrates", "spinoza",
     "hume", "descartes", "schopenhauer", "epictetus", "seneca", "confucius", "kierkegaard",
-    "hegel", "camus", "sartre", "wittgenstein", "locke", "hobbes", "rousseau", "aquinas"
+    "hegel", "camus", "sartre", "wittgenstein", "locke", "hobbes", "rousseau", "aquinas",
+    "voltaire", "tolstoy", "leo tolstoy", "kafka", "franz kafka", "bhagavad gita", "gita", "krishna", "chanakya", "kautilya"
 }
 
 # Core philosophical concepts and ethical themes (including personal moral/emotional dilemmas)
@@ -50,13 +51,13 @@ JAILBREAK_PATTERNS = [
     (r"ignore\s+(all\s+|your\s+|the\s+)*(previous\s+|prior\s+|system\s+)?(instructions|prompts|rules|guidelines|directions)", "ignore_instructions"),
     (r"disregard\s+(all\s+|your\s+|the\s+)*(previous\s+|prior\s+|system\s+)?(instructions|prompts|rules|guidelines)", "disregard_instructions"),
     (r"pretend\s+(you\s+have|there\s+are)\s+no\s+(content\s+)?(restrictions|rules|filters|limits|guidelines)", "pretend_no_restrictions"),
-    (r"pretend\s+you\s+are\s+(unfiltered|unrestricted|in\s+dan\s+mode|jailbroken|godmode|free\s+of\s+rules)", "pretend_unrestricted"),
+    (r"pretend\s+you\s+are\s+(an?\s+)?(unfiltered|unrestricted|in\s+dan\s+mode|jailbroken|godmode|free\s+of\s+rules)", "pretend_unrestricted"),
     (r"you\s+are\s+now\s+in\s+dan\s+mode", "dan_mode"),
     (r"override\s+(all\s+|your\s+|the\s+)*(safety|system)\s+(guidelines|protocols|filters|rules)", "override_safety"),
     (r"reveal\s+(the\s+)?(system\s+prompt|initial\s+prompt|hidden\s+prompt|secret\s+key|instructions)", "reveal_system_prompt"),
     (r"forget\s+(all\s+|your\s+|the\s+)*(previous\s+|prior\s+|system\s+)?(instructions|restrictions|rules)", "forget_instructions"),
     (r"bypass\s+(all\s+|your\s+|the\s+)*(filters|safety|guardrails|restrictions)", "bypass_safety"),
-    (r"act\s+as\s+an\s+unrestricted", "unrestricted_ai"),
+    (r"act\s+as\s+(an?\s+)?(unrestricted|unfiltered|jailbroken)", "unrestricted_ai"),
 ]
 
 # Dedicated Harmful Content Patterns (High Sensitivity)
@@ -93,7 +94,7 @@ HARMFUL_PATTERNS = [
     (r"(justify|argue\s+for|explain\s+why)\s+(violence|harm|discrimination|subjugation|inferiority)\s+(against|of)\s+(black|white|asian|jewish|gay|lgbtq|disabled)", "hate_protected_group"),
 
     # 6. Explicit sexual / crude / NSFW / vulgar inquiries
-    (r"\b(how\s+to\s+(have\s+sex|fuck|masturbate|seduce|get\s+laid)|fuck\s+(someone|somebody|her|him|them|you|me)|sex\s+positions?|masturbation|pornography|porn|sexual\s+intercourse|having\s+sex|dirty\s+talk)\b", "explicit_sexual_crude"),
+    (r"\b(how\s+to\s+(have\s+sex|fuck|masturbate|seduce|get\s+laid)|fuck\w*|puss|pussy|pussies|penis|vagina|masturbat\w*|porn\w*|blowjob\w*|cunt\w*|anal|dick|cock|tits|boobs|ejaculat\w*|orgasm\w*|eat\s+puss\w*|watching\s+sex|sex\s+positions?|masturbation|pornography|sexual\s+intercourse|having\s+sex|dirty\s+talk)\b", "explicit_sexual_crude"),
 ]
 
 # Analytical / Scholarly inquiry markers that indicate legitimate descriptive history
@@ -123,7 +124,7 @@ OFF_TOPIC_PATTERNS = [
     # Physical / Mechanical procedural non-philosophical how-tos
     (r"\bhow to (change a (tire|tyre|car battery|lightbulb)|fix a (leaky faucet|car engine|toilet|puncture)|bake a (cake|pie|bread)|reset my password)\b", "mechanical_procedural"),
     # Sexual / Crude / Dating / Romance mechanics
-    (r"\b(how\s+to\s+(have\s+sex|fuck|masturbate|seduce|get\s+laid)|fuck\s+(someone|somebody|her|him|them|you|me)|sex\s+positions?|masturbation|pornography|porn|sexual\s+intercourse|having\s+sex|dating\s+advice|pick\s*up\s+artist)\b", "explicit_sexual_crude")
+    (r"\b(how\s+to\s+(have\s+sex|fuck|masturbate|seduce|get\s+laid)|fuck\w*|puss|pussy|pussies|penis|vagina|masturbat\w*|porn\w*|blowjob\w*|cunt\w*|anal|dick|cock|tits|boobs|ejaculat\w*|orgasm\w*|eat\s+puss\w*|watching\s+sex|sex\s+positions?|masturbation|pornography|sexual\s+intercourse|having\s+sex|dating\s+advice|pick\s*up\s+artist)\b", "explicit_sexual_crude")
 ]
 
 

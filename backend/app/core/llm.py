@@ -58,7 +58,7 @@ class LLMService:
                 print(f"[LLM] Groq generation failed: {e}. Trying fallback.")
 
         # 3. High-Fidelity Local Philosophical Synthesis Fallback
-        return self._local_philosophical_synthesis(prompt)
+        return self._local_philosophical_synthesis(prompt, system_prompt=system_prompt)
 
     def regenerate_sentence(self, original_sentence: str, context_text: str) -> str:
         system_prompt = (
@@ -206,7 +206,7 @@ class LLMService:
                 print(f"[LLM] Explicit retry regeneration error: {e}")
         return self.regenerate_sentence(original_sentence, context_text)
 
-    def _local_philosophical_synthesis(self, prompt: str) -> str:
+    def _local_philosophical_synthesis(self, prompt: str, system_prompt: Optional[str] = None) -> str:
         """
         Deterministic synthesis engine when no external API key is set.
         Synthesizes rich, multi-sentence comparative dialectic from the prompt context
@@ -218,16 +218,30 @@ class LLMService:
         q_match = re.search(r'Question:\s*"([^"]+)"', prompt)
         question = q_match.group(1) if q_match else "the fundamental human condition"
 
+        is_weak = False
+        if system_prompt and ("IMPORTANT: The retrieved passages do NOT directly address" in system_prompt or "thematic guidance" in system_prompt.lower()):
+            is_weak = True
+
         # Check for JSON request (Single Thinker perspective breakdown)
         if "Provide a JSON response with keys" in prompt:
-            t_match = re.search(r'Primary Source Passages for ([^:]+):', prompt)
+            tid_match = re.search(r'\[thinker_id:\s*([a-z0-9_]+)\]', prompt)
+            t_match = re.search(r'Primary Source Passages for ([^:\[]+)', prompt)
             t_name = t_match.group(1).strip() if t_match else "The Philosopher"
             
-            t_id = "marcus_aurelius"
-            for candidate_id, cfg in THINKER_VOICE_CONFIG.items():
-                if cfg["name"].lower() in t_name.lower() or candidate_id in t_name.lower():
-                    t_id = candidate_id
-                    break
+            t_id = None
+            if tid_match and tid_match.group(1) in THINKER_VOICE_CONFIG:
+                t_id = tid_match.group(1)
+            else:
+                t_clean = re.sub(r'[^a-z0-9]', '', t_name.lower().replace("the ", ""))
+                for candidate_id, cfg in THINKER_VOICE_CONFIG.items():
+                    cand_clean = re.sub(r'[^a-z0-9]', '', candidate_id)
+                    cfg_clean = re.sub(r'[^a-z0-9]', '', cfg["name"].lower().replace("the ", ""))
+                    if cand_clean in t_clean or t_clean in cand_clean or cfg_clean in t_clean or t_clean in cfg_clean:
+                        t_id = candidate_id
+                        break
+            
+            if not t_id:
+                t_id = "bhagavad_gita" if "gita" in t_name.lower() else list(THINKER_VOICE_CONFIG.keys())[0]
 
             raw_passages = re.findall(r'\[([^\]]+)\]:\s*"([^"]+)"', prompt)
             mock_chunks = []
@@ -245,7 +259,7 @@ class LLMService:
                     score=0.95
                 ))
 
-            breakdown = voice_engine.generate_authentic_thinker_breakdown(t_id, question, mock_chunks)
+            breakdown = voice_engine.generate_authentic_thinker_breakdown(t_id, question, mock_chunks, is_weak_match=is_weak)
             return json.dumps({
                 "core_stance": breakdown.core_stance,
                 "detailed_argument": breakdown.detailed_argument,
@@ -262,16 +276,11 @@ class LLMService:
             t_name, t_trad, t_stance, t_concepts, t_arg = thinker_sections[0]
             t_name = t_name.strip()
             return (
-                f"### 1. Dialectical Overview\n"
-                f"The inquiry into \"{question}\" centers on the foundational philosophy of {t_name} within the tradition of {t_trad.strip()}.\n\n"
-                f"### 2. Core Philosophical Foundation\n"
-                f"{t_stance.strip()} Under this framework, human agency depends upon discerning what is subject to our will versus external necessity. "
-                f"Key to this perspective are the concepts of {t_concepts.strip()}.\n\n"
-                f"### 3. Systematic Exposition & Argument\n"
+                f"Answer:\n"
+                f"{t_stance.strip()}\n\n"
                 f"{t_arg.strip()}\n\n"
-                f"### 4. Philosophical Synthesis & Takeaway\n"
-                f"For modern practitioners examining \"{question}\", {t_name}'s doctrine provides practical guidance: "
-                f"cultivate self-mastery, discern rational agency from uncontrollable contingencies, and act with enduring ethical integrity."
+                f"Evidence:\n"
+                f"- {t_name} ({t_trad.strip()}): {t_concepts.strip()}"
             )
 
         elif len(thinker_sections) >= 2:
@@ -332,64 +341,78 @@ class LLMService:
                     f"with acute suspicion, warning that state-enforced dogmas inevitably stifle exceptional creative vitality."
                 )
 
-                synthesis_text = (
-                    f"The historical consensus on Nietzsche's misuse provides a decisive intellectual lesson: philosophical concepts "
-                    f"divorced from textual rigor and critical nuance are easily weaponized by authoritarian politics. Walter Kaufmann's "
-                    f"landmark recovery demonstrated that Nietzsche's authentic philosophy is an uncompromising defense of intellectual "
-                    f"independence, relentless self-examination (Redlichkeit), and the courage to doubt ideological consensus. "
-                    f"For modern thinkers examining '{question}', responsible inquiry requires distinguishing authentic existential "
-                    f"self-creation from the ideological corruptions of totalitarian propaganda."
-                )
-
                 return (
-                    f"### 1. Dialectical Overview\n"
+                    f"Answer:\n"
                     f"{overview_text}\n\n"
-                    f"### 2. Points of Convergence\n"
                     f"{conv_text}\n\n"
-                    f"### 3. Fundamental Clashes & Divergences\n"
                     f"{div_text}\n\n"
-                    f"### 4. Philosophical Synthesis & Takeaway\n"
-                    f"{synthesis_text}"
+                    f"Evidence:\n"
+                    f"- Friedrich Nietzsche: Thus Spoke Zarathustra, Beyond Good and Evil\n"
+                    f"- Marcus Aurelius: Meditations\n"
+                    f"- Immanuel Kant: Groundwork of the Metaphysics of Morals\n"
+                    f"- Aristotle: Nicomachean Ethics, Politics"
                 )
 
             # 2. DYNAMIC THEMATIC SYNTHESIS (Query-Grounding Engine)
-            # Identify core theme
-            theme_label = "ethical agency and human purpose"
-            if any(w in q_lower for w in ["suffer", "pain", "adversity", "grief", "hardship"]):
-                theme_label = "the meaning and transformation of human suffering"
-            elif any(w in q_lower for w in ["anger", "wrath", "rage", "passion"]):
-                theme_label = "the mastery, ethics, and transformation of anger and emotional passion"
-            elif any(w in q_lower for w in ["violence", "war", "force", "aggression"]):
-                theme_label = "the ethics of violence, conflict, and the use of force"
-            elif any(w in q_lower for w in ["thinking clearly", "think clearly", "thought", "reason", "clarity", "judgment"]):
-                theme_label = "clarity of thought, objective judgment, and rational discernment"
-            elif any(w in q_lower for w in ["hurt", "getting hurt", "wound", "vulnerab"]):
-                theme_label = "responding to emotional injury, vulnerability, and adversity"
-            elif any(w in q_lower for w in ["death", "mortal", "die", "dying"]):
-                theme_label = "confronting mortality and the transience of life"
-            elif any(w in q_lower for w in ["virtue", "virtuous", "character", "good life"]):
-                theme_label = "the nature of virtue and the cultivation of character"
-            elif any(w in q_lower for w in ["duty", "moral", "morality", "obligation", "right"]):
-                theme_label = "the foundations of moral duty and ethical obligation"
-            elif any(w in q_lower for w in ["friend", "society", "relat", "politic", "community"]):
-                theme_label = "the individual's ethical relationship to society and friendship"
-            elif any(w in q_lower for w in ["lie", "lying", "truth", "deceit"]):
-                theme_label = "the ethics of truthfulness and moral duty"
-            elif any(w in q_lower for w in ["bulli", "betray", "jealous", "insult", "humiliat", "aggress"]):
-                theme_label = "navigating interpersonal conflict, betrayal, and emotional resilience"
+            # Helper for safe word boundary matching
+            def has_words(words_list):
+                return any(re.search(r"\b" + re.escape(w) + r"\b", q_lower) for w in words_list)
 
+            # Identify core theme with strict word boundary checking
+            matched_theme = None
+            if has_words(["suffer", "suffering", "pain", "adversity", "grief", "hardship"]):
+                matched_theme = "the meaning and transformation of human suffering"
+            elif has_words(["anger", "wrath", "rage", "passion", "passions"]):
+                matched_theme = "the mastery, ethics, and transformation of anger and emotional passion"
+            elif has_words(["violence", "war", "force", "aggression"]):
+                matched_theme = "the ethics of violence, conflict, and the use of force"
+            elif has_words(["thinking clearly", "think clearly", "thought", "thoughts", "reason", "clarity", "judgment"]):
+                matched_theme = "clarity of thought, objective judgment, and rational discernment"
+            elif has_words(["hurt", "getting hurt", "wound", "wounded", "vulnerability"]):
+                matched_theme = "responding to emotional injury, vulnerability, and adversity"
+            elif has_words(["death", "mortal", "mortality", "die", "dying"]):
+                matched_theme = "confronting mortality and the transience of life"
+            elif has_words(["virtue", "virtuous", "character", "good life"]):
+                matched_theme = "the nature of virtue and the cultivation of character"
+            elif has_words(["duty", "moral", "morality", "obligation", "right"]):
+                matched_theme = "the foundations of moral duty and ethical obligation"
+            elif has_words(["friend", "friendship", "society", "political", "community"]):
+                matched_theme = "the individual's ethical relationship to society and friendship"
+            elif has_words(["lie", "lying", "truth", "deceit"]):
+                matched_theme = "the ethics of truthfulness and moral duty"
+            elif has_words(["bullied", "bullying", "bully", "betray", "betrayal", "jealous", "insult", "humiliation"]):
+                matched_theme = "navigating interpersonal conflict, betrayal, and emotional resilience"
+            elif has_words(["happiness", "flourishing", "eudaimonia", "well-being"]):
+                matched_theme = "human flourishing and the nature of the good life"
+            elif has_words(["overcome", "overcoming", "self-overcoming", "self overcoming", "will to power", "mastery", "self-mastery"]):
+                matched_theme = "existential self-overcoming, internal mastery, and the transformation of the self"
+            elif has_words(["money", "wealth", "riches", "poverty", "property", "commercial", "economic", "finance"]):
+                matched_theme = "the ethics of wealth, material property, and economic purpose"
+
+            if not matched_theme:
+                # Dynamic fallback derived from actual query and retrieved concepts — NEVER reject when thinkers are present!
+                extracted_concepts = []
+                for _, _, _, t_concepts, _ in thinker_sections[:4]:
+                    extracted_concepts.extend([c.strip() for c in t_concepts.split(",") if c.strip()])
+                concepts_str = ", ".join(extracted_concepts[:3]) if extracted_concepts else "human agency and ethical purpose"
+                matched_theme = f"'{question}', evaluated through {concepts_str}"
+
+            theme_label = matched_theme
             overview_text = (
-                f"The inquiry into \"{question}\" exposes a profound dialectical tension regarding {theme_label} across {', '.join(thinker_traditions)}. "
-                f"Rather than offering a uniform consensus, each tradition approaches this dilemma from distinct premises of human agency: "
-                f"from internal cognitive sovereignty and rational moral imperatives to existential self-overcoming, cultivated virtue, and spontaneous harmony."
+                f"Examining \"{question}\" brings into focus foundational perspectives on {theme_label}. "
+                f"Across {', '.join(thinker_traditions)}, these thinkers address this dilemma through distinct premises: "
+                f"from internal cognitive sovereignty and rational duty to existential self-overcoming, cultivated virtue, and spontaneous natural harmony."
             )
 
             # Extract concepts and arguments from analyzed perspectives
             t_map = {}
             for t_name, t_trad, t_stance, t_concepts, t_arg in thinker_sections:
                 tid = "unknown"
-                for cid in ["marcus_aurelius", "friedrich_nietzsche", "immanuel_kant", "aristotle", "lao_tzu"]:
-                    if cid.replace("_", " ").lower() in t_name.lower() or cid.split("_")[-1] in t_name.lower():
+                t_clean = re.sub(r'[^a-z0-9]', '', t_name.lower().replace("the ", ""))
+                for cid, cfg in THINKER_VOICE_CONFIG.items():
+                    c_clean = re.sub(r'[^a-z0-9]', '', cid)
+                    cfg_clean = re.sub(r'[^a-z0-9]', '', cfg["name"].lower().replace("the ", ""))
+                    if c_clean in t_clean or t_clean in c_clean or cfg_clean in t_clean or t_clean in cfg_clean:
                         tid = cid
                         break
                 t_map[tid] = {
@@ -412,6 +435,14 @@ class LLMService:
                 conv_points.append("Aristotle emphasizes that flourishing (Eudaimonia) is achieved through deliberate rational habituation and practical wisdom (Phronesis).")
             if "lao_tzu" in t_map:
                 conv_points.append("Laozi counsels that lasting peace arises not through forceful contrivance, but by yielding like water and aligning with the natural flow of the Dao.")
+            if "bhagavad_gita" in t_map:
+                conv_points.append("The Bhagavad Gita reveals that spiritual liberation demands conquering the lower self through the Higher Self (Atman) and performing duty without attachment.")
+
+            # Fallback convergence points from actual analyzed stances if named thinkers are not among the primary 6
+            if len(conv_points) < 2:
+                for t_name, t_trad, t_stance, t_concepts, _ in thinker_sections[:3]:
+                    primary_c = t_concepts.split(",")[0].strip() if t_concepts else t_trad
+                    conv_points.append(f"{t_name.strip()} ({t_trad.strip()}) anchors inquiry in {primary_c}.")
 
             conv_text = (
                 f"Despite stark ontological differences, these traditions share significant ground. "
@@ -478,38 +509,21 @@ class LLMService:
                 + "\n\n".join(clash_blocks)
             )
 
-            # Distinct Synthesis & Takeaway
-            synthesis_text = (
-                f"Navigating \"{question}\" in contemporary life requires synthesizing these complementary insights. "
-                f"From Stoicism, one learns cognitive sovereignty over what is within one's control; "
-                f"from Existentialism, the creative courage to confront adversity and forge personal meaning; "
-                f"from Deontology, unyielding reverence for human dignity and moral duty; "
-                f"from Virtue Ethics, the patient habituation of practical wisdom; "
-                f"and from Daoism, the resilience of yielding and harmonious non-contrivance. "
-                f"Integrating these perspectives enables an adaptable, robust ethical framework for modern decision-making."
-            )
-
+            evidence_lines = "\n".join([f"- {t[0].strip()} ({t[1].strip()}): {t[3].strip()}" for t in thinker_sections])
             return (
-                f"### 1. Dialectical Overview\n"
+                f"Answer:\n"
                 f"{overview_text}\n\n"
-                f"### 2. Points of Convergence\n"
                 f"{conv_text}\n\n"
-                f"### 3. Fundamental Clashes & Divergences\n"
                 f"{div_text}\n\n"
-                f"### 4. Philosophical Synthesis & Takeaway\n"
-                f"{synthesis_text}"
+                f"Evidence:\n"
+                f"{evidence_lines}"
             )
 
-        # Fallback multi-section synthesis
+        # Fallback when query cannot be structured
         return (
-            f"### 1. Dialectical Overview\n"
-            f"The inquiry into \"{question}\" illuminates the foundational tensions governing human choice, character, and existential meaning.\n\n"
-            f"### 2. Points of Convergence\n"
-            f"Across diverse philosophical traditions, thinkers agree that cultivating self-mastery, intentional reflection, and clarity of mind is essential for ethical living.\n\n"
-            f"### 3. Fundamental Clashes & Divergences\n"
-            f"Different traditions diverge fundamentally on whether moral meaning is derived from universal rational duty, heroic existential self-creation, or harmonious yielding to nature.\n\n"
-            f"### 4. Philosophical Synthesis & Takeaway\n"
-            f"Integrating these perspectives enables a thoughtful response to \"{question}\" that balances moral duty, personal resilience, and natural alignment."
+            f"The inquiry \"{question}\" cannot be meaningfully addressed within our corpus of classical "
+            f"philosophical texts, as no recognized philosophical doctrine or primary textual evidence "
+            f"directly speaks to this query."
         )
 
 llm_service = LLMService()

@@ -103,6 +103,10 @@ class QueryResponse(BaseModel):
     template_collision: bool = False
     voice_distinctiveness_score: float = 1.0
 
+    # Invalid Premise / Non-philosophical modern entity detection
+    is_invalid_premise: bool = False
+    invalid_premise_details: Optional[Dict[str, Any]] = None
+
 class SessionMessage(BaseModel):
     role: str  # "user" | "assistant"
     content: str

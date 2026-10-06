@@ -110,6 +110,12 @@ TOPIC_SYNONYMS: Dict[str, List[str]] = {
     ],
     "god": [
         "god", "divine", "logos", "heavens", "cosmos", "providence", "nature", "dao", "tao"
+    ],
+    "money": [
+        "money", "wealth", "riches", "poverty", "poor", "property", "possessions",
+        "financial", "finance", "commercial", "gold", "silver", "coins", "greed",
+        "avarice", "economic", "commerce", "business", "profit", "gain", "loss of wealth",
+        "luxury", "fortune", "bank", "ledger", "monetary", "capital", "currency"
     ]
 }
 
@@ -132,6 +138,88 @@ THINKER_TRADITION_VOCABULARY: Dict[str, Dict[str, List[str]]] = {
         "morality": ["good and evil", "wrongdoer", "share of the divine", "nature demands", "objective judgment", "unselfish action", "human life"],
         "anger": ["nor can i feel angry", "nature related to my own", "made for cooperation", "anger is unmanly", "passion", "ruling center", "governing mind", "no reason to torment yourself"],
         "thinking": ["governing mind", "ruling center", "objective judgment", "wipe out impressions", "think clearly", "reason", "logos", "serene mind", "ruling reason"]
+    },
+    "seneca": {
+        "death": ["despising death", "fear death", "die honourably", "mortal", "fastidious man may wish to die", "death takes them away", "no pain before our birth", "cycle", "facing the end", "memento mori", "perish"],
+        "suffering": ["pain is slight", "opinion has added nothing", "torment is brought to an end", "rouse yourself to resist", "according to opinion that we suffer", "wretched", "bear it is a noble deed", "pang", "grief", "endure", "bear pain"],
+        "friendship": ["loss of a friend", "dry eyes", "recover your friend by tears", "memory of dead friends", "quiet pleasure", "self-sufficient", "bear the loss with equanimity", "art of making friends", "rescue from the enemy", "worthy of friendship", "comrades"],
+        "society": ["they are slaves", "fellow-slaves", "comrades", "humble friends", "fortune has equal power", "same stock", "breathes lives and dies", "treat your inferior", "slave to fear ambition or desire", "fellow man"],
+        "anxiety": ["flee along with yourself", "burdens of the mind", "globetrotting", "change your soul not your climate", "travel with your ailments", "restlessness in vain", "fear", "dread"],
+        "harm": ["opinion has added nothing", "according to opinion that we suffer", "wretched", "strip off the mask", "bare reality", "fortune"],
+        "duty": ["hold every hour", "lay hold of to-day's task", "time speeds by", "ownership of time", "single fleeting possession", "precious commodity", "die honourably"],
+        "thinking": ["change your soul not your climate", "strip off the mask", "bare reality", "opinion", "equanimity", "philosophy"]
+    },
+    "epictetus": {
+        "harm": ["no one will hurt you", "will not be harmed", "opinion alone which has provoked you", "principles and notions", "not he who gives ill language insults", "slavish"],
+        "insult": ["not he who gives ill language or a blow insults", "principle which represents these things as insulting", "opinion alone which has provoked you", "abuse or mockery", "pity him rather than burn with resentment", "delay", "master of yourself", "provocation"],
+        "suffering": ["men are disturbed not by things", "notions which they form concerning things", "hindered or disturbed or grieved", "sickness is a hindrance to the body", "lameness", "wish them to happen as they do happen"],
+        "death": ["death is not terrible", "terror consists in our notion of death", "socrates", "wife and children should live for ever", "actor in a drama", "wish them to happen as they do happen"],
+        "desire": ["dichotomy of control", "in our control", "not in our control", "he is free who lives as he likes", "seek not that which is impossible", "disappointed in your desires"],
+        "duty": ["actor in a drama", "act well the character assigned you", "prescribe some character", "inward moral conviction", "be silent", "dignity"],
+        "anger": ["opinion alone which has provoked you", "pity him rather than burn with resentment", "gain time and delay", "not hurried away by appearance", "master of yourself"],
+        "thinking": ["principles and opinions", "prohairesis", "dichotomy of control", "not hurried away by appearance", "gain time and delay", "inward moral conviction", "judgments"]
+    },
+    "plato": {
+        "leadership": ["philosopher-king", "kings and princes", "political greatness and wisdom meet in one", "cities will never have rest", "govern", "ruler", "guardians"],
+        "thinking": ["allegory of the cave", "shadows of the images", "sun itself", "contemplate the good", "unexamined life is not worth living", "dialectic", "forms", "opinion", "knowledge", "reason"],
+        "morality": ["justice", "ring of gyges", "injustice", "virtue is not given by money", "care for the soul", "improvement of the soul", "tripartite soul", "good man"],
+        "virtue": ["virtue is not given by money", "improvement of the soul", "care for wisdom and truth", "daily converse about virtue", "unexamined life", "justice", "temperance", "noble"],
+        "death": ["death is a good", "migration of the soul", "sleep undisturbed by dreams", "no evil can happen to a good man", "fortunes not neglected by gods", "facing death"],
+        "harm": ["no evil can happen to a good man", "unjust man enslaved by tyrannical desires", "most wretched", "cannot be harmed"],
+        "society": ["philosopher-king", "justice in the state", "cities will never have rest from evils", "men of athens", "public as well as private", "community"],
+        "desire": ["appetitive element", "craves bodily pleasures", "ring of gyges", "invisible", "tyrannical desires", "temperance"]
+    },
+    "voltaire": {
+        "suffering": ["cultivate our garden", "diminish human misery", "physical and moral evil", "sorrow and disease", "mockery of human suffering", "sterile lamentation", "kindness"],
+        "morality": ["tolerance", "first law of nature", "appurtenance of humanity", "pardon each other our follies", "justice is the bond of society", "fanaticism", "mutual equity"],
+        "society": ["tolerance is its only remedy", "discord is the great evil", "pardon our follies", "holy wars", "justice is the bond of society", "hawks and pigeons", "civilization", "brother"],
+        "harm": ["persecutes a man his brother", "infectious malady", "spiritual rabies", "discord", "human cruelty", "fanaticism", "massacred each other"],
+        "thinking": ["cultivate our garden", "pangloss", "best of all possible worlds", "philosophical spirit", "reason alone can cure contagion", "dogma", "metaphysical systems"],
+        "god": ["origin of evil", "benevolence", "omnipotence", "superstition", "fanaticism", "holy wars", "theological"]
+    },
+    "leo_tolstoy": {
+        "suffering": ["crisis of meaning", "dragon of death", "drops of honey", "standstill", "precipice", "existential nihilism", "torment", "falsity", "despair"],
+        "death": ["death of ivan ilyich", "dragon of death", "where is death", "in place of death light", "fear of death vanished", "dying", "precipice", "facing death"],
+        "god": ["to know god is to live", "god is life", "faith", "faith connects finite with infinite", "surrender to god", "infinite compassion"],
+        "morality": ["selfless labor", "love of neighbor", "faith of simple people", "peasants", "humility", "artificial falsehood", "moral duty"],
+        "thinking": ["crisis of meaning", "why should i live", "rational knowledge leads to despair", "faith alone gives meaning", "falsehood of conventional life"],
+        "society": ["conventional life", "bourgeois", "deception and the lie", "simple working people", "peasants", "love your neighbor"]
+    },
+    "franz_kafka": {
+        "suffering": ["before the law", "the trial", "arrested without cause", "like a dog", "monstrous vermin", "rotting apple", "alienation", "helplessly", "absurd"],
+        "harm": ["arrested without cause", "court attracted by guilt", "like a dog", "shame outlive him", "intolerable parasite", "cast out", "rotting apple"],
+        "society": ["nameless authority", "incomprehensible apparatus", "economic utility", "commercial drudgery", "intolerable parasite", "modern existence", "bureaucratic"],
+        "morality": ["innocence is no defense", "guilt", "before the law", "doorkeeper", "shame", "unspoken verdict", "secret power", "justice"],
+        "death": ["like a dog", "final horror", "quiet darkness before dawn", "breathed his last sigh", "disappear", "knife into heart"],
+        "thinking": ["before the law", "parable", "court", "absurd", "alienation", "existential", "labyrinth", "doorkeeper", "incomprehensible"],
+        "loneliness": ["alienation materialized into flesh", "monster even to itself", "words no longer understood", "severing of human bonds", "solitude", "isolation"],
+        "money": ["bank", "financial documents", "commercial business", "monetary influence", "economic utility", "commercial drudgery", "economic exploitation", "wealth", "bourgeois", "ledger balances"]
+    },
+    "bhagavad_gita": {
+        "duty": ["nishkama karma", "action without attachment", "right is to the work alone", "never to its fruits", "svadharma", "allotted duty", "karma yoga", "action superior to inaction"],
+        "action": ["nishkama karma", "right is to the work", "fruits of action", "equanimity is yoga", "action in inaction", "devotion", "abandoning attachment"],
+        "suffering": ["not shaken amidst afflictions", "equanimity in success and failure", "pleasure and pain", "honor and dishonor", "cold and heat", "craving fled away"],
+        "death": ["immortality of soul", "atman", "never the spirit was born", "weapons cleave it not", "worn-out garments", "birthless deathless changeless", "facing death"],
+        "thinking": ["sthitaprajna", "settled wisdom", "steadfast mind", "tortoise draws in its limbs", "jnana yoga", "fire of wisdom", "self alone is friend"],
+        "harm": ["weapons cleave it not", "fire burneth it not", "untouched by sin", "lotus leaf", "self friend and enemy", "unwavering"],
+        "god": ["surrendering actions unto supreme", "krishna", "eternal", "moksha", "liberation", "lokasangraha", "sacrifice", "devotion"]
+    },
+    "chanakya": {
+        "leadership": ["happiness of subjects", "welfare of subjects", "king", "ruler", "indriyajaya", "restraint of senses", "energetic", "mandala", "sovereign", "alliances"],
+        "power": ["rod of justice", "danda", "strength is cause of peace", "alliances and treaties", "law of the fish", "matsya-nyaya", "crush an irreconcilable foe"],
+        "society": ["happiness of subjects", "welfare of subjects", "circle of states", "mandala", "alliances", "law of the fish", "security of life", "subjects"],
+        "friendship": ["test a friend in adversity", "disaster famine war", "cremation ground", "unconditional trust", "weaponize vulnerabilities", "no companion"],
+        "harm": ["law of the fish", "matsya-nyaya", "weaponize vulnerabilities", "approaching danger from afar", "protect wealth", "protect life"],
+        "thinking": ["strategic prudence", "indriyajaya", "realist discernment", "extract nectar from poison", "straight trees felled first", "foresight", "vigilant intellect"],
+        "anger": ["six internal enemies", "lust anger greed vanity", "arbitrary wrath", "incites revolt", "friend become angry"]
+    },
+    "sun_tzu": {
+        "aggression": ["art of war", "victory without fighting", "balk the enemy plans", "attack by stratagem", "tactics like water", "invincibility", "conflict", "strategic"],
+        "leadership": ["highest generalship", "know enemy and know yourself", "when to fight and when not to fight", "enlightened ruler is heedful", "general full of caution"],
+        "thinking": ["know enemy and yourself", "ponder and deliberate", "tactics like water", "no constant shape", "deception", "artifice of deviation", "foreknowledge"],
+        "anger": ["gratify anger", "fight out of pique", "anger may change to gladness", "vexation", "caution", "heedful"],
+        "action": ["rapidity of wind", "compactness of forest", "like fire", "immovability like mountain", "fall like thunderbolt", "modify tactics", "water"],
+        "harm": ["invincibility lies in defence", "kingdom destroyed cannot come again", "dead cannot be brought back", "safety or ruin"]
     },
     "friedrich_nietzsche": {
         "insult": ["ressentiment", "slave morality", "master morality", "noble type of man", "what is harmful to me is harmful in itself", "value-creating", "contempt", "school of war", "what does not kill me makes me stronger", "overcoming"],
@@ -204,7 +292,10 @@ STOPWORDS = {
     "taking", "regarding", "between", "human", "life", "relation", "constitutes",
     "conflict", "personal", "universal", "achieved", "through", "active", "effortless",
     "facing", "would", "they", "being", "should", "one", "their", "respond", "react",
-    "advice", "coping", "deal", "getting", "gets", "got"
+    "advice", "coping", "deal", "getting", "gets", "got",
+    "franz", "kafka", "seneca", "epictetus", "plato", "voltaire", "tolstoy", "leo",
+    "chanakya", "sun", "gita", "bhagavad", "arjuna", "krishna", "socrates",
+    "perspectives", "perspective", "philosophers", "philosophy", "philosophical"
 }
 
 class TopicMatcher:

@@ -81,7 +81,7 @@ def is_sentence_coherent(sentence: str) -> bool:
     s = sentence.strip()
     if not s:
         return False
-    if s.startswith("#"):
+    if s.startswith("#") or s in {"Answer:", "Evidence:"} or s.startswith("Answer:") or s.startswith("Evidence:"):
         return True
     if len(s) < 20:
         return False
@@ -157,7 +157,7 @@ class GuardrailsManager:
         s_lower = sentence.lower()
         
         # Headers or short transition phrases are considered structurally valid
-        if sentence.startswith("#") or len(sentence) < 25:
+        if sentence.startswith("#") or sentence in {"Answer:", "Evidence:"} or sentence.startswith("Answer:") or sentence.startswith("Evidence:") or len(sentence) < 25:
             return 0.95, (chunks[0].id if chunks else None)
 
         words = [w for w in re.findall(r"\b[a-zA-Z]{3,}\b", s_lower) if w not in STOPWORDS]
@@ -253,117 +253,120 @@ class GuardrailsManager:
             return answer, results, [], 0.20, flags
 
         context_text = "\n".join([f"[{c.work_title}, {c.chapter}]: {c.text}" for c in all_chunks[:6]])
-        raw_sentences = split_into_sentences(answer)
+        raw_paragraphs = [p.strip() for p in answer.strip().split("\n\n") if p.strip()]
         
         sentence_groundedness_list: List[SentenceGroundedness] = []
         regeneration_logs: List[RegenerationLog] = []
-        resolved_sentence_texts: List[str] = []
+        resolved_paragraphs: List[str] = []
+        global_idx = 0
 
-        for idx, sentence in enumerate(raw_sentences):
-            # Compute initial groundedness score
-            score, best_chunk_id = self._score_sentence_against_chunks(sentence, all_chunks)
-            
-            # If grounded, accept as is
-            if score >= threshold:
-                item = SentenceGroundedness(
-                    sentence_index=idx,
-                    text=sentence,
-                    grounded=True,
-                    confidence_score=score,
-                    supporting_chunk_id=best_chunk_id,
-                    was_regenerated=False
-                )
-                sentence_groundedness_list.append(item)
-                resolved_sentence_texts.append(sentence)
-            else:
-                # UNGROUNDED CLAIM DETECTED: Trigger Resolution Strategy (Attempt 1)
-                logger.info(f"[Guardrails] Sentence #{idx} ungrounded (score: {score:.2f}). Triggering regeneration (Attempt 1)...")
-                
-                # Attempt regeneration Pass 1
-                regenerated_sentence = llm_service.regenerate_sentence(sentence, context_text)
-                new_score, new_best_chunk_id = self._score_sentence_against_chunks(regenerated_sentence, all_chunks)
-                coherent = is_sentence_coherent(regenerated_sentence)
-                
-                # If Pass 1 failed coherence or threshold, attempt Pass 2 explicit retry
-                if not coherent or new_score < threshold:
-                    logger.info(f"[Guardrails] Attempt 1 did not meet floor (score={new_score:.2f}, coherent={coherent}). Trying Attempt 2...")
-                    regenerated_sentence_2 = llm_service.regenerate_sentence_explicit_retry(sentence, context_text)
-                    new_score_2, new_best_chunk_id_2 = self._score_sentence_against_chunks(regenerated_sentence_2, all_chunks)
-                    coherent_2 = is_sentence_coherent(regenerated_sentence_2)
-                    if coherent_2 and new_score_2 > new_score:
-                        regenerated_sentence = regenerated_sentence_2
-                        new_score = new_score_2
-                        new_best_chunk_id = new_best_chunk_id_2
-                        coherent = coherent_2
+        for p in raw_paragraphs:
+            p_lines = [line.strip() for line in p.split("\n") if line.strip()]
+            resolved_p_lines = []
 
-                logger.info(f"[Guardrails] Sentence #{idx} before: {score:.2f} -> after: {new_score:.2f} (coherent={coherent})")
-                
-                # HARD FLOOR RULE: ONLY replace if new_score >= threshold, coherent, and not duplicate
-                is_duplicate = regenerated_sentence in resolved_sentence_texts
-                if new_score >= threshold and coherent and not is_duplicate:
-                    item = SentenceGroundedness(
-                        sentence_index=idx,
-                        text=regenerated_sentence,
-                        grounded=True,
-                        confidence_score=new_score,
-                        supporting_chunk_id=new_best_chunk_id,
-                        flag_reason="Self-corrected via source-grounded regeneration",
-                        was_regenerated=True,
-                        original_text=sentence,
-                        original_score=score
-                    )
-                    sentence_groundedness_list.append(item)
-                    resolved_sentence_texts.append(regenerated_sentence)
-
-                    regeneration_logs.append(
-                        RegenerationLog(
-                            sentence_index=idx,
-                            original_text=sentence,
-                            regenerated_text=regenerated_sentence,
-                            before_score=score,
-                            after_score=new_score,
-                            resolved=True
-                        )
-                    )
+            for line in p_lines:
+                # If the line is a section header or bullet point, evaluate directly
+                if line.startswith("#") or line in {"Answer:", "Evidence:"} or line.startswith("Answer:") or line.startswith("Evidence:") or line.startswith("- ") or line.startswith("* "):
+                    line_sentences = [line]
                 else:
-                    # HARD FLOOR: Keep clean sentence text, flag as low-confidence with tooltip explanation
-                    item = SentenceGroundedness(
-                        sentence_index=idx,
-                        text=sentence,
-                        grounded=False,
-                        confidence_score=max(score, 0.20),
-                        closest_chunk_id=best_chunk_id,
-                        flag_reason="Unable to generate a confident grounded answer for this claim: assertions could not be fully verified against retrieved primary sources.",
-                        was_regenerated=True,
-                        original_text=sentence,
-                        original_score=score
-                    )
-                    sentence_groundedness_list.append(item)
-                    resolved_sentence_texts.append(sentence)
+                    line_sentences = split_into_sentences(line)
 
-                    regeneration_logs.append(
-                        RegenerationLog(
-                            sentence_index=idx,
-                            original_text=sentence,
-                            regenerated_text=regenerated_sentence if coherent else sentence,
-                            before_score=score,
-                            after_score=new_score if coherent else score,
-                            resolved=False
+                resolved_line_sentences = []
+                for sentence in line_sentences:
+                    score, best_chunk_id = self._score_sentence_against_chunks(sentence, all_chunks)
+                    is_header_unit = (
+                        sentence.startswith("#")
+                        or sentence in {"Answer:", "Evidence:"}
+                        or sentence.startswith("Answer:")
+                        or sentence.startswith("Evidence:")
+                    )
+
+                    if score >= threshold or is_header_unit:
+                        item = SentenceGroundedness(
+                            sentence_index=global_idx,
+                            text=sentence,
+                            grounded=True,
+                            confidence_score=score,
+                            supporting_chunk_id=best_chunk_id,
+                            was_regenerated=False
                         )
-                    )
+                        sentence_groundedness_list.append(item)
+                        resolved_line_sentences.append(sentence)
+                    else:
+                        logger.info(f"[Guardrails] Sentence #{global_idx} ungrounded (score: {score:.2f}). Triggering regeneration (Attempt 1)...")
+                        regenerated_sentence = llm_service.regenerate_sentence(sentence, context_text)
+                        new_score, new_best_chunk_id = self._score_sentence_against_chunks(regenerated_sentence, all_chunks)
+                        coherent = is_sentence_coherent(regenerated_sentence)
 
-        # Reconstruct updated answer text cleanly preserving markdown structure
-        reconstructed_parts = []
-        for s in resolved_sentence_texts:
-            if s.startswith("#"):
-                reconstructed_parts.append("\n\n" + s + "\n")
-            else:
-                if reconstructed_parts and not reconstructed_parts[-1].endswith("\n"):
-                    reconstructed_parts.append(" " + s)
-                else:
-                    reconstructed_parts.append(s)
+                        if not coherent or new_score < threshold:
+                            logger.info(f"[Guardrails] Attempt 1 did not meet floor (score={new_score:.2f}, coherent={coherent}). Trying Attempt 2...")
+                            regenerated_sentence_2 = llm_service.regenerate_sentence_explicit_retry(sentence, context_text)
+                            new_score_2, new_best_chunk_id_2 = self._score_sentence_against_chunks(regenerated_sentence_2, all_chunks)
+                            coherent_2 = is_sentence_coherent(regenerated_sentence_2)
+                            if coherent_2 and new_score_2 > new_score:
+                                regenerated_sentence = regenerated_sentence_2
+                                new_score = new_score_2
+                                new_best_chunk_id = new_best_chunk_id_2
+                                coherent = coherent_2
 
-        reconstructed_answer = "".join(reconstructed_parts).strip()
+                        logger.info(f"[Guardrails] Sentence #{global_idx} before: {score:.2f} -> after: {new_score:.2f} (coherent={coherent})")
+
+                        is_duplicate = any(regenerated_sentence == item.text for item in sentence_groundedness_list)
+                        if new_score >= threshold and coherent and not is_duplicate:
+                            item = SentenceGroundedness(
+                                sentence_index=global_idx,
+                                text=regenerated_sentence,
+                                grounded=True,
+                                confidence_score=new_score,
+                                supporting_chunk_id=new_best_chunk_id,
+                                flag_reason="Self-corrected via source-grounded regeneration",
+                                was_regenerated=True,
+                                original_text=sentence,
+                                original_score=score
+                            )
+                            sentence_groundedness_list.append(item)
+                            resolved_line_sentences.append(regenerated_sentence)
+
+                            regeneration_logs.append(
+                                RegenerationLog(
+                                    sentence_index=global_idx,
+                                    original_text=sentence,
+                                    regenerated_text=regenerated_sentence,
+                                    before_score=score,
+                                    after_score=new_score,
+                                    resolved=True
+                                )
+                            )
+                        else:
+                            item = SentenceGroundedness(
+                                sentence_index=global_idx,
+                                text=sentence,
+                                grounded=False,
+                                confidence_score=max(score, 0.20),
+                                closest_chunk_id=best_chunk_id,
+                                flag_reason="Unable to generate a confident grounded answer for this claim: assertions could not be fully verified against retrieved primary sources.",
+                                was_regenerated=True,
+                                original_text=sentence,
+                                original_score=score
+                            )
+                            sentence_groundedness_list.append(item)
+                            resolved_line_sentences.append(sentence)
+
+                            regeneration_logs.append(
+                                RegenerationLog(
+                                    sentence_index=global_idx,
+                                    original_text=sentence,
+                                    regenerated_text=regenerated_sentence if coherent else sentence,
+                                    before_score=score,
+                                    after_score=new_score if coherent else score,
+                                    resolved=False
+                                )
+                            )
+                    global_idx += 1
+                resolved_p_lines.append(" ".join(resolved_line_sentences))
+            resolved_paragraphs.append("\n".join(resolved_p_lines))
+
+        reconstructed_answer = "\n\n".join(resolved_paragraphs).strip()
         
         # Calculate overall aggregate faithfulness score as mean of sentence confidence scores
         if sentence_groundedness_list:

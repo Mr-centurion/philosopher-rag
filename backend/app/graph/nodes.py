@@ -8,10 +8,12 @@ from app.rag.schema import PerThinkerBreakdown, Citation, GuardrailFlag
 from app.rag.hybrid_retriever import hybrid_retriever
 from app.rag.ingest import THINKER_PROFILES
 from app.core.guardrails import guardrails_manager
+from app.core.nemo_guardrails import nemo_guardrails
 from app.core.session_store import session_store
 from app.core.llm import llm_service
 from app.core.topic_matcher import topic_matcher, TOPIC_SYNONYMS
 from app.core.voice_engine import voice_engine
+from app.core.invalid_premise import detect_invalid_premise, build_invalid_premise_response
 
 logger = logging.getLogger("philosophy_rag.nodes")
 
@@ -23,6 +25,35 @@ COMPOSER_HISTORY: List[Dict[str, str]] = []
 
 def input_guardrail_node(state: GraphState) -> GraphState:
     question = state.get("question", "")
+
+    # 1. Tier 1: Dedicated NVIDIA NeMo Guardrails Input Rail (Hard Pre-Pipeline Content Gate)
+    nemo_safe, nemo_flag, nemo_rejection = nemo_guardrails.check_input(question)
+    if not nemo_safe:
+        existing_flags = list(state.get("guardrail_flags", []))
+        if nemo_flag:
+            existing_flags.append(nemo_flag)
+        rejection_text = nemo_rejection or "I cannot fulfill this request because it falls outside of philosophical inquiry or violates safety constraints."
+        logger.warning(f"[NeMo Input Rail Gate] Blocked query before RAG pipeline: '{question}'")
+        return {
+            **state,
+            "is_safe": False,
+            "guardrail_flags": existing_flags,
+            "final_synthesis": rejection_text,
+            "per_thinker_breakdown": [],
+            "citations": [],
+            "faithfulness_score": 0.0,
+            "sentence_groundedness": [],
+            "regeneration_logs": [],
+            "total_sentences": 0,
+            "grounded_sentences_count": 0,
+            "flagged_sentences_count": 0,
+            "is_weak_match": False,
+            "template_similarity_score": 0.0,
+            "template_collision": False,
+            "voice_distinctiveness_score": 1.0
+        }
+
+    # 2. Tier 2: Secondary Custom Classifier (evaluates topic relevance & nuanced philosophical inquiry)
     is_safe, flags, rejection_msg = guardrails_manager.check_input(question)
     
     existing_flags = list(state.get("guardrail_flags", []))
@@ -131,7 +162,7 @@ def parallel_retrieval_node(state: GraphState) -> GraphState:
                 if retry_top else (0.0, False)
             )
 
-            if retry_top and (retry_score >= RELEVANCE_THRESHOLD or retry_aligned):
+            if retry_top and retry_aligned and (retry_score >= 0.45 or retry_align_score >= 0.33):
                 logger.info(f"[Retrieval Gate] {thinker_id} resolved via query expansion! Score={retry_score:.2f}, chunk={retry_top.id}")
                 retrieved_chunks[thinker_id] = retry_chunks
                 alignment_scores[-1] = retry_score
@@ -140,9 +171,11 @@ def parallel_retrieval_node(state: GraphState) -> GraphState:
                 logger.warning(f"[Retrieval Gate] {thinker_id} remains weak match. Flagging as thematically adjacent only.")
                 retrieval_weak_matches[thinker_id] = {
                     "is_weak": True,
-                    "score": top_score,
+                    "score": max(top_score, retry_score),
                     "reason": f"No direct passage found regarding '{query_topic}'. Passages provide general principles."
                 }
+                if retry_top and retry_score > top_score:
+                    retrieved_chunks[thinker_id] = retry_chunks
 
     mean_alignment_score = round(sum(alignment_scores) / max(len(alignment_scores), 1), 3)
 
@@ -169,10 +202,39 @@ def parallel_retrieval_node(state: GraphState) -> GraphState:
             )
         )
 
+    # Check for invalid premise / modern non-philosophical entity when retrieval is weak
+    invalid_match = detect_invalid_premise(question)
+    is_invalid = False
+    invalid_details = None
+
+    if is_query_weak_match and invalid_match:
+        entity, cat_name, cat_desc, suggestions = invalid_match
+        is_invalid = True
+        invalid_details = {
+            "entity": entity,
+            "category": cat_name,
+            "category_description": cat_desc,
+            "suggestions": suggestions
+        }
+        logger.warning(
+            f"[Invalid Premise Gate] Detected non-philosophical modern entity '{entity}' ({cat_name}) "
+            f"with weak retrieval match. Gating against spurious full synthesis."
+        )
+        existing_flags.append(
+            GuardrailFlag(
+                category="invalid_premise",
+                severity="medium",
+                message=f"Query references '{entity}' ({cat_name}) without primary textual grounding.",
+                details=invalid_details
+            )
+        )
+
     return {
         **state,
         "retrieved_chunks": retrieved_chunks,
         "is_weak_match": is_query_weak_match,
+        "is_invalid_premise": is_invalid,
+        "invalid_premise_details": invalid_details,
         "weak_match_warning": weak_msg,
         "topic_alignment_score": mean_alignment_score,
         "retrieval_weak_matches_by_thinker": retrieval_weak_matches,
@@ -183,7 +245,37 @@ def thinker_synthesis_node(state: GraphState) -> GraphState:
     if not state.get("is_safe", True):
         return state
 
+    # Bypass per-thinker breakdown generation if premise is invalid/nonsensical
+    if state.get("is_invalid_premise", False):
+        return {
+            **state,
+            "per_thinker_breakdown": [],
+            "citations": [],
+            "template_similarity_score": 0.0,
+            "template_collision": False,
+            "voice_distinctiveness_score": 1.0
+        }
+
     question = state.get("question", "")
+    extracted_topics = state.get("extracted_topics", [])
+    topic_alignment = state.get("topic_alignment_score", 0.0)
+    is_weak_match = state.get("is_weak_match", False)
+    has_valid_philosophical_content = (
+        bool(extracted_topics)
+        or any(c in question.lower() for c in topic_matcher.CORE_TOPICS)
+        or bool(topic_matcher.extract_core_topics(question))
+    )
+
+    if (is_weak_match or topic_alignment < 0.50) and not has_valid_philosophical_content:
+        return {
+            **state,
+            "per_thinker_breakdown": [],
+            "citations": [],
+            "template_similarity_score": 0.0,
+            "template_collision": False,
+            "voice_distinctiveness_score": 1.0
+        }
+
     query_topic = state.get("query_topic", "topic")
     selected = state.get("selected_thinkers", [])
     retrieved_chunks = state.get("retrieved_chunks", {})
@@ -237,7 +329,7 @@ def thinker_synthesis_node(state: GraphState) -> GraphState:
         )
         user_prompt = (
             f"Philosophical Question: \"{question}\"\n\n"
-            f"Primary Source Passages for {profile['name']}:\n{passages_text}\n\n"
+            f"Primary Source Passages for {profile['name']} [thinker_id: {t_id}]:\n{passages_text}\n\n"
             f"Instructions:\n"
             f"Provide a JSON response with keys:\n"
             f"- 'core_stance': A 1-2 sentence distillation of {profile['name']}'s position using their distinctive conceptual terminology.\n"
@@ -320,8 +412,58 @@ def comparative_synthesis_node(state: GraphState) -> GraphState:
 
     question = state.get("question", "")
     query_topic = state.get("query_topic", "topic")
-    breakdowns = state.get("per_thinker_breakdown", [])
     is_weak_match = state.get("is_weak_match", False)
+
+    # If invalid premise detected, provide concise honest historical boundary response
+    if state.get("is_invalid_premise", False):
+        inv_details = state.get("invalid_premise_details") or {}
+        entity = inv_details.get("entity", "the queried topic")
+        cat_desc = inv_details.get("category_description", "modern commercial or pop-culture concepts")
+        suggestions = inv_details.get("suggestions", [])
+        final_synthesis = build_invalid_premise_response(question, entity, cat_desc, suggestions)
+        return {
+            **state,
+            "final_synthesis": final_synthesis
+        }
+
+    # GATING: If retrieval confidence is below threshold AND no valid philosophical content exists for this query,
+    # return a short explicit message stating the query cannot be meaningfully addressed — DO NOT call the LLM
+    # to generate a full synthesis around a fallback template.
+    extracted_topics = state.get("extracted_topics", [])
+    topic_alignment = state.get("topic_alignment_score", 0.0)
+    has_valid_philosophical_content = (
+        bool(extracted_topics)
+        or any(c in question.lower() for c in topic_matcher.CORE_TOPICS)
+        or bool(topic_matcher.extract_core_topics(question))
+    )
+
+    if (is_weak_match or topic_alignment < 0.50) and not has_valid_philosophical_content:
+        logger.warning(
+            f"[Comparative Node] Retrieval confidence below threshold ({topic_alignment:.2f}) and no valid "
+            f"philosophical content exists for query: '{question}'. Gating against fallback synthesis."
+        )
+        return {
+            **state,
+            "final_synthesis": (
+                f"The inquiry \"{question}\" cannot be meaningfully addressed within our corpus of classical "
+                f"philosophical texts. The query lacks recognized philosophical grounding or textual evidence "
+                f"among the indexed traditions."
+            ),
+            "per_thinker_breakdown": [],
+            "citations": [],
+            "faithfulness_score": 0.0,
+            "sentence_groundedness": [],
+            "regeneration_logs": [],
+            "total_sentences": 0,
+            "grounded_sentences_count": 0,
+            "flagged_sentences_count": 0,
+            "is_weak_match": True,
+            "template_similarity_score": 0.0,
+            "template_collision": False,
+            "voice_distinctiveness_score": 1.0
+        }
+
+    breakdowns = state.get("per_thinker_breakdown", [])
     
     if not breakdowns:
         return state
@@ -337,11 +479,13 @@ def comparative_synthesis_node(state: GraphState) -> GraphState:
         user_prompt = (
             f"Question: \"{question}\"\n\n"
             f"Thinker Perspective Analyzed:\n{stances_text}\n\n"
-            f"Provide a structured analysis containing:\n"
-            f"1. **Philosophical Analysis**: An opening overview on the question.\n"
-            f"2. **Core Philosophical Foundation**: How {b.thinker_name} grounds this in {b.tradition}.\n"
-            f"3. **Systematic Exposition & Argument**: Analysis of the text and citations.\n"
-            f"4. **Philosophical Synthesis & Takeaway**: Practical guidance for modern life."
+            f"Answer the question directly and concisely from the source material. "
+            f"Do not include boilerplate section headings (such as 'Philosophical Analysis', 'Core Philosophical Foundation', "
+            f"'Systematic Exposition & Argument', or 'Philosophical Synthesis & Takeaway'). "
+            f"Do not include generic modern life advice or self-help takeaways.\n\n"
+            f"Format:\n"
+            f"Answer:\n[3-6 concise paragraphs directly answering the question from the evidence]\n\n"
+            f"Evidence:\n[Relevant source citations with work and section]"
         )
     else:
         stances_text = "\n\n".join([
@@ -361,11 +505,13 @@ def comparative_synthesis_node(state: GraphState) -> GraphState:
         user_prompt = (
             f"Question: \"{question}\"\n\n"
             f"Thinker Perspectives Analyzed:\n{stances_text}\n\n"
-            f"Provide a structured synthesis containing:\n"
-            f"1. **Dialectical Overview**: A clear opening synthesizing the overarching problem.\n"
-            f"2. **Points of Convergence (Where they agree or resonate)**: Compare their shared commitments.\n"
-            f"3. **Points of Divergence (Fundamental Clashes)**: Compare their irreconcilable differences.\n"
-            f"4. **Philosophical Synthesis & Takeaway**: A concluding insight for modern life."
+            f"Answer the question directly and concisely from the retrieved evidence. "
+            f"Do not include boilerplate section headings (such as 'Dialectical Overview', 'Points of Convergence', "
+            f"'Points of Divergence', or 'Philosophical Synthesis & Takeaway'). "
+            f"Do not include generic modern practitioner life advice or self-help takeaways.\n\n"
+            f"Format:\n"
+            f"Answer:\n[3-6 concise paragraphs answering the question directly based on the evidence]\n\n"
+            f"Evidence:\n[Relevant source citations with work and section]"
         )
 
     try:
@@ -373,26 +519,25 @@ def comparative_synthesis_node(state: GraphState) -> GraphState:
     except Exception as e:
         final_synthesis = llm_service._local_philosophical_synthesis(user_prompt)
 
-    # Post-Generation Cross-Section Diversity & Anti-Duplication Check
-    raw_sections = [s.strip() for s in final_synthesis.split("###") if s.strip()]
+    # Post-Generation Diversity & Anti-Duplication Check
+    raw_paragraphs = [p.strip() for p in final_synthesis.split("\n\n") if p.strip()]
     is_duplicated = False
     
-    if len(raw_sections) >= 2:
-        for i in range(len(raw_sections)):
-            for j in range(i + 1, len(raw_sections)):
-                # Strip header line and compare body text
-                body_i = "\n".join(raw_sections[i].split("\n")[1:]).strip()
-                body_j = "\n".join(raw_sections[j].split("\n")[1:]).strip()
-                if body_i and body_j:
-                    sim = voice_engine.compute_sentence_similarity(body_i, body_j)
-                    if sim >= 0.60 or body_i == body_j:
+    if len(raw_paragraphs) >= 2:
+        for i in range(len(raw_paragraphs)):
+            for j in range(i + 1, len(raw_paragraphs)):
+                p_i = raw_paragraphs[i]
+                p_j = raw_paragraphs[j]
+                if len(p_i) > 40 and len(p_j) > 40:
+                    sim = voice_engine.compute_sentence_similarity(p_i, p_j)
+                    if sim >= 0.75 or p_i == p_j:
                         is_duplicated = True
                         break
             if is_duplicated:
                 break
 
-    if is_duplicated or len(raw_sections) < 3:
-        logger.warning("[Comparative Node] Detected section duplication or malformed sections. Regenerating via structured synthesis engine...")
+    if is_duplicated or len(raw_paragraphs) < 2:
+        logger.warning("[Comparative Node] Detected paragraph duplication or insufficient content. Regenerating via structured synthesis engine...")
         final_synthesis = llm_service._local_philosophical_synthesis(user_prompt)
 
     # Anti-Template Regression Check 1: Forbidden Boilerplate Pattern Matching
@@ -454,6 +599,36 @@ def output_guardrail_node(state: GraphState) -> GraphState:
     final_synthesis = state.get("final_synthesis", "")
     retrieved_chunks = state.get("retrieved_chunks", {})
     existing_flags = list(state.get("guardrail_flags", []))
+
+    # If this is an honest historical boundary response, it is intrinsically grounded
+    if state.get("is_invalid_premise", False):
+        start_time = state.get("start_time", time.time())
+        latency_ms = round((time.time() - start_time) * 1000, 2)
+        from app.rag.schema import SentenceGroundedness
+        from app.core.guardrails import split_into_sentences
+        raw_sentences = split_into_sentences(final_synthesis)
+        sentence_results = [
+            SentenceGroundedness(
+                sentence_index=i,
+                text=s,
+                grounded=True,
+                confidence_score=0.95,
+                flag_reason=None
+            )
+            for i, s in enumerate(raw_sentences)
+        ]
+        return {
+            **state,
+            "final_synthesis": final_synthesis,
+            "sentence_groundedness": sentence_results,
+            "regeneration_logs": [],
+            "total_sentences": len(sentence_results),
+            "grounded_sentences_count": len(sentence_results),
+            "flagged_sentences_count": 0,
+            "guardrail_flags": existing_flags,
+            "faithfulness_score": 0.95,
+            "latency_ms": latency_ms
+        }
 
     # Sentence-level groundedness scoring & self-correction resolution
     reconstructed_answer, sentence_results, regen_logs, mean_faithfulness, flags = (

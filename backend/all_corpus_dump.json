@@ -1,0 +1,939 @@
+{
+  "app/data/corpus/aristotle.json": [
+    {
+      "id": "ar_ne_01",
+      "thinker_id": "aristotle",
+      "thinker_name": "Aristotle",
+      "tradition": "Classical Greek Virtue Ethics & Teleology",
+      "work_title": "Nicomachean Ethics",
+      "chapter": "Book I, Chapter 1 & 2: The Good for Man",
+      "text": "Every art and every inquiry, and similarly every action and pursuit, is thought to aim at some good; and for this reason the good has rightly been declared to be that at which all things aim. If, then, there is some end of the things we do, which we desire for its own sake (everything else being desired for the sake of this), clearly this must be the good and the chief good. Will not the knowledge of it, then, have a great influence on life? Shall we not, like archers who have a mark to aim at, be more likely to hit upon what is right?"
+    },
+    {
+      "id": "ar_ne_02",
+      "thinker_id": "aristotle",
+      "thinker_name": "Aristotle",
+      "tradition": "Classical Greek Virtue Ethics & Teleology",
+      "work_title": "Nicomachean Ethics",
+      "chapter": "Book I, Chapter 7: Eudaimonia and the Function Argument",
+      "text": "Presumably, however, to say that happiness (eudaimonia) is the chief good seems a platitude, and a clearer account of what it is is still desired. This might perhaps be given, if we could first ascertain the function of man. For just as for a flute-player, a sculptor, or an artist, and, in general, for all things that have a function or activity, the good and the 'well' is thought to reside in the function, so would it seem to be for man. The human function is an activity of the soul which follows or implies reason. Human good turns out to be activity of soul exhibiting excellence (arete)."
+    },
+    {
+      "id": "ar_ne_03",
+      "thinker_id": "aristotle",
+      "thinker_name": "Aristotle",
+      "tradition": "Classical Greek Virtue Ethics & Teleology",
+      "work_title": "Nicomachean Ethics",
+      "chapter": "Book II, Chapter 1: Moral Virtue Acquired by Habit",
+      "text": "Moral virtue comes about as a result of habit (ethos), whence also its name ethike is one that is formed by a slight variation from the word ethos (habit). From this it is also plain that none of the moral virtues arises in us by nature; for nothing that exists by nature can form a habit contrary to its nature. Again, of all the things that come to us by nature we first acquire the potentiality and later exhibit the activity. But the virtues we get by first exercising them, as also happens in the case of the arts as well. For the things we have to learn before we can do them, we learn by doing them: we become just by doing just acts, temperate by doing temperate acts, brave by doing brave acts."
+    },
+    {
+      "id": "ar_ne_04",
+      "thinker_id": "aristotle",
+      "thinker_name": "Aristotle",
+      "tradition": "Classical Greek Virtue Ethics & Teleology",
+      "work_title": "Nicomachean Ethics",
+      "chapter": "Book II, Chapter 6: The Doctrine of the Mean",
+      "text": "Virtue, then, is a state of character concerned with choice, lying in a mean (mesotes), i.e. the mean relative to us, this being determined by a rational principle, and by that principle by which the man of practical wisdom (phronimos) would determine it. Now it is a mean between two vices, that which depends on excess and that which depends on defect. For instance, in fear and confidence, courage is the mean; the excess is rashness, while the deficiency is cowardice. In giving and taking money, the mean is liberality, while excess is prodigality and deficiency is stinginess."
+    },
+    {
+      "id": "ar_ne_05",
+      "thinker_id": "aristotle",
+      "thinker_name": "Aristotle",
+      "tradition": "Classical Greek Virtue Ethics & Teleology",
+      "work_title": "Nicomachean Ethics",
+      "chapter": "Book VI, Chapter 5: Practical Wisdom (Phronesis)",
+      "text": "Regarding practical wisdom (phronesis), we may get at the truth by considering who the persons are whom we call practical. Now it is thought to be the mark of a man of practical wisdom to be able to deliberate well about what is good and expedient for himself, not in some particular respect (e.g. about what sorts of thing conduce to health or to strength), but about what sorts of thing conduce to the good life in general. Practical wisdom is a true and reasoned state of capacity to act with regard to the things that are good or bad for man."
+    },
+    {
+      "id": "ar_pol_01",
+      "thinker_id": "aristotle",
+      "thinker_name": "Aristotle",
+      "tradition": "Classical Greek Virtue Ethics & Teleology",
+      "work_title": "Politics",
+      "chapter": "Book I, Chapter 2: The Political Animal",
+      "text": "Man is by nature a political animal (zoon politikon). And he who by nature and not by mere accident is without a state is either a bad man or above humanity; he may be compared to the 'tribeless, lawless, heartless one' whom Homer denounces. Nature, as we say, makes nothing in vain, and man is the only animal whom she has endowed with the gift of speech (logos), intended to set forth the expedient and inexpedient, and therefore likewise the just and the unjust."
+    },
+    {
+      "id": "ar_ne_06",
+      "thinker_id": "aristotle",
+      "thinker_name": "Aristotle",
+      "tradition": "Classical Greek Virtue Ethics & Teleology",
+      "work_title": "Nicomachean Ethics",
+      "chapter": "Book VIII, Chapter 1 & 2: Friendship (Philia)",
+      "text": "Friendship (philia) is a virtue or implies virtue, and is besides most necessary with a view to living. For without friends no one would choose to live, though he had all other goods. In poverty and in other misfortunes men think friends are the only refuge. Perfect friendship is the friendship of men who are good, and alike in virtue; for these wish well alike to each other qua good, and they are good in themselves."
+    }
+  ],
+  "app/data/corpus/bhagavad_gita.json": [
+    {
+      "id": "gita_01",
+      "thinker_id": "bhagavad_gita",
+      "thinker_name": "Bhagavad Gita",
+      "tradition": "Classical Indian Vedanta & Karma Yoga",
+      "work_title": "The Bhagavad Gita",
+      "chapter": "Chapter II: The Immortality of the Soul (Atman)",
+      "text": "Never the spirit was born; the spirit shall cease to be never; Never was time it was not; End and Beginning are dreams! Birthless and deathless and changeless remaineth the spirit for ever; Death hath not touched it at all, dead though the house of it seems! As a man casteth off worn-out garments and putteth on others that are new, even so the embodied soul casteth off worn-out bodies and entereth into others that are new. Weapons cleave it not, fire burneth it not, water wetteth it not, wind drieth it not away. For the Soul is eternal, all-pervading, unmoving, and everlasting."
+    },
+    {
+      "id": "gita_02",
+      "thinker_id": "bhagavad_gita",
+      "thinker_name": "Bhagavad Gita",
+      "tradition": "Classical Indian Vedanta & Karma Yoga",
+      "work_title": "The Bhagavad Gita",
+      "chapter": "Chapter II: Nishkama Karma (Action Without Attachment)",
+      "text": "Thy right is to the work alone, but never to its fruits; let not the fruit of action be thy motive, nor let there be in thee any attachment to inaction. Perform action, dwelling in devotion, abandoning attachment, and remaining balanced in success and failure; for equanimity of mind is called Yoga. Far lower than the Yoga of wisdom is mere selfish action; seek refuge in selfless understanding, for wretched are they who labor merely for the rewards of their deeds."
+    },
+    {
+      "id": "gita_03",
+      "thinker_id": "bhagavad_gita",
+      "thinker_name": "Bhagavad Gita",
+      "tradition": "Classical Indian Vedanta & Karma Yoga",
+      "work_title": "The Bhagavad Gita",
+      "chapter": "Chapter II: The Sage of Steadfast Wisdom (Sthitaprajna)",
+      "text": "When a man puts away all desires of the heart, and is satisfied in the Self alone by the Self, then is he called a person of settled wisdom. He whose heart is not shaken amidst afflictions, who in pleasures is free from craving, from whom passion, fear, and anger have fled away, he is called a sage of steadfast mind. Even as the tortoise draws in its limbs from all sides, when a person withdraws his senses from sense-objects, his understanding is firmly poised in tranquility."
+    },
+    {
+      "id": "gita_04",
+      "thinker_id": "bhagavad_gita",
+      "thinker_name": "Bhagavad Gita",
+      "tradition": "Classical Indian Vedanta & Karma Yoga",
+      "work_title": "The Bhagavad Gita",
+      "chapter": "Chapter III: The Necessity of Pure Action (Karma)",
+      "text": "None can remain even for a moment without performing action; for everyone is helplessly driven to act by the qualities of nature (Gunas). He who restrains his organs of action while his mind dwells on the objects of desire is a hypocrite. But he who, subduing the senses by the mind, undertakes Karma Yoga without attachment, he excels. Perform thy allotted duty, for action is far superior to inaction; even the preservation of thy physical life cannot be achieved without action."
+    },
+    {
+      "id": "gita_05",
+      "thinker_id": "bhagavad_gita",
+      "thinker_name": "Bhagavad Gita",
+      "tradition": "Classical Indian Vedanta & Karma Yoga",
+      "work_title": "The Bhagavad Gita",
+      "chapter": "Chapter IV: The Fire of Wisdom (Jnana Yoga)",
+      "text": "Even as a blazing fire burns its fuel to ashes, O Arjuna, so does the fire of wisdom burn all karma to ashes. There is no purifier in this world like spiritual wisdom. He that hath faith and hath conquered his senses gains this wisdom; and having gained wisdom, he quickly attains supreme peace. He who sees inaction in action, and action in inaction, he is wise among men; he is a yogi who accomplishes all true work."
+    },
+    {
+      "id": "gita_06",
+      "thinker_id": "bhagavad_gita",
+      "thinker_name": "Bhagavad Gita",
+      "tradition": "Classical Indian Vedanta & Karma Yoga",
+      "work_title": "The Bhagavad Gita",
+      "chapter": "Chapter VI: The Self as Friend and Enemy",
+      "text": "Let a man lift himself by his own Self, let him not degrade himself; for the Self alone is the friend of oneself, and the Self alone is the enemy of oneself. The Self is a friend to him who has conquered himself by the Self; but for him who is undisciplined, his own self acts like a hostile adversary. In the serenity of self-mastery, the supreme Self abides unwavering in cold and heat, pleasure and pain, honor and disgrace."
+    },
+    {
+      "id": "gita_07",
+      "thinker_id": "bhagavad_gita",
+      "thinker_name": "Bhagavad Gita",
+      "tradition": "Classical Indian Vedanta & Karma Yoga",
+      "work_title": "The Bhagavad Gita",
+      "chapter": "Chapter XVIII: Surrender and Liberation (Moksha)",
+      "text": "Better is one's own duty (Svadharma), though imperfectly performed, than the duty of another well performed. Surrendering all actions unto the Supreme, fixing the mind on the Eternal, free from self-interest, egoism, and anxiety, engage in the battle of life. The soul that acts without selfish attachment, consecrating every deed as a sacrifice for universal welfare (Lokasangraha), is untouched by sin, even as a lotus leaf remains unwetted by water."
+    }
+  ],
+  "app/data/corpus/chanakya.json": [
+    {
+      "id": "cha_artha_01",
+      "thinker_id": "chanakya",
+      "thinker_name": "Chanakya",
+      "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+      "work_title": "Arthashastra",
+      "chapter": "Book I, Chapter 7: The Restraint of the Senses (Indriyajaya)",
+      "text": "The supreme aim of all political sciences is the restraint of the organs of sense (Indriyajaya). A ruler who abandons the six internal enemies\u2014lust, anger, greed, vanity, arrogance, and foolhardiness\u2014attains unshakeable mastery over his state. A king who cannot govern his own desires will swiftly perish, though he possess the wealth of the entire earth; but a sovereign who has subdued his senses and adheres to rigorous moral discipline secures the prosperity and loyalty of his subjects for generations."
+    },
+    {
+      "id": "cha_artha_02",
+      "thinker_id": "chanakya",
+      "thinker_name": "Chanakya",
+      "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+      "work_title": "Arthashastra",
+      "chapter": "Book I, Chapter 19: The King's Duty to the People",
+      "text": "In the happiness of his subjects lies the king's happiness; in their welfare his welfare. Whatever pleases himself he shall not consider as good, but whatever pleases his subjects he shall consider as the true good. Hence the sovereign shall ever be energetic and tireless in his duties; for the root of all economic success is persistent activity, and of disaster, negligence. If the ruler is awake and industrious, his officers and people will be equally diligent."
+    },
+    {
+      "id": "cha_artha_03",
+      "thinker_id": "chanakya",
+      "thinker_name": "Chanakya",
+      "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+      "work_title": "Arthashastra",
+      "chapter": "Book VI-VII: The Circle of States (Mandala Theory)",
+      "text": "A contiguous bordering state is naturally an adversary, while the state situated beyond the adversary is naturally an ally. Strength alone is the cause of enduring peace; for between two equally formidable powers, alliances and treaties endure, but the weak are invariably dominated. A blazing fire unites with the wind to devour the forest, but the same wind snuffs out a frail spark. Therefore, a prudent ruler contracts peace with an equal or superior, crushes an irreconcilable foe, and never relies upon blind trust."
+    },
+    {
+      "id": "cha_niti_01",
+      "thinker_id": "chanakya",
+      "thinker_name": "Chanakya",
+      "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+      "work_title": "Chanakya Niti",
+      "chapter": "Chapter 2: The Testing of Friends and Adversity",
+      "text": "Test a servant in the execution of orders, a relative in times of difficulty, a friend in adversity, and a companion in misfortune. He who stands by your side in disaster, famine, war, at the royal palace, and at the cremation ground is a genuine friend. Yet a wise person never places unconditional trust even in a friend; for should that friend become angry or suborned, he may weaponize your most intimate vulnerabilities."
+    },
+    {
+      "id": "cha_niti_02",
+      "thinker_id": "chanakya",
+      "thinker_name": "Chanakya",
+      "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+      "work_title": "Chanakya Niti",
+      "chapter": "Chapter 3: Strategic Prudence and Foresight",
+      "text": "A wise man perceives approaching danger from afar and prepares defenses before the crisis arrives. Protect your wealth as a fortress against sudden misfortune; but guard your self-respect and character above wealth, and protect your sovereign life above all else. It is far better to have no companion than a deceitful one, and far better to dwell in seclusion than to entrust your fate to an unruly ruler."
+    },
+    {
+      "id": "cha_artha_04",
+      "thinker_id": "chanakya",
+      "thinker_name": "Chanakya",
+      "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+      "work_title": "Arthashastra",
+      "chapter": "Book I, Chapter 4: The Rod of Justice (Danda)",
+      "text": "That which guarantees the security of life, property, and moral order is the Rod of Justice (Danda). When administered with impartiality and wisdom, the rod fosters righteousness, enterprise, and social peace. But when wielded unjustly or with arbitrary wrath, it incites revolt even among sages. If punishment is withheld through cowardice, it invites the law of the fish (Matsya-nyaya), where the powerful ruthlessly swallow the weak."
+    },
+    {
+      "id": "cha_niti_03",
+      "thinker_id": "chanakya",
+      "thinker_name": "Chanakya",
+      "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+      "work_title": "Chanakya Niti",
+      "chapter": "Chapter 10: Prudence and Realist Discernment",
+      "text": "Even from deadly poison, extract healing nectar; from an adversary, adopt useful virtues; and even from the mire, gather pure gold. The realist assesses human nature not by courteous words, but by concrete interests and deeds. Straight trees in the forest are felled first, and overly naive people are exploited first; therefore, let honest virtues always be armed with vigilant intellect and strategic realism."
+    }
+  ],
+  "app/data/corpus/epictetus.json": [
+    {
+      "id": "epi_ench_01",
+      "thinker_id": "epictetus",
+      "thinker_name": "Epictetus",
+      "tradition": "Stoic Epistemology & Ethics",
+      "work_title": "Enchiridion",
+      "chapter": "Section 1: The Dichotomy of Control",
+      "text": "Some things are in our control and others not. Things in our control are opinion, pursuit, desire, aversion, and, in a word, whatever are our own actions. Things not in our control are body, property, reputation, command, and, in one word, whatever are not our own actions. The things in our control are by nature free, unrestrained, unhindered; but those not in our control are weak, slavish, restrained, belonging to others. Remember, then, that if you suppose that things which are slavish by nature are also free, and that what belongs to others is your own, then you will be hindered. You will lament, you will be disturbed, and you will find fault both with gods and men. But if you suppose that only to be your own which is your own, and what belongs to others such as it really is, then no one will ever compel you or restrain you; you will find fault with no one nor accuse anyone; you will do no one thing against your will; no one will hurt you, you will have no enemies, and you not will be harmed."
+    },
+    {
+      "id": "epi_ench_02",
+      "thinker_id": "epictetus",
+      "thinker_name": "Epictetus",
+      "tradition": "Stoic Epistemology & Ethics",
+      "work_title": "Enchiridion",
+      "chapter": "Section 5: Disturbances from Judgments",
+      "text": "Men are disturbed, not by things, but by the principles and notions which they form concerning things. Death, for instance, is not terrible, else it would have appeared so to Socrates. But the terror consists in our notion of death that it is terrible. When therefore we are hindered, or disturbed, or grieved, let us never attribute it to others, but to ourselves; that is, to our own principles and opinions. An uninstructed person will lay the fault of his own bad condition upon others. Someone just starting on instruction will lay the fault on himself. Some who is perfectly instructed will place blame neither on others nor on himself."
+    },
+    {
+      "id": "epi_ench_03",
+      "thinker_id": "epictetus",
+      "thinker_name": "Epictetus",
+      "tradition": "Stoic Epistemology & Ethics",
+      "work_title": "Enchiridion",
+      "chapter": "Section 8: Willing Events as They Happen",
+      "text": "Demand not that events should happen as you wish; but wish them to happen as they do happen, and you will go on well. Sickness is a hindrance to the body, but not to your ability to choose, unless that is your choice. Lameness is a hindrance to the leg, but not to your will. Say this to yourself with regard to everything that happens, then you will see such occurrences as hindrances to something else, but not to yourself."
+    },
+    {
+      "id": "epi_ench_04",
+      "thinker_id": "epictetus",
+      "thinker_name": "Epictetus",
+      "tradition": "Stoic Epistemology & Ethics",
+      "work_title": "Enchiridion",
+      "chapter": "Section 14: Desire and Freedom",
+      "text": "If you wish that your children, and your wife, and your friends, should live for ever, you are foolish; for you wish that to be in your power which is not in your power, and that which belongs to others to be your own. If you wish to be never disappointed in your desires, or incur your aversions, seek not that which is impossible. He is free who lives as he likes; who is not subject either to compulsion, to restraint, or to violence; whose choice, whose pursuits are unhindered, whose desires succeed, and whose aversions are not incurred. Who then wishes to live in error, stumble, be mistaken, undisciplined, complaining, in a miserable state? No one. These are all characteristics of base persons; no such person lives as he likes, and no such person is free."
+    },
+    {
+      "id": "epi_ench_05",
+      "thinker_id": "epictetus",
+      "thinker_name": "Epictetus",
+      "tradition": "Stoic Epistemology & Ethics",
+      "work_title": "Enchiridion",
+      "chapter": "Section 17: The Actor in a Play",
+      "text": "Remember that you are an actor in a drama, of such a kind as the author pleases to make it. If short, of a short one; if long, of a long one. If it be his pleasure you should act a poor man, a cripple, a governor, or a private person, see that you act it naturally. For this is your business, to act well the character assigned you; to choose it belongs to another. If you are attentive to your true role, no external misfortune can degrade your fundamental dignity."
+    },
+    {
+      "id": "epi_ench_06",
+      "thinker_id": "epictetus",
+      "thinker_name": "Epictetus",
+      "tradition": "Stoic Epistemology & Ethics",
+      "work_title": "Enchiridion",
+      "chapter": "Section 20: Handling Insults and Provocation",
+      "text": "Remember, that not he who gives ill language or a blow insults, but the principle which represents these things as insulting. When, therefore, anyone provokes you, be assured that it is your own opinion alone which has provoked you. Make it, then, your first endeavor not to be hurried away by the appearance; for if you once gain time and delay, you will more easily become master of yourself. In the face of abuse or mockery, reflect that the insulter acts under the impression that he is doing what is right for him. Pity him rather than burn with resentment."
+    },
+    {
+      "id": "epi_ench_07",
+      "thinker_id": "epictetus",
+      "thinker_name": "Epictetus",
+      "tradition": "Stoic Epistemology & Ethics",
+      "work_title": "Enchiridion",
+      "chapter": "Section 33: Prescribing Character and Silence",
+      "text": "Immediately prescribe some character and form of conduct to yourself, which you may keep both alone and in company. Be for the most part silent, or speak merely what is necessary, and in few words. Avoid swearing, neither entirely nor beyond what is necessary. Banish all desire for luxury, ostentation, and petty praise. Whatever you do, let it proceed from an inward moral conviction, not from theatrical display to please onlookers."
+    }
+  ],
+  "app/data/corpus/franz_kafka.json": [
+    {
+      "id": "kaf_tri_01",
+      "thinker_id": "franz_kafka",
+      "thinker_name": "Franz Kafka",
+      "tradition": "Existential Absurdism & Bureaucratic Alienation",
+      "work_title": "The Trial",
+      "chapter": "Chapter 1: Arrest Without Cause",
+      "text": "Someone must have slandered Josef K., for one morning, without having done anything wrong, he was arrested. The state of being accused became the permanent condition of his existence. He was surrounded by warders who could explain nothing, serving an inaccessible court whose laws were hidden. In this labyrinth of nameless authority, innocence is no defense, for the Court is attracted only by guilt. The individual is trapped within an incomprehensible apparatus that demands submission while refusing all clarity."
+    },
+    {
+      "id": "kaf_tri_02",
+      "thinker_id": "franz_kafka",
+      "thinker_name": "Franz Kafka",
+      "tradition": "Existential Absurdism & Bureaucratic Alienation",
+      "work_title": "The Trial",
+      "chapter": "Chapter 9: The Parable Before the Law",
+      "text": "Before the Law stands a doorkeeper. To this doorkeeper there comes a man from the country and prays for admittance to the Law. But the doorkeeper says that he cannot grant admittance at the moment. The man waits for days, months, and years, wearing out his life in front of the gate. Finally, as his sight fails and death approaches, he asks: 'Everyone strives to reach the Law; how does it happen that in all these years no one but myself has ever begged for admittance?' The doorkeeper roars in his ear: 'No one else could ever be admitted here, for this entrance was meant only for you. I am now going to shut it.'"
+    },
+    {
+      "id": "kaf_tri_03",
+      "thinker_id": "franz_kafka",
+      "thinker_name": "Franz Kafka",
+      "tradition": "Existential Absurdism & Bureaucratic Alienation",
+      "work_title": "The Trial",
+      "chapter": "Chapter 10: Like a Dog",
+      "text": "With his hands raised and all his fingers splayed, the executioners plunged the knife into Josef K.'s heart. 'Like a dog!' he said; it was as if the shame of it should outlive him. The existential horror of Kafka's world is not merely physical death, but the crushing realization that the individual is annihilated by an unhearing, absurd order that offers neither explanation, nor redemption, nor genuine trial."
+    },
+    {
+      "id": "kaf_meta_01",
+      "thinker_id": "franz_kafka",
+      "thinker_name": "Franz Kafka",
+      "tradition": "Existential Absurdism & Bureaucratic Alienation",
+      "work_title": "The Metamorphosis",
+      "chapter": "Chapter 1: The Awakening into Vermin",
+      "text": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a monstrous vermin. His armor-like back, his vaulted brown belly, and his numerous pitifully thin legs flickered helplessly before his eyes. It was not a dream. Looking at the clock, his primary anxiety was how to catch the morning train to fulfill his commercial drudgery. Alienation had materialized into flesh: the human soul, exhausted by economic exploitation, becomes an alien monster even to itself."
+    },
+    {
+      "id": "kaf_meta_02",
+      "thinker_id": "franz_kafka",
+      "thinker_name": "Franz Kafka",
+      "tradition": "Existential Absurdism & Bureaucratic Alienation",
+      "work_title": "The Metamorphosis",
+      "chapter": "Chapter 2: The Severing of Human Bonds",
+      "text": "Gregor's words could no longer be understood by human ears, even though they seemed transparently clear to him. His family retreated in terror and revulsion, barricading the doors against him. Here Kafka reveals the tragic fragility of human affection: the moment an individual loses his economic utility and conventional form, he is cast out as an intolerable parasite by the very family he sacrificed his youth to support."
+    },
+    {
+      "id": "kaf_meta_03",
+      "thinker_id": "franz_kafka",
+      "thinker_name": "Franz Kafka",
+      "tradition": "Existential Absurdism & Bureaucratic Alienation",
+      "work_title": "The Metamorphosis",
+      "chapter": "Chapter 3: Quiet Surrender and Release",
+      "text": "The rotting apple remained embedded in Gregor's flesh, a painful emblem of his father's hostility. Yet Gregor thought back on his family with deep tenderness and sorrow. His conviction that he had to disappear was even firmer than his sister's. In the quiet darkness before dawn, he breathed his last sigh, releasing the household from the burden of his monstrous existence."
+    },
+    {
+      "id": "kaf_tri_04",
+      "thinker_id": "franz_kafka",
+      "thinker_name": "Franz Kafka",
+      "tradition": "Existential Absurdism & Bureaucratic Alienation",
+      "work_title": "The Trial",
+      "chapter": "Chapter 7: The Labyrinth of Secret Power",
+      "text": "The proceedings of the Court are kept completely secret not only from the public, but from the accused himself. He must construct defenses against unknown accusations before invisible magistrates. Modern humanity lives permanently under an unspoken verdict, alienated from genuine community, condemned by bureaucratic structures that turn guilt into an inescapable metaphysical condition."
+    }
+  ],
+  "app/data/corpus/friedrich_nietzsche.json": [
+    {
+      "id": "fn_ts_01",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "Thus Spoke Zarathustra",
+      "chapter": "Zarathustra's Prologue, Section 3",
+      "text": "I teach you the \u00dcbermensch (Overman). Man is something that shall be overcome. What have you done to overcome him? All beings so far have created something beyond themselves; and do you want to be the ebb of this great flood, and even go back to the beasts rather than overcome man? What is the ape to man? A laughingstock or a painful embarrassment. And man shall be that to the \u00dcbermensch: a laughingstock or a painful embarrassment. Behold, I teach you the \u00dcbermensch: he is the lightning out of the dark cloud that is man."
+    },
+    {
+      "id": "fn_ts_02",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "Thus Spoke Zarathustra",
+      "chapter": "Part I: On the Three Metamorphoses",
+      "text": "Three metamorphoses of the spirit do I designate to you: how the spirit becomes a camel, the camel a lion, and the lion at last a child. The camel carries the heavy burdens of tradition, the 'Thou Shalt.' The lion fights for freedom, crying 'I Will,' tearing apart the great dragon of inherited values. But the lion cannot create new values. For the game of creation, my brothers, a sacred 'Yes' is needed: the spirit now wills his own will; he who had been lost to the world now conquers his own world."
+    },
+    {
+      "id": "fn_bg_01",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "Beyond Good and Evil",
+      "chapter": "Chapter I: On the Prejudices of Philosophers, Aphorism 13",
+      "text": "A living thing seeks above all to discharge its strength: life itself is will to power; self-preservation is only one of the indirect and most frequent results thereof. Physiologists should think before putting down self-preservation as the cardinal instinct of an organic being. A living thing desires first of all to release its power\u2014life is essentially Will to Power."
+    },
+    {
+      "id": "fn_bg_02",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "Beyond Good and Evil",
+      "chapter": "Chapter IX: What is Noble, Aphorism 260",
+      "text": "In a tour through the many finer and coarser moralities which have hitherto held or still hold sway on the earth, I found certain traits regularly recurring together and connected with one another, until at last two primary types revealed themselves to me: Master Morality and Slave Morality. The noble type of man experiences himself as determining values; he does not need approval; he judges, 'what is harmful to me is harmful in itself'; he knows that he is the one who accords honor to things, he is value-creating. Slave morality, on the other hand, is the morality of utility, born of resentment (ressentiment), exalting sympathy, kindness, humility, and patience to alleviate the suffering of the weak."
+    },
+    {
+      "id": "fn_gs_01",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "The Gay Science",
+      "chapter": "Book IV: Sanctus Januarius, Aphorism 276",
+      "text": "For the new year: I want to learn more and more to see as beautiful what is necessary in things; then I shall be one of those who make things beautiful. Amor fati: let that be my love henceforth! I do not want to wage war against what is ugly. I do not want to accuse; I do not even want to accuse those who accuse. Looking away shall be my only negation. And all in all and on the whole: some day I wish to be only a Yes-sayer."
+    },
+    {
+      "id": "fn_gs_02",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "The Gay Science",
+      "chapter": "Book IV: Sanctus Januarius, Aphorism 341",
+      "text": "The Greatest Weight: What if some day or night a demon were to steal after you into your loneliest loneliness and say to you: 'This life as you now live it and have lived it, you will have to live once more and innumerable times more; and there will be nothing new in it, but every pain and every joy and every thought and sigh and everything unutterably small or great in your life will have to return to you, all in the same succession and sequence.' Would you not throw yourself down and gnash your teeth and curse the demon who spoke thus? Or have you once experienced a tremendous moment when you would have answered him: 'You are a god and never have I heard anything more divine.'"
+    },
+    {
+      "id": "fn_ti_01",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "Twilight of the Idols",
+      "chapter": "Maxims and Arrows, Aphorism 8 & 12",
+      "text": "Out of life's school of war: What does not kill me makes me stronger. If we have our own why in life, we can get along with almost any how. Man does not strive after happiness; only the Englishman does that."
+    },
+    {
+      "id": "fn_gm_01",
+      "thinker_id": "friedrich_nietzsche",
+      "thinker_name": "Friedrich Nietzsche",
+      "tradition": "Continental Existentialism & Vitalism",
+      "work_title": "On the Genealogy of Morals",
+      "chapter": "Third Essay: What Is the Meaning of Ascetic Ideals, Section 28",
+      "text": "Apart from the ascetic ideal, man, the animal, had no meaning up to now. His existence on earth contained no goal; 'why man at all?' was a question without an answer. The meaninglessness of suffering, not suffering itself, was the curse that lay over humanity. The ascetic ideal offered man a meaning: it interpreted suffering as guilt and penance; but any meaning is better than no meaning at all."
+    }
+  ],
+  "app/data/corpus/immanuel_kant.json": [
+    {
+      "id": "ik_gm_01",
+      "thinker_id": "immanuel_kant",
+      "thinker_name": "Immanuel Kant",
+      "tradition": "German Idealism & Deontology",
+      "work_title": "Groundwork of the Metaphysics of Morals",
+      "chapter": "First Section: Transition from Common Rational Moral Knowledge to Philosophical Knowledge",
+      "text": "It is impossible to think of anything at all in the world, or even beyond it, that could be considered good without limitation except a good will. Intelligence, wit, judgment, and whatever other talents of the mind one might name, or courage, resoluteness, and perseverance as qualities of temperament, are undoubtedly good and desirable for many purposes, but they can also be extremely evil and harmful if the will that makes use of these natural gifts is not good."
+    },
+    {
+      "id": "ik_gm_02",
+      "thinker_id": "immanuel_kant",
+      "thinker_name": "Immanuel Kant",
+      "tradition": "German Idealism & Deontology",
+      "work_title": "Groundwork of the Metaphysics of Morals",
+      "chapter": "Second Section: The Categorical Imperative (Formula of Universal Law)",
+      "text": "There is only a single categorical imperative and it is this: Act only according to that maxim whereby you can at the same time will that it should become a universal law. If now from this one imperative all imperatives of duty can be derived as from their principle, we shall be able to show what we understand by duty and what this concept means."
+    },
+    {
+      "id": "ik_gm_03",
+      "thinker_id": "immanuel_kant",
+      "thinker_name": "Immanuel Kant",
+      "tradition": "German Idealism & Deontology",
+      "work_title": "Groundwork of the Metaphysics of Morals",
+      "chapter": "Second Section: The Formula of Humanity as an End in Itself",
+      "text": "The practical imperative will thus be the following: Act in such a way that you treat humanity, whether in your own person or in the person of any other, never merely as a means to an end, but always at the same time as an end. Rational beings are called persons because their nature already marks them out as ends in themselves, that is, as something which ought not to be used merely as a means."
+    },
+    {
+      "id": "ik_gm_04",
+      "thinker_id": "immanuel_kant",
+      "thinker_name": "Immanuel Kant",
+      "tradition": "German Idealism & Deontology",
+      "work_title": "Groundwork of the Metaphysics of Morals",
+      "chapter": "Second Section: The Kingdom of Ends and Autonomy",
+      "text": "A rational being belongs as a member to the kingdom of ends when he gives universal laws in it but is also himself subject to these laws. Autonomy of the will is the property that the will has of being a law to itself (independently of any property of the objects of volition). If the will seeks the law that is to determine it anywhere else than in the fitness of its maxims for its own making of universal law, heteronomy always results."
+    },
+    {
+      "id": "ik_cpr_01",
+      "thinker_id": "immanuel_kant",
+      "thinker_name": "Immanuel Kant",
+      "tradition": "German Idealism & Deontology",
+      "work_title": "Critique of Pure Reason",
+      "chapter": "Introduction: Distinction Between Pure and Empirical Knowledge",
+      "text": "There can be no doubt that all our knowledge begins with experience. For how should our faculty of knowledge be awakened into action did not objects affecting our senses partly of themselves produce representations? But though all our knowledge begins with experience, it by no means follows that all arises out of experience. It may well be that even our empirical knowledge is a compound of what we receive through impressions and of what our own faculty of knowledge supplies from itself."
+    },
+    {
+      "id": "ik_cpra_01",
+      "thinker_id": "immanuel_kant",
+      "thinker_name": "Immanuel Kant",
+      "tradition": "German Idealism & Deontology",
+      "work_title": "Critique of Practical Reason",
+      "chapter": "Conclusion",
+      "text": "Two things fill the mind with ever new and increasing admiration and awe, the more often and steadily we reflect upon them: the starry heavens above me and the moral law within me. I do not need to search for them and merely conjecture them as though they were veiled in obscurity or in the transcendent beyond my horizon; I see them before me and connect them immediately with the consciousness of my existence."
+    },
+    {
+      "id": "ik_we_01",
+      "thinker_id": "immanuel_kant",
+      "thinker_name": "Immanuel Kant",
+      "tradition": "German Idealism & Deontology",
+      "work_title": "An Answer to the Question: What is Enlightenment?",
+      "chapter": "Section 1",
+      "text": "Enlightenment is man's emergence from his self-incurred immaturity. Immaturity is the inability to use one's own understanding without guidance from another. This immaturity is self-incurred if its cause is not lack of understanding, but lack of resolution and courage to use it without the guidance of another. Sapere aude! Have courage to use your own reason!\u2014that is the motto of enlightenment."
+    }
+  ],
+  "app/data/corpus/lao_tzu.json": [
+    {
+      "id": "lt_ddj_01",
+      "thinker_id": "lao_tzu",
+      "thinker_name": "Laozi (Lao Tzu)",
+      "tradition": "Ancient Eastern Daoism",
+      "work_title": "Dao De Jing (Tao Te Ching)",
+      "chapter": "Chapter 1: The Nameless Dao",
+      "text": "The Dao that can be told is not the eternal Dao; The name that can be named is not the eternal name. The Nameless is the origin of Heaven and Earth; The Named is the mother of myriad things. Therefore constantly without desire, one observes its subtleties; Constantly with desire, one observes its boundaries. These two emerge together but have different names; Together they are called the Mystery. Mystery within mystery, the gateway to all marvels."
+    },
+    {
+      "id": "lt_ddj_02",
+      "thinker_id": "lao_tzu",
+      "thinker_name": "Laozi (Lao Tzu)",
+      "tradition": "Ancient Eastern Daoism",
+      "work_title": "Dao De Jing (Tao Te Ching)",
+      "chapter": "Chapter 2: Duality and Non-Action (Wu Wei)",
+      "text": "When everyone in the world recognizes beauty as beautiful, ugliness appears. When everyone recognizes goodness as good, evil appears. Thus Being and Non-being produce each other; Difficult and easy complete each other; Long and short contrast each other; High and low distinguish each other; Sound and voice harmonize each other; Front and back follow each other. Therefore the sage dwells in the action of non-action (wu wei), and carries out teaching without words."
+    },
+    {
+      "id": "lt_ddj_08",
+      "thinker_id": "lao_tzu",
+      "thinker_name": "Laozi (Lao Tzu)",
+      "tradition": "Ancient Eastern Daoism",
+      "work_title": "Dao De Jing (Tao Te Ching)",
+      "chapter": "Chapter 8: The Supreme Good Like Water",
+      "text": "The highest good is like water. Water benefits all things and does not compete with them. It stays in places that others despise, and therefore it is close to the Dao. In dwelling, live close to the ground. In thinking, delve deep into the heart. In relations, be benevolent. In speaking, be trustworthy. In governing, maintain order. In matters, be capable. In movement, be timely. Because it does not contend, it is without fault."
+    },
+    {
+      "id": "lt_ddj_16",
+      "thinker_id": "lao_tzu",
+      "thinker_name": "Laozi (Lao Tzu)",
+      "tradition": "Ancient Eastern Daoism",
+      "work_title": "Dao De Jing (Tao Te Ching)",
+      "chapter": "Chapter 16: Returning to Stillness and Root",
+      "text": "Attain utmost emptiness; Maintain steadfast tranquility. All things arise together, and I watch their return. The myriad things flourish, but each returns to its root. Returning to the root is called stillness; Stillness is called returning to one's destiny. Returning to destiny is called the eternal; Knowing the eternal is called enlightenment."
+    },
+    {
+      "id": "lt_ddj_22",
+      "thinker_id": "lao_tzu",
+      "thinker_name": "Laozi (Lao Tzu)",
+      "tradition": "Ancient Eastern Daoism",
+      "work_title": "Dao De Jing (Tao Te Ching)",
+      "chapter": "Chapter 22: Yielding and Wholeness",
+      "text": "Yield and remain whole; Bend and remain straight; Be hollow and remain full; Be worn out and remain renewed; Have little and gain; Have much and be confused. Therefore the sage embraces the One and becomes the model for the world. Not showing off, therefore enlightened; Not self-righteous, therefore distinguished; Not boasting, therefore having merit; Not arrogant, therefore enduring. Because he does not contend, no one in the world can contend with him."
+    },
+    {
+      "id": "lt_ddj_48",
+      "thinker_id": "lao_tzu",
+      "thinker_name": "Laozi (Lao Tzu)",
+      "tradition": "Ancient Eastern Daoism",
+      "work_title": "Dao De Jing (Tao Te Ching)",
+      "chapter": "Chapter 48: Lessening and Non-Action",
+      "text": "In the pursuit of learning, every day something is acquired. In the pursuit of the Dao, every day something is dropped. Less and less is done until non-action (wu wei) is attained. When nothing is done, nothing is left undone. The world is won by letting things take their natural course; It cannot be won by interference."
+    },
+    {
+      "id": "lt_ddj_78",
+      "thinker_id": "lao_tzu",
+      "thinker_name": "Laozi (Lao Tzu)",
+      "tradition": "Ancient Eastern Daoism",
+      "work_title": "Dao De Jing (Tao Te Ching)",
+      "chapter": "Chapter 78: Softness Overcomes Hardness",
+      "text": "Under heaven nothing is more soft and yielding than water. Yet for attacking what is hard and tough, nothing surpasses it, for nothing can change it. The soft overcomes the hard; The gentle overcomes the rigid. Everyone under heaven knows this, but none can put it into practice."
+    }
+  ],
+  "app/data/corpus/leo_tolstoy.json": [
+    {
+      "id": "tol_conf_01",
+      "thinker_id": "leo_tolstoy",
+      "thinker_name": "Leo Tolstoy",
+      "tradition": "Russian Moral Realism & Existential Faith",
+      "work_title": "A Confession",
+      "chapter": "Chapter 3: The Crisis of Meaning",
+      "text": "My life came to an unexpected standstill. I could breathe, eat, drink, and sleep, and I could not help doing so; but there was no authentic life, because I had no desires the fulfillment of which I could consider reasonable. If a fairy had come and offered to fulfill any desire I had, I would not have known what to ask. The truth was that life appeared utterly meaningless. I had lived and walked until I had arrived at a precipice, and saw clearly that there was nothing ahead of me but destruction. Neither art nor literature nor wealth could answer the gnawing question: 'Why should I live, why should I do anything?'"
+    },
+    {
+      "id": "tol_conf_02",
+      "thinker_id": "leo_tolstoy",
+      "thinker_name": "Leo Tolstoy",
+      "tradition": "Russian Moral Realism & Existential Faith",
+      "work_title": "A Confession",
+      "chapter": "Chapter 4: The Dragon and the Drops of Honey",
+      "text": "There is an ancient fable about a traveler overtaken in a plain by a raging beast. Seeking safety, he leaps into a dry well, but at the bottom sees a dragon with open jaws waiting to devour him. Clinging to the twigs of a wild bush growing from the stone wall, his hands grow weak. Two mice, one white and one black, circle the bush and steadily gnaw through its stem. Yet the traveler sees drops of honey upon the leaves, and stretches out his tongue to lick them. Thus do men cling to the bush of life, knowing the dragon of death waits below, while day and night gnaw away at our existence; and the petty pleasures of art and family no longer console us once the reality of death is unmasked."
+    },
+    {
+      "id": "tol_conf_03",
+      "thinker_id": "leo_tolstoy",
+      "thinker_name": "Leo Tolstoy",
+      "tradition": "Russian Moral Realism & Existential Faith",
+      "work_title": "A Confession",
+      "chapter": "Chapter 9: The Faith of the Simple People",
+      "text": "I turned away from the rich, the learned, and the idle, and began to observe the life of the simple working people. I saw millions of peasants who endured harsh labor, sickness, and poverty with quiet tranquility and joy, because they possessed an unshakeable faith in the meaning of life. I realized that pure rational knowledge cannot give life meaning; rationality leads only to despair and the void. Faith alone connects the finite human being with the infinite universe. To live as a human being, one must possess faith\u2014not dogmatic ritual, but the inner living realization of love and moral duty."
+    },
+    {
+      "id": "tol_conf_04",
+      "thinker_id": "leo_tolstoy",
+      "thinker_name": "Leo Tolstoy",
+      "tradition": "Russian Moral Realism & Existential Faith",
+      "work_title": "A Confession",
+      "chapter": "Chapter 12: To Know God is to Live",
+      "text": "I remember walking in the woods in early spring. The moment I lost awareness of God, life died within me, and cold despair seized my heart. But the instant I turned my soul toward God, life returned in all its fullness. 'What more do you seek?' a voice cried within me. 'He is that without which one cannot live. To know God and to live is one and the same thing. God is life.' Live seeking God, love your neighbor, perform honest work, and despair will vanish like mist before the sun."
+    },
+    {
+      "id": "tol_ilyich_01",
+      "thinker_id": "leo_tolstoy",
+      "thinker_name": "Leo Tolstoy",
+      "tradition": "Russian Moral Realism & Existential Faith",
+      "work_title": "The Death of Ivan Ilyich",
+      "chapter": "Chapter 7: The Falsity of Conventional Life",
+      "text": "What tormented Ivan Ilyich most on his deathbed was the deception and the lie: that he was merely sick and not dying, and that he need only remain quiet and obey the physicians. This conventional falsity, which everyone maintained around him and within him, did more than physical pain to poison his dying days. He looked back upon his legal career, his comfortable bourgeois furniture, his social triumphs, and his respectable decorum, and recognized with horror that his entire adulthood had been a gigantic, artificial falsehood that veiled the reality of the soul."
+    },
+    {
+      "id": "tol_ilyich_02",
+      "thinker_id": "leo_tolstoy",
+      "thinker_name": "Leo Tolstoy",
+      "tradition": "Russian Moral Realism & Existential Faith",
+      "work_title": "The Death of Ivan Ilyich",
+      "chapter": "Chapter 12: The Light that Conquers Death",
+      "text": "In his final agony, Ivan Ilyich looked at his weeping schoolboy son, who kissed his hand, and he felt profound pity and love. His lifelong egotism and terror suddenly fell away. 'How good and how simple!' he thought. 'And death? Where is it?' He sought his former accustomed fear of death and did not find it. 'Where is it? What death?' There was no fear because there was no death. In place of death there was light. 'So that is it!' he exclaimed aloud. 'What joy!' He drew in his breath, stopped in the midst of a sigh, stretched out, and died in peace."
+    },
+    {
+      "id": "tol_conf_05",
+      "thinker_id": "leo_tolstoy",
+      "thinker_name": "Leo Tolstoy",
+      "tradition": "Russian Moral Realism & Existential Faith",
+      "work_title": "A Confession",
+      "chapter": "Chapter 7: Overcoming Existential Nihilism",
+      "text": "The privileged intellectuals of my class attempt to escape the problem of existence in four ways: blind ignorance, hedonistic distraction, suicide through violent despair, or weak, cowardly compliance. Yet none of these solves the riddle. The true answer is found in renouncing selfish egoism, serving our fellow human beings through daily physical labor, and surrendering our intellect to the infinite compassion and moral law of God."
+    }
+  ],
+  "app/data/corpus/marcus_aurelius.json": [
+    {
+      "id": "ma_med_01",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book II, Section 1",
+      "text": "When you wake up in the morning, tell yourself: The people I deal with today will be meddling, ungrateful, arrogant, dishonest, jealous, and surly. They are like this because they cannot distinguish good from evil. But I have seen the beauty of good, and the ugliness of evil, and have recognized that the wrongdoer has a nature related to my own\u2014not of the same blood or birth, but the same mind, and possessing a share of the divine. And so none of them can hurt me. No one can implicate me in ugliness. Nor can I feel angry at my fellow man or hate him. We were made for cooperation, like feet, like hands, like the rows of the upper and lower teeth. To act against one another then is contrary to nature; and to be angry and turn away is to act against each other."
+    },
+    {
+      "id": "ma_med_02",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book IV, Section 3",
+      "text": "People try to get away from it all\u2014to the country, to the beach, to the mountains. You always wish that you could too. Which is completely ridiculous: you have at your disposal at any moment a retreat into yourself. Nowhere can man find a quieter or more untroubled retreat than in his own soul. Especially one with vibrant resources within, to look into and immediately be at total ease. And by ease I mean nothing other than good order. Constantly grant yourself this retreat, and renew yourself. Keep your fundamental principles brief and elemental, so that as soon as you recur to them, they will cleanse your spirit entirely and send you back without resentment to the life you must face."
+    },
+    {
+      "id": "ma_med_03",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book IV, Section 7",
+      "text": "Choose not to be harmed\u2014and you won't feel harmed. Don't feel harmed\u2014and you haven't been. What harms the soul alone harms the person; but external events, pain of the body, loss of wealth, or the insults of others cannot touch the governing mind unless the mind itself assents to being wounded. The soul is its own citadel."
+    },
+    {
+      "id": "ma_med_04",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book V, Section 1",
+      "text": "At dawn, when you have trouble getting out of bed, tell yourself: 'I have to go to work\u2014as a human being. What do I have to complain of, if I'm going to do what I was born for\u2014the things which I was brought into the world to do? Or is this what I was created for? To huddle under the blankets and stay warm?' 'But it's nicer here.' So were you born to feel 'nice'? Instead of doing things and experiencing them? Don't you see the plants, the birds, the ants and spiders and bees going about their individual tasks, putting the world in order, as best they can? And you're not willing to do your job as a human being? Why aren't you running to do what your nature demands?"
+    },
+    {
+      "id": "ma_med_05",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book VIII, Section 59",
+      "text": "Human beings are made for each other. So either teach them or learn to bear them. When another blames or hates you, or people voice similar criticisms, go to their souls, penetrate inside and see what kind of people they are. You will see that there is no reason for you to torment yourself to produce any particular impression upon them."
+    },
+    {
+      "id": "ma_med_06",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book IX, Section 6",
+      "text": "Objective judgment, now, at this very moment. Unselfish action, now, at this very moment. Willing acceptance\u2014now, at this very moment\u2014of all external events. That's all you need. The impediment to action advances action. What stands in the way becomes the way."
+    },
+    {
+      "id": "ma_med_07",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book XII, Section 23",
+      "text": "Look at the matter thus: if an actor who has been playing a role is dismissed from the stage by the director who hired him, he does not complain that he has not finished all five acts. 'Three acts are enough for a whole play.' In your life too, the measure of completeness is determined by nature that brought you here, not by you. Depart then with a good grace; for he who dismisses you is also gracious. Death is the natural completion of the mortal cycle."
+    },
+    {
+      "id": "ma_med_08",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book VII, Section 33",
+      "text": "On pain: if it is unbearable, it destroys us; if it lasts, it is bearable. The mind preserves its own serenity by withdrawal, and the ruling center remains uninjured. As for the parts suffering from pain, let them express their complaint if they can. But let your soul remain untouched by panic or lamentation."
+    },
+    {
+      "id": "ma_med_09",
+      "thinker_id": "marcus_aurelius",
+      "thinker_name": "Marcus Aurelius",
+      "tradition": "Roman Stoicism",
+      "work_title": "Meditations",
+      "chapter": "Book II, Section 11",
+      "text": "Since it is possible that you might depart from life this very moment, regulate every act and thought accordingly. Facing death, like birth, is merely a mystery of nature\u2014a combination of elements, resolving into the same elements; there is nothing in it of which anyone should be ashamed. Despise not death, but welcome it with a serene mind, since nature wills it like all else. You cannot lose either the past or the future; for how can someone take from you what you do not have? Remember that each of us lives only this present moment; all the rest is either past and gone, or not yet here."
+    }
+  ],
+  "app/data/corpus/plato.json": [
+    {
+      "id": "pla_rep_01",
+      "thinker_id": "plato",
+      "thinker_name": "Plato",
+      "tradition": "Classical Greek Idealism & Dialectic",
+      "work_title": "The Republic",
+      "chapter": "Book VII: The Allegory of the Cave",
+      "text": "Behold! human beings living in an underground den, which has a mouth open towards the light and reaching all along the den; here they have been from their childhood, and have their legs and necks chained so that they cannot move, and can only see before them, being prevented by the chains from turning round their heads. Above and behind them a fire is blazing at a distance, and between the fire and the prisoners there is a raised way. Like ourselves, they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave. To them, the truth would be literally nothing but the shadows of the images. But when one is released and compelled suddenly to stand up and turn his neck round and walk and look towards the light, he will suffer sharp pains; yet in time he will gaze upon the Sun itself and contemplate the Good."
+    },
+    {
+      "id": "pla_rep_02",
+      "thinker_id": "plato",
+      "thinker_name": "Plato",
+      "tradition": "Classical Greek Idealism & Dialectic",
+      "work_title": "The Republic",
+      "chapter": "Book V: The Philosopher-King",
+      "text": "Until philosophers are kings, or the kings and princes of this world have the spirit and power of philosophy, and political greatness and wisdom meet in one, and those commoner natures who pursue either to the exclusion of the other are compelled to stand aside, cities will never have rest from their evils,\u2014no, nor the human race, as I believe,\u2014and then only will this our State have a possibility of life and behold the light of day. The true lover of wisdom desires all wisdom, not just a part; he seeks the unchanging essence of beauty and justice itself, ascending beyond mere opinion to authentic knowledge."
+    },
+    {
+      "id": "pla_rep_03",
+      "thinker_id": "plato",
+      "thinker_name": "Plato",
+      "tradition": "Classical Greek Idealism & Dialectic",
+      "work_title": "The Republic",
+      "chapter": "Book IV: The Tripartite Soul and Justice",
+      "text": "Justice in the individual is analogous to justice in the state. The soul contains three distinct elements: the rational faculty, which loves wisdom and ought to rule; the spirited element, which loves honor and acts as the ally of reason; and the appetitive element, which craves bodily pleasures, food, drink, and wealth. Justice is attained when each part of the soul fulfils its own proper function without meddling in the business of the others. When reason commands, with spirit as its valiant guardian, and the appetites are kept in temperance, the soul enjoys inner harmony, peace, and true moral health."
+    },
+    {
+      "id": "pla_rep_04",
+      "thinker_id": "plato",
+      "thinker_name": "Plato",
+      "tradition": "Classical Greek Idealism & Dialectic",
+      "work_title": "The Republic",
+      "chapter": "Book II: The Ring of Gyges and Justice",
+      "text": "Suppose now that there were two such magic rings as Gyges had, which made the wearer invisible, and the just man put on one and the unjust the other. No man can be imagined to be of such an iron nature that he would stand fast in justice. No man would keep his hands off what was not his own when he could safely take what he liked out of the market, or go into houses and lie with any one at his pleasure, or kill or release from prison whom he would. For all men believe in their hearts that injustice is far more profitable to the individual than justice. Yet Socrates demonstrates that the unjust man, enslaved by tyrannical desires, is of all men the most wretched, while the truly just man possesses inner nobility and freedom."
+    },
+    {
+      "id": "pla_apol_01",
+      "thinker_id": "plato",
+      "thinker_name": "Plato",
+      "tradition": "Classical Greek Idealism & Dialectic",
+      "work_title": "Apology",
+      "chapter": "Section 29d-30b: Obedience to Truth and Soul",
+      "text": "Men of Athens, I honor and love you; but I shall obey God rather than you, and while I have life and strength I shall never cease from the practice and teaching of philosophy, exhorting anyone whom I meet: 'Are you not ashamed of caring so much for the making of money and for reputation and honor, will you not care for wisdom and truth and the greatest improvement of your soul?' For I do nothing but go about persuading you all, old and young alike, not to take thought for your persons or your property, but first and chiefly to care about the greatest improvement of the soul. I tell you that virtue is not given by money, but from virtue comes money and every other good of man, public as well as private."
+    },
+    {
+      "id": "pla_apol_02",
+      "thinker_id": "plato",
+      "thinker_name": "Plato",
+      "tradition": "Classical Greek Idealism & Dialectic",
+      "work_title": "Apology",
+      "chapter": "Section 38a: The Unexamined Life",
+      "text": "If I tell you that to hold no daily discourse about virtue and the good is disobedience to God, you will not believe that I am serious; and if I say again that the greatest good of man is daily to converse about virtue, and all that concerning which you hear me examining myself and others, and that the unexamined life is not worth living for a human being, you will believe me even less. Yet such is the truth, gentlemen. Philosophy is the rigorous interrogation of presumption, stripping away false claims of knowledge so that the soul may awaken to genuine insight."
+    },
+    {
+      "id": "pla_apol_03",
+      "thinker_id": "plato",
+      "thinker_name": "Plato",
+      "tradition": "Classical Greek Idealism & Dialectic",
+      "work_title": "Apology",
+      "chapter": "Section 40c-41d: Facing Death and the Good Man",
+      "text": "Let us reflect in another way, and we shall see that there is great reason to hope that death is a good; for one of two things must be: either death is a state of nothingness and utter unconsciousness, or there is a migration of the soul from this world to another. Now if death is like a sleep undisturbed even by dreams, what an unspeakable gain death must be! But if death is the journey to another place, where all the dead abide, what good can be greater than this? Wherefore, O judges, be of good cheer about death, and know of a certainty that no evil can happen to a good man, either in life or after death, and that his fortunes are not neglected by the gods."
+    }
+  ],
+  "app/data/corpus/seneca.json": [
+    {
+      "id": "sen_let_01",
+      "thinker_id": "seneca",
+      "thinker_name": "Seneca",
+      "tradition": "Roman Stoicism",
+      "work_title": "Letters to Lucilius",
+      "chapter": "Letter 1: On Saving Time",
+      "text": "Hold every hour in your grasp. Lay hold of to-day's task, and you will not need to depend so much upon to-morrow's. While we are postponing, life speeds by. Nothing, Lucilius, is ours, except time. We were entrusted by nature with the ownership of this single fleeting and slippery possession, from which anyone who desires can cast us out. What fools these mortals be! They allow the cheapest and most useless things, which can easily be replaced, to be charged in the reckoning, after they have acquired them; but they never regard themselves as in debt when they have received some of that precious commodity, time! And yet time is the one loan which even a grateful recipient cannot repay."
+    },
+    {
+      "id": "sen_let_02",
+      "thinker_id": "seneca",
+      "thinker_name": "Seneca",
+      "tradition": "Roman Stoicism",
+      "work_title": "Letters to Lucilius",
+      "chapter": "Letter 24: On Despising Death",
+      "text": "If you would not have a man fear anything, let him consider that all things are to be feared. Strip off the mask from things, and look at the bare reality. Why do you fear death? It is the same as that which went before you; just as we felt no pain before our birth, so shall we feel none after our death. Do you think it is a great matter that you are living? All your slaves live, and all animals live. But it is a great matter to die honourably, prudently, bravely. Think how long you have been doing the same things: food, sleep, lust\u2014this is the cycle. Not only a wise man, or a brave man, or an unhappy man, but even a fastidious man may wish to die, simply because he is tired of doing the same thing over and over."
+    },
+    {
+      "id": "sen_let_03",
+      "thinker_id": "seneca",
+      "thinker_name": "Seneca",
+      "tradition": "Roman Stoicism",
+      "work_title": "Letters to Lucilius",
+      "chapter": "Letter 28: On Travel and Discontent",
+      "text": "Do you ask why such flight does not help you? It is because you flee along with yourself. You must lay aside the burdens of the mind; until you do this, no place will satisfy you. As Socrates said to one who made the same complaint: 'Why do you wonder that globetrotting does not help you, seeing that you always take yourself with you? The reason which drove you away is still at your heels.' What pleasure can there be in seeing new lands or visiting distant cities? All your restlessness is in vain. For you travel with your ailments; you follow yourself. You must change your soul, not your climate."
+    },
+    {
+      "id": "sen_let_04",
+      "thinker_id": "seneca",
+      "thinker_name": "Seneca",
+      "tradition": "Roman Stoicism",
+      "work_title": "Letters to Lucilius",
+      "chapter": "Letter 47: On Master and Slave",
+      "text": "'They are slaves,' people say. Nay, rather they are men. 'They are slaves.' Nay, rather they are comrades. 'They are slaves.' Nay, rather they are humble friends. 'They are slaves.' Nay, rather they are our fellow-slaves, if one reflects that Fortune has equal power over them and over us. He whom you call your slave sprang from the same stock, is smiled upon by the same skies, and on equal terms with yourself breathes, lives, and dies. Treat your inferior as you would be treated by your superior. Remember that he whom you call your slave can look up at you and see in you a master who is equally a slave to fear, ambition, or desire."
+    },
+    {
+      "id": "sen_let_05",
+      "thinker_id": "seneca",
+      "thinker_name": "Seneca",
+      "tradition": "Roman Stoicism",
+      "work_title": "Letters to Lucilius",
+      "chapter": "Letter 63: On Grief for Lost Friends",
+      "text": "Let not your eyes be dry when you have lost a friend, nor let them overflow. We may weep, but we must not wail. Do you think that you are likely to recover your friend by your tears? Any of us can find a friend, if we are worthy of friendship; and he who cannot make friends has no right to grieve over those he has lost. Let us see to it that the memory of our dead friends shall be a joy rather than a sorrow. It is natural to feel a pang when memory recalls them; but that pang is accompanied by a quiet pleasure. Let us greedily enjoy our friends, because we do not know how long this privilege will be ours. Death takes them away, but memory restores them to the mind."
+    },
+    {
+      "id": "sen_let_06",
+      "thinker_id": "seneca",
+      "thinker_name": "Seneca",
+      "tradition": "Roman Stoicism",
+      "work_title": "Letters to Lucilius",
+      "chapter": "Letter 78: On Healing and Bearing Pain",
+      "text": "Pain is slight if opinion has added nothing to it; but if you take to encouraging yourself and say, 'It is nothing, or at least it is very slight; let us hold out, it will soon cease,' you will make it slight while you think it so. Everything depends on opinion; ambition, luxury, greed, harness themselves to opinion. It is according to opinion that we suffer. A man is as wretched as he has convinced himself he is. What does it matter how much pain one feels, if to bear it is a noble deed? Rouse yourself to resist: pain will cease or it will cease you; and in either case the torment is brought to an end."
+    },
+    {
+      "id": "sen_let_07",
+      "thinker_id": "seneca",
+      "thinker_name": "Seneca",
+      "tradition": "Roman Stoicism",
+      "work_title": "Letters to Lucilius",
+      "chapter": "Letter 9: On Philosophy and Friendship",
+      "text": "The wise man is self-sufficient. He can do without friends, not that he desires to do without them, but that he can. When I say 'he can', I mean this: he bears the loss of a friend with equanimity. But he will never be without a friend, for he has it in his power how soon to replace him. Just as Phidias, if he lose a statue, can immediately carve another, so the master of the art of making friends will fill the vacant place at once. Why then do we seek friends? Not for personal advantage or to have someone sit by our sickbed, but to have someone whose sickbed we may sit by, someone whom we may rescue from the enemy."
+    }
+  ],
+  "app/data/corpus/sun_tzu.json": [
+    {
+      "id": "sun_art_01",
+      "thinker_id": "sun_tzu",
+      "thinker_name": "Sun Tzu",
+      "tradition": "Classical Chinese Strategic Philosophy",
+      "work_title": "The Art of War",
+      "chapter": "Chapter III: Attack by Stratagem (Victory Without Conflict)",
+      "text": "To fight and conquer in all your battles is not supreme excellence; supreme excellence consists in breaking the enemy's resistance without fighting. Thus the highest form of generalship is to balk the enemy's plans; the next best is to prevent the junction of his forces; the next in order is to attack his army in the field; and the worst policy of all is to besiege walled cities. The skillful leader subdues the enemy's troops without any fighting; he captures their cities without laying siege to them; he overthrows their kingdom without lengthy operations in the field."
+    },
+    {
+      "id": "sun_art_02",
+      "thinker_id": "sun_tzu",
+      "thinker_name": "Sun Tzu",
+      "tradition": "Classical Chinese Strategic Philosophy",
+      "work_title": "The Art of War",
+      "chapter": "Chapter III: Knowing the Enemy and Knowing Oneself",
+      "text": "If you know the enemy and know yourself, you need not fear the result of a hundred battles. If you know yourself but not the enemy, for every victory gained you will also suffer a defeat. If you know neither the enemy nor yourself, you will succumb in every battle. He will win who knows when to fight and when not to fight. He will win who knows how to handle both superior and inferior forces. He will win whose army is animated by the same spirit throughout all its ranks."
+    },
+    {
+      "id": "sun_art_03",
+      "thinker_id": "sun_tzu",
+      "thinker_name": "Sun Tzu",
+      "tradition": "Classical Chinese Strategic Philosophy",
+      "work_title": "The Art of War",
+      "chapter": "Chapter I: Laying Plans and the Moral Law (Dao)",
+      "text": "The art of war is of vital importance to the State. It is a matter of life and death, a road either to safety or to ruin. Hence it is a subject of inquiry which can on no account be neglected. The Moral Law (Dao) causes the people to be in complete accord with their ruler, so that they will follow him regardless of their lives, undismayed by any danger. All warfare is based on deception. Hence, when able to attack, we must seem unable; when using our forces, we must seem inactive; when we are near, we must make the enemy believe we are far away."
+    },
+    {
+      "id": "sun_art_04",
+      "thinker_id": "sun_tzu",
+      "thinker_name": "Sun Tzu",
+      "tradition": "Classical Chinese Strategic Philosophy",
+      "work_title": "The Art of War",
+      "chapter": "Chapter VI: Weak Points and Strong (The Water Metaphor)",
+      "text": "Military tactics are like unto water; for water in its natural course runs away from high places and hastens downwards. So in war, the way is to avoid what is strong and to strike at what is weak. Water shapes its course according to the nature of the ground over which it flows; the soldier works out his victory in relation to the foe whom he is facing. Therefore, just as water retains no constant shape, so in warfare there are no constant conditions. He who can modify his tactics in relation to his opponent and thereby succeed in winning, may be called a heaven-born captain."
+    },
+    {
+      "id": "sun_art_05",
+      "thinker_id": "sun_tzu",
+      "thinker_name": "Sun Tzu",
+      "tradition": "Classical Chinese Strategic Philosophy",
+      "work_title": "The Art of War",
+      "chapter": "Chapter IV: Tactical Dispositions and Invincibility",
+      "text": "The good fighters of old first put themselves beyond the possibility of defeat, and then waited for an opportunity of defeating the enemy. To secure ourselves against defeat lies in our own hands, but the opportunity of defeating the enemy is provided by the enemy himself. Thus the good fighter is able to secure himself against defeat, but cannot make certain of defeating the enemy. Hence the saying: One may know how to conquer without being able to do it. Invincibility lies in the defence; the possibility of victory in the attack."
+    },
+    {
+      "id": "sun_art_06",
+      "thinker_id": "sun_tzu",
+      "thinker_name": "Sun Tzu",
+      "tradition": "Classical Chinese Strategic Philosophy",
+      "work_title": "The Art of War",
+      "chapter": "Chapter VII: Maneuvering and Adaptability",
+      "text": "Let your rapidity be that of the wind, your compactness that of the forest. In raiding and plundering be like fire, in immovability like a mountain. Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt. Ponder and deliberate before you make a move. He will conquer who has learnt the artifice of deviation. Such is the art of maneuvering."
+    },
+    {
+      "id": "sun_art_07",
+      "thinker_id": "sun_tzu",
+      "thinker_name": "Sun Tzu",
+      "tradition": "Classical Chinese Strategic Philosophy",
+      "work_title": "The Art of War",
+      "chapter": "Chapter XII: Prudence, Restraint, and Anger",
+      "text": "No ruler should put troops into the field merely to gratify his own anger; no general should fight a battle simply out of pique. If it is to your advantage, make a forward move; if not, stay where you are. Anger may in time change to gladness; vexation may be succeeded by content. But a kingdom that has once been destroyed can never come again into being; nor can the dead ever be brought back to life. Hence the enlightened ruler is heedful, and the good general full of caution."
+    }
+  ],
+  "app/data/corpus/voltaire.json": [
+    {
+      "id": "vol_can_01",
+      "thinker_id": "voltaire",
+      "thinker_name": "Voltaire",
+      "tradition": "French Enlightenment & Satirical Humanism",
+      "work_title": "Candide",
+      "chapter": "Chapter 30: Cultivating Our Garden",
+      "text": "Pangloss would sometimes say to Candide: 'There is a concatenation of events in this best of all possible worlds: for if you had not been kicked out of a magnificent castle for love of Miss Cunegonde, if you had not been put into the Inquisition, if you had not walked over America on foot, if you had not run your sword through the baron, if you had not lost all your sheep from Eldorado, you would not be here eating candied citrons and pistachios.' 'All that is very well,' answered Candide, 'but let us cultivate our garden.' By focusing upon tangible labor and practical improvements within human reach, one turns away from futile metaphysical disputations and builds a peaceful existence."
+    },
+    {
+      "id": "vol_can_02",
+      "thinker_id": "voltaire",
+      "thinker_name": "Voltaire",
+      "tradition": "French Enlightenment & Satirical Humanism",
+      "work_title": "Candide",
+      "chapter": "Chapter 1: The Parody of Optimism",
+      "text": "Pangloss was professor of metaphysico-theologico-cosmo-nigology. He could prove to admiration that there is no effect without a cause; and, that in this best of all possible worlds, the Baron's castle was the most magnificent of castles, and his lady the best of all possible Baronesses. 'Observe,' said he, 'that noses were made for spectacles, and so we have spectacles. Legs were visibly instituted for stockings, and we have stockings. Stones were formed to be quarried, and to build castles; and my Lord has a very noble castle. Swine were intended to be eaten, and we eat pork all the year round. It follows that they who assert that everything is good do not express themselves correctly; they should say that everything is best.' Such blind dogmatism mocks the reality of human suffering."
+    },
+    {
+      "id": "vol_can_03",
+      "thinker_id": "voltaire",
+      "thinker_name": "Voltaire",
+      "tradition": "French Enlightenment & Satirical Humanism",
+      "work_title": "Candide",
+      "chapter": "Chapter 20: Human Folly and Malice",
+      "text": "'Do you believe,' said Candide, 'that men have always massacred each other as they do to-day? That they have always been liars, cheats, traitors, ingrates, brigands, idiots, thieves, scoundrels, gluttons, drunkards, misers, hypocrites, and fools?' 'Do you believe,' said Martin, 'that hawks have always eaten pigeons when they could find them?' 'Undoubtedly,' said Candide. 'Well,' said Martin, 'if hawks have always had the same nature, why should you suppose that men have changed theirs?' Yet Voltaire reminds us that while human folly is ancient, reason and compassion allow us to temper our savagery and build lawful civilization."
+    },
+    {
+      "id": "vol_dict_01",
+      "thinker_id": "voltaire",
+      "thinker_name": "Voltaire",
+      "tradition": "French Enlightenment & Satirical Humanism",
+      "work_title": "Philosophical Dictionary",
+      "chapter": "Entry: Tolerance",
+      "text": "What is tolerance? It is the appurtenance of humanity. We are all full of weakness and errors; let us mutually pardon each other our follies, it is the first law of nature. It is clear that every private individual who persecutes a man, his brother, because he is not of the same opinion, is a monster. Discord is the great evil of the human species, and tolerance is its only remedy. There is no doubt that if reason could rule the minds of men, persecutions and holy wars would vanish like malignant phantoms before the dawn."
+    },
+    {
+      "id": "vol_dict_02",
+      "thinker_id": "voltaire",
+      "thinker_name": "Voltaire",
+      "tradition": "French Enlightenment & Satirical Humanism",
+      "work_title": "Philosophical Dictionary",
+      "chapter": "Entry: Fanaticism",
+      "text": "Fanaticism is to superstition what delirium is to fever, or rage to anger. He who is prone to ecstasies and visions, who mistakes his dreams for realities and his fancies for prophecies, is an enthusiast; he who backs his frenzy by assassination is a fanatic. The only remedy for this infectious malady is the philosophical spirit, which, being gradually diffused, softens the manners of men and prevents the fits of the disease from breaking out. Laws are of no avail against this spiritual rabies; reason alone can cure the contagion of dogma."
+    },
+    {
+      "id": "vol_dict_03",
+      "thinker_id": "voltaire",
+      "thinker_name": "Voltaire",
+      "tradition": "French Enlightenment & Satirical Humanism",
+      "work_title": "Philosophical Dictionary",
+      "chapter": "Entry: Evil",
+      "text": "Physical and moral evil cover the face of the earth. We cannot explain the origin of evil by metaphysical systems without falling into absurdities. If God could prevent evil and would not, where is His benevolence? If He would and could not, where is His omnipotence? The philosopher does not spend his life in sterile lamentation or Panglossian denial; he acknowledges that sorrow and disease exist, and strives by medicine, science, justice, and kindness to diminish the sum of human misery."
+    },
+    {
+      "id": "vol_dict_04",
+      "thinker_id": "voltaire",
+      "thinker_name": "Voltaire",
+      "tradition": "French Enlightenment & Satirical Humanism",
+      "work_title": "Philosophical Dictionary",
+      "chapter": "Entry: Justice",
+      "text": "The sentiment of justice is so natural, so universally acquired by all mankind, that it seems independent of all local law, all party prejudice, all religious creed. The brigand who shares his plunder with his comrades recognizes the sanctity of justice in the very midst of crime. Justice is the indestructible bond that prevents human society from tearing itself into shreds. Without mutual equity, no commonwealth can endure."
+    }
+  ]
+}

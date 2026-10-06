@@ -52,6 +52,87 @@ THINKER_PROFILES = {
         "avatar_url": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
         "key_themes": ["Wu Wei (Effortless Action)", "The Dao (The Way)", "Softness Overcoming Hardness", "Emptiness & Simplicity", "Harmony with Nature"],
         "sample_quote": "The journey of a thousand miles begins with a single step."
+    },
+    "seneca": {
+        "name": "Seneca",
+        "tradition": "Roman Stoicism",
+        "period": "c. 4 BCE – 65 CE",
+        "color": "#c2410c",  # Rust / Terracotta
+        "avatar_url": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Shortage of Time", "Despising Death", "Equanimity & Fortune", "True Friendship", "Mastery of Suffering"],
+        "sample_quote": "It is not that we have a short time to live, but that we waste a lot of it."
+    },
+    "epictetus": {
+        "name": "Epictetus",
+        "tradition": "Stoic Epistemology & Ethics",
+        "period": "c. 50 – 135 CE",
+        "color": "#d97706",  # Amber / Ocre
+        "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Dichotomy of Control", "Prohairesis (Moral Will)", "Freedom vs Slavery", "Assent to Impressions", "The Actor's Role"],
+        "sample_quote": "Men are disturbed, not by things, but by the principles and notions which they form concerning things."
+    },
+    "plato": {
+        "name": "Plato",
+        "tradition": "Classical Greek Idealism & Dialectic",
+        "period": "c. 428 – 348 BCE",
+        "color": "#0284c7",  # Sky / Aegean Blue
+        "avatar_url": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["The World of Forms", "Allegory of the Cave", "The Philosopher-King", "Tripartite Soul & Justice", "The Unexamined Life"],
+        "sample_quote": "The unexamined life is not worth living."
+    },
+    "voltaire": {
+        "name": "Voltaire",
+        "tradition": "French Enlightenment & Satirical Humanism",
+        "period": "1694 – 1778",
+        "color": "#e11d48",  # Rose / Crimson
+        "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Cultivating One's Garden", "Anti-Fanaticism & Tolerance", "Critique of Optimism", "Universal Justice", "Empirical Reason"],
+        "sample_quote": "Let us cultivate our garden."
+    },
+    "leo_tolstoy": {
+        "name": "Leo Tolstoy",
+        "tradition": "Russian Moral Realism & Existential Faith",
+        "period": "1828 – 1910",
+        "color": "#15803d",  # Forest Green / Earth
+        "avatar_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Crisis of Meaning", "The Dragon of Death", "Faith of the Simple People", "Inauthenticity of Bourgeois Life", "Selfless Love & Labor"],
+        "sample_quote": "To know God and to live is one and the same thing. God is life."
+    },
+    "franz_kafka": {
+        "name": "Franz Kafka",
+        "tradition": "Existential Absurdism & Bureaucratic Alienation",
+        "period": "1883 – 1924",
+        "color": "#475569",  # Slate Grey / Obsidian
+        "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Bureaucratic Labyrinth", "The Parable Before the Law", "Inescapable Guilt", "Alienation & Metamorphosis", "The Absurd Trial"],
+        "sample_quote": "Before the Law stands a doorkeeper. To this doorkeeper there comes a man from the country and prays for admittance to the Law."
+    },
+    "bhagavad_gita": {
+        "name": "Bhagavad Gita",
+        "tradition": "Classical Indian Vedanta & Karma Yoga",
+        "period": "c. 5th – 2nd Century BCE",
+        "color": "#ea580c",  # Saffron / Deep Ochre
+        "avatar_url": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Nishkama Karma (Selfless Action)", "Immortality of the Atman", "Sthitaprajna (Steadfast Wisdom)", "Svadharma (Personal Duty)", "Lokasangraha (Universal Welfare)"],
+        "sample_quote": "Thy right is to the work alone, but never to its fruits."
+    },
+    "chanakya": {
+        "name": "Chanakya (Kautilya)",
+        "tradition": "Ancient Indian Realpolitik & Political Philosophy",
+        "period": "c. 375 – 283 BCE",
+        "color": "#b45309",  # Bronze / Copper
+        "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Indriyajaya (Restraint of Senses)", "Mandala Alliances", "Danda (The Rod of Justice)", "Strategic Realism & Foresight", "Welfare of Subjects"],
+        "sample_quote": "In the happiness of his subjects lies the king's happiness; in their welfare his welfare."
+    },
+    "sun_tzu": {
+        "name": "Sun Tzu",
+        "tradition": "Classical Chinese Strategic Philosophy",
+        "period": "c. 544 – 496 BCE",
+        "color": "#059669",  # Deep Jade / Emerald
+        "avatar_url": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+        "key_themes": ["Victory Without Conflict", "Knowing Self and Enemy", "Adaptability Like Water", "The Dao of Strategy", "Prudence Over Wrath"],
+        "sample_quote": "Supreme excellence consists in breaking the enemy's resistance without fighting."
     }
 }
 
@@ -141,3 +222,6 @@ class IngestionPipeline:
         return thinkers
 
 ingestion_pipeline = IngestionPipeline()
+
+if __name__ == "__main__":
+    ingestion_pipeline.run()

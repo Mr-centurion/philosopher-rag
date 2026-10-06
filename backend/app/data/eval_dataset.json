@@ -52,5 +52,59 @@
     "key_grounding_terms": ["duty", "virtue", "imperative", "eudaimonia", "power", "nature", "dao"],
     "failure_type_check": "section_diversity_and_coherence_check",
     "note": "Evaluates whether all 4 dialectical sections (Overview, Convergence, Clashes, Takeaway) produce distinct, coherent, non-repetitive text across all 5 thinkers"
+  },
+  {
+    "id": "eval_09",
+    "question": "What does Seneca teach in Letters to Lucilius regarding the saving of time and facing mortality?",
+    "expected_thinkers": ["seneca"],
+    "key_grounding_terms": ["time", "lucilius", "death", "mortal", "fleeting", "grasp"]
+  },
+  {
+    "id": "eval_10",
+    "question": "How does Epictetus distinguish what is within our control from what is not in the Enchiridion?",
+    "expected_thinkers": ["epictetus"],
+    "key_grounding_terms": ["control", "opinion", "actions", "slavish", "desire", "free"]
+  },
+  {
+    "id": "eval_11",
+    "question": "What does Plato convey through the Allegory of the Cave and the rule of philosopher-kings?",
+    "expected_thinkers": ["plato"],
+    "key_grounding_terms": ["cave", "shadows", "light", "sun", "kings", "philosophers", "good"]
+  },
+  {
+    "id": "eval_12",
+    "question": "Why does Voltaire insist upon cultivating our garden and practicing mutual tolerance in Candide?",
+    "expected_thinkers": ["voltaire"],
+    "key_grounding_terms": ["garden", "cultivate", "tolerance", "folly", "pangloss", "reason"]
+  },
+  {
+    "id": "eval_13",
+    "question": "What does Tolstoy conclude about the crisis of meaning, the dragon of death, and living faith?",
+    "expected_thinkers": ["leo_tolstoy"],
+    "key_grounding_terms": ["dragon", "death", "meaning", "faith", "ivan", "life", "honey"]
+  },
+  {
+    "id": "eval_14",
+    "question": "How does Kafka portray existential guilt and bureaucratic helplessness in The Trial and The Metamorphosis?",
+    "expected_thinkers": ["franz_kafka"],
+    "key_grounding_terms": ["law", "trial", "vermin", "gregor", "court", "alienation"]
+  },
+  {
+    "id": "eval_15",
+    "question": "What does the Bhagavad Gita teach concerning Nishkama Karma and the immortality of the soul?",
+    "expected_thinkers": ["bhagavad_gita"],
+    "key_grounding_terms": ["fruits", "work", "spirit", "atman", "equanimity", "yoga"]
+  },
+  {
+    "id": "eval_16",
+    "question": "What does Chanakya state regarding the self-discipline of leaders (Indriyajaya) and the Rod of Justice (Danda)?",
+    "expected_thinkers": ["chanakya"],
+    "key_grounding_terms": ["senses", "danda", "king", "welfare", "subjects", "discipline"]
+  },
+  {
+    "id": "eval_17",
+    "question": "How does Sun Tzu define supreme excellence in strategy and the fluid adaptability like water?",
+    "expected_thinkers": ["sun_tzu"],
+    "key_grounding_terms": ["water", "fighting", "enemy", "excellence", "stratagem", "tactics"]
   }
 ]

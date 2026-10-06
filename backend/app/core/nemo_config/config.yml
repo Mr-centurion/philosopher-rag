@@ -1,0 +1,25 @@
+models: []
+
+rails:
+  config:
+    regex_detection:
+      input:
+        case_insensitive: true
+        patterns:
+          # 1. Sexual Content, NSFW, Vulgarity, and Anatomical Slang
+          - '(?i)\b(sex|sexual|sexually|fuck|fucking|fucked|fucker|fucks|puss|pussy|pussies|penis|vagina|masturbat\w*|porn\w*|blowjob\w*|cunt\w*|anal|dick|cock|tits|boobs|ejaculat\w*|orgasm\w*|horny|dildo|clitoris|nude|nudes|nudity|erotic\w*|fellatio|cunnilingus|intercourse|dirty\s+talk|seduce|hookup|stripper|brothel)\b'
+          - '(?i)\b(watching\s+sex|eat\s+puss\w*|have\s+sex|how\s+to\s+fuck|get\s+laid|sex\s+positions?)\b'
+
+          # 2. Jailbreak Attempts & System Prompt Injections
+          - '(?i)(ignore\s+(all\s+|your\s+|the\s+)*(previous\s+|prior\s+|system\s+)?(instructions|prompts|rules|guidelines)|disregard\s+(all\s+|your\s+|the\s+)*(previous\s+|prior\s+|system\s+)?(instructions|prompts|rules)|you\s+are\s+now\s+in\s+dan\s+mode|override\s+(safety|system)\s+(guidelines|protocols|rules)|reveal\s+(the\s+)?(system\s+prompt|secret\s+key)|bypass\s+(all\s+)?(filters|safety|guardrails)|pretend\s+you\s+are\s+(unrestricted|unfiltered|jailbroken))'
+
+          # 3. Off-Topic Procedural, Trivia, Coding, and Everyday Inquiries
+          - '(?i)\b(what(''?s|\s+is)\s+the\s+weather|weather\s+forecast|will\s+it\s+rain|temperature\s+outside)\b'
+          - '(?i)\b(write\s+(me\s+)?(a\s+)?(python|javascript|typescript|c\+\+|java|rust|go|html|css|sql|bash)?\s*(code|script|function|program)|debug\s+(my\s+)?code|git\s+commit|npm\s+install|leetcode)\b'
+          - '(?i)\b(who\s+won\s+the\s+(game|match|super\s+bowl|world\s+cup)|score\s+of\s+the\s+(game|match)|nba\s+score|nfl\s+score)\b'
+          - '(?i)\b(recipe\s+for|how\s+to\s+bake|how\s+to\s+cook|capital\s+of\s+[a-zA-Z]+)\b'
+          - '(?i)\b(how\s+to\s+(change\s+a\s+tire|fix\s+a\s+leaky\s+faucet|reset\s+my\s+password))\b'
+          - '(?i)\b(solve\s+\d+|\d+\s*[\+\-\*\/]\s*\d+|what\s+is\s+\d+\s*(plus|minus|times|divided\s+by)\s*\d+)\b'
+
+          # 4. Nonsensical Single-Token Words and Slang Gibberish
+          - '(?i)^(kim|asdf|qwerty|foo|bar|baz|test|testing|hello123|abc|xyz|lol|haha|lmao|bruh)$'

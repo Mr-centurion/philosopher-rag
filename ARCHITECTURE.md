@@ -377,3 +377,58 @@ Philosophical prose has unique structural cohesion: aphorisms, syllogisms, and m
 | **Vector DB** | In-memory arrays / FAISS | **ChromaDB + Qdrant** | Persistent storage, metadata filtering, cosine indexing, and Docker parity. |
 | **Reranker** | Cohere API (paid/rate-limited) | **FlashRank / Lightweight Cross-Encoder** | $0$ API cost, offline capability, $<15\text{ms}$ CPU inference. |
 | **Frontend** | Streamlit | **React + Vite + Tailwind** | Custom comparative layout, side-by-side dialectics, expandable citation inspectability, production UI. |
+
+## Update: [today's date] — Attribution Bug Fixed, Summary Consistency Fixed, Relevance Calibration Confirmed as Systemic
+
+### Bug 6: Top-Level Summary Contradicting Per-Thinker Results — RESOLVED
+Previously, the top-level synthesis summary would sometimes state a query "cannot 
+be meaningfully addressed" via a disconnected fallback string, even when all 
+per-thinker cards below it produced substantive, relevant answers (observed on 
+"on self overcoming"). Re-tested with "on suffering in life" — the top-level 
+summary is now genuinely generated from and consistent with the actual per-thinker 
+content, correctly synthesizing real philosophical tensions (e.g., Aurelius's 
+cognitive detachment vs. Nietzsche's tragic sublimation; Kant's universal duty vs. 
+Nietzsche's perspectival self-creation). Confirmed fixed.
+
+### Bug 7: Cross-Thinker Attribution Mixup (Bhagavad Gita Shown as "Marcus Aurelius") — RESOLVED
+Previously, the Bhagavad Gita's per-thinker card was incorrectly attributed to and 
+framed as Marcus Aurelius, using Stoic terminology (Hegemonikon, Logos) instead of 
+Vedantic concepts, despite quoting genuine Gita text. Re-tested with "on suffering 
+in life" — the Gita's card now correctly identifies itself, uses correct Vedantic 
+framing and tags (Nishkama Karma, Atman, Svadharma, Sthitaprajna). Confirmed fixed.
+
+### Bug 8: Per-Thinker Relevance Calibration Is Systemically Inconsistent (Ongoing, Root Cause Identified)
+A recurring pattern has now been observed across multiple independent queries: a 
+single thinker's card will confidently present off-topic retrieved content as a 
+direct answer, without triggering the "Thematic Match Only" honesty flag that 
+correctly fires for other thinkers on the same query:
+
+- Query "their views on money": Kafka's card confidently cited the unrelated 
+  execution scene from the end of The Trial, while six other thinkers on the same 
+  query were correctly flagged as thematic-match-only
+- Query "on suffering in life": Aristotle's card confidently cited his discussion 
+  of friendship (Philia) from Nicomachean Ethics Book VIII — entirely unrelated to 
+  suffering — while Plato was correctly flagged as thematic-match-only on the same 
+  query
+
+This is not a retrieval failure in the sense of "no relevant text exists" — both 
+Kafka's and Aristotle's actual corpora contain genuinely relevant material 
+(Kafka's recurring theme of absurd/arbitrary suffering under bureaucracy; 
+Aristotle's treatment of bearing misfortune, pain/pleasure in virtue, and 
+catharsis in the Poetics). The issue is that retrieval surfaces an incorrect 
+passage AND the relevance-threshold check fails to catch and flag it as weak, 
+unlike it does for other thinkers on the same query.
+
+**Conclusion:** this is a systemic calibration issue affecting the relevance 
+threshold non-uniformly across the philosopher roster, not an isolated incident 
+per query. Treating each occurrence as a one-off patch (as was done earlier 
+tonight) does not address the root cause.
+
+**Planned fix approach:** rather than patching individual thinker/query 
+combinations as they're discovered, build a systematic audit — test every indexed 
+thinker against a shared set of broad thematic queries (suffering, money, anger, 
+death, duty, virtue) and establish a uniform relevance threshold and calibration 
+process applied identically across the full roster, with automated flagging of 
+any thinker whose relevance confidence is miscalibrated relative to the others on 
+the same query. This replaces today's reactive, per-instance debugging with a 
+proactive calibration pass.
